@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import ImageCarousell from '~/components/ImageCarousell'
-import GridSvg from '~/components/GridSvg'
+import ImageCarousell from './ImageCarousell'
+import GridSvg from './GridSvg'
 
 export default {
   components: {
