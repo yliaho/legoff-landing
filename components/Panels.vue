@@ -11,7 +11,7 @@
         UI
       </span>
       <GridSvg grid-position="left" :visible="left.isActive"></GridSvg>
-      <ImageCarousell></ImageCarousell>
+      <!-- <ImageCarousell></ImageCarousell> -->
     </div>
     <div id="panel" 
          class="PanelRight" 
@@ -23,7 +23,7 @@
         visdev
       </span>
       <GridSvg grid-position="right" :visible="right.isActive"></GridSvg>
-      <ImageCarousell></ImageCarousell>
+      <!-- <ImageCarousell></ImageCarousell> -->
     </div>
   </div>
 </template>
@@ -83,8 +83,8 @@ export default {
 
     #panel {
       flex-basis: 50%;
+      height: 100%;
       position: relative;
-      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;

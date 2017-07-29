@@ -40,7 +40,7 @@
       </pattern>
     </defs>
   
-    <rect :fill="`url(#grid${gridPosition})`" 
+    <rect :fill="`url('/#grid${gridPosition}')`" 
           width="100%" 
           height="100%" />
   </svg>
@@ -88,6 +88,7 @@ export default {
     right: 0;
     left: 0;
     z-index: -1;
+    background-color: green;
     transition: background-color .25s ease-out .05s;
   }
 
