@@ -3,7 +3,7 @@
   <svg class="grid-element" 
        width="100%" 
        height="100%" 
-       :style="!visible ? 'background-color: #232323' : 'background-color: #232323'"
+       :style="!visible ? 'background-color: #232323' : 'background-color: transparent'"
        xmlns="http://www.w3.org/2000/svg">
     <defs>
       <pattern v-if="gridPosition === 'left'" id="gridleft" x="100%" y="50%" :width="gridSize || 79" :height="gridSize || 79" patternUnits="userSpaceOnUse">
@@ -40,7 +40,7 @@
       </pattern>
     </defs>
   
-    <rect :fill="`url('#grid${gridPosition}')`" 
+    <rect :fill="`url('/#grid${gridPosition}')`" 
           width="100%" 
           height="100%" />
   </svg>
@@ -87,7 +87,7 @@ export default {
     bottom: 0;
     right: 0;
     left: 0;
-    z-index: -1;
+    z-index: 2;
     background-color: green;
     transition: background-color .25s ease-out .05s;
   }

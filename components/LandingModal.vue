@@ -45,7 +45,7 @@ export default {
     bottom: calc(50% - 79px * 2 + 2px);
     left: calc(50%);
     right: calc(50%);
-    z-index: 1;
+    z-index: 100;
     background-color: #232323;
     box-shadow: 0 0 0 1px rgba(255,255,255, 0);
     display: flex;

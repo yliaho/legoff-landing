@@ -3,7 +3,7 @@
     <LandingModal></LandingModal>
     <div id="panel" 
          class="panelLeft"
-         @mouseover="changePanelState(left, true)"
+         @mousemove="changePanelState(left, true)"
          @mouseleave="changePanelState(left, false)">
       <span class="panel-title font--stylized"
             v-show="!loading"
@@ -11,7 +11,7 @@
         UI
       </span>
       <GridSvg grid-position="left" :visible="left.isActive"></GridSvg>
-      <!-- <ImageCarousell></ImageCarousell> -->
+      <ImageCarousell side="left"></ImageCarousell>  
     </div>
     <div id="panel" 
          class="PanelRight" 
@@ -23,7 +23,7 @@
         visdev
       </span>
       <GridSvg grid-position="right" :visible="right.isActive"></GridSvg>
-      <!-- <ImageCarousell></ImageCarousell> -->
+      <ImageCarousell side="right"></ImageCarousell>  
     </div>
   </div>
 </template>
@@ -51,7 +51,8 @@ export default {
     }
   },
   computed: mapState([
-    'loading'
+    'loading',
+    'ready'
   ]),
   mounted () {
     if (this.loading) {
@@ -62,12 +63,16 @@ export default {
         this.left.isActive = false
 
         this.$store.commit('changeLoading', false)
+
+        setTimeout(() => {
+          this.$store.commit('changeReady', true)
+        }, 400)
       }, 2000)
     }
   },
   methods: {
     changePanelState (side, state) {
-      if (!this.loading) {
+      if (this.ready) {
         side.isActive = state
       }
     }
@@ -82,6 +87,7 @@ export default {
     width: 100vw;
 
     #panel {
+      background-color: #232323;   
       flex-basis: 50%;
       height: 100%;
       position: relative;
@@ -90,6 +96,8 @@ export default {
       align-items: center;
 
       .panel-title {
+        position: relative;
+        z-index: 3;
         overflow: hidden;
         transition: all 2.3s ease-out;
         background-color: white;

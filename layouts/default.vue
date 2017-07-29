@@ -23,10 +23,6 @@
     font-size: 15px;
   }
 
-  body {
-     /* background-color: #232323;  */
-  }
-
   .font--stylized {
     font-family: 'Akkurat Mono'
   }

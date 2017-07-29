@@ -5,7 +5,7 @@ module.exports = {
   router: {
     base: '/legoff-landing/'
   },
-  
+
   /*
    * BaseURL
    */
@@ -14,6 +14,7 @@ module.exports = {
   env: {
     baseURL: (process.env.NODE_ENV === 'production' ? siteURL : 'http://localhost:3000')
   },
+
   /*
    * Headers of the page
    */
@@ -28,10 +29,12 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+
   /*
    * Customize the progress-bar color
    */
   loading: { color: '#3B8070' },
+  
   /*
    * Build configuration
    */
