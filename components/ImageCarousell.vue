@@ -4,7 +4,7 @@
          v-for="(image, index) in images(side)" 
          :key="index"
          v-if="index === activeIndex && ready"
-         :style="`background-image: url('/images/${image}.jpg')`">
+         :style="`background-image: url('/${image}.jpg')`">
     </div>  
   </div>
 </template>
