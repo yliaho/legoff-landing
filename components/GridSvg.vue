@@ -40,7 +40,7 @@
       </pattern>
     </defs>
   
-    <rect :fill="`url('/#grid${gridPosition}')`" 
+    <rect :fill="`url('#grid${gridPosition}')`" 
           width="100%" 
           height="100%" />
   </svg>
