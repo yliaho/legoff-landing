@@ -1,7 +1,7 @@
 {
   "test": "test",
-  "double-panel": {
-    "panel-left": {
+  "panels": {
+    "left": {
       "text": "UI",
       "url": "#",
       "images": [
@@ -10,7 +10,7 @@
         "ui3"
       ]
     },
-    "panel-right": {
+    "right": {
       "text": "visdev",
       "url": "#",
       "images": [

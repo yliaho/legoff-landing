@@ -1,9 +1,15 @@
 <template>
   <div class="panels">
+    <LandingModal></LandingModal>
     <div id="panel" 
          class="panelLeft"
          @mouseover="changePanelState(left, true)"
          @mouseleave="changePanelState(left, false)">
+      <span class="panel-title font--stylized"
+            v-show="!loading"
+            :class="!loading ? 'visible' : 'hidden'">
+        UI
+      </span>
       <GridSvg grid-position="left" :visible="left.isActive"></GridSvg>
       <ImageCarousell></ImageCarousell>
     </div>
@@ -11,6 +17,11 @@
          class="PanelRight" 
          @mouseover="changePanelState(right, true)"
          @mouseleave="changePanelState(right, false)">
+      <span class="panel-title font--stylized"
+            v-show="!loading"
+            :class="!loading ? 'visible' : 'hidden'">
+        visdev
+      </span>
       <GridSvg grid-position="right" :visible="right.isActive"></GridSvg>
       <ImageCarousell></ImageCarousell>
     </div>
@@ -18,29 +29,47 @@
 </template>
 
 <script>
+import LandingModal from './LandingModal'
 import ImageCarousell from './ImageCarousell'
 import GridSvg from './GridSvg'
+import { mapState } from 'vuex'
 
 export default {
   components: {
+    LandingModal,
     ImageCarousell,
     GridSvg
   },
   data () {
     return {
-      isLoading: false,
       left: {
-        isActive: false
+        isActive: true
       },
       right: {
-        isActive: false
+        isActive: true
       }
+    }
+  },
+  computed: mapState([
+    'loading'
+  ]),
+  mounted () {
+    if (this.loading) {
+      this.right.isActive = true
+      this.left.isActive = true
+      setTimeout(() => {
+        this.right.isActive = false
+        this.left.isActive = false
+
+        this.$store.commit('changeLoading', false)
+      }, 2000)
     }
   },
   methods: {
     changePanelState (side, state) {
-      console.log(side, state)
-      side.isActive = state
+      if (!this.loading) {
+        side.isActive = state
+      }
     }
   }
 }
@@ -56,6 +85,44 @@ export default {
       flex-basis: 50%;
       position: relative;
       overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .panel-title {
+        overflow: hidden;
+        transition: all 2.3s ease-out;
+        background-color: white;
+        transform-origin: 0% 50%;
+
+        &.visible {
+          opacity: 0;
+          animation: panelFadein .9s cubic-bezier(0.62, 0, 0, 1) .7s forwards;
+        }
+      }
     }
   }
+
+@keyframes panelFadein {
+  0% {
+    opacity: 1;
+    background-color: white;
+    transform: scale(0,1);
+  }
+  20% {
+    background-color: white;
+    color: black;
+    transform: scale(1,1)
+  }
+  80% {
+    background-color: transparent;
+    color: white;
+  }
+  100% {
+    color: white;
+    background-color: transparent;
+    opacity: 1;
+  }
+}
+
 </style>

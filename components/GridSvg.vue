@@ -3,7 +3,7 @@
   <svg class="grid-element" 
        width="100%" 
        height="100%" 
-       :style="!visible ? 'background-color: #232323' : 'background-color: transparent'"
+       :style="!visible ? 'background-color: #232323' : 'background-color: #232323'"
        xmlns="http://www.w3.org/2000/svg">
     <defs>
       <pattern v-if="gridPosition === 'left'" id="gridleft" x="100%" y="50%" :width="gridSize || 79" :height="gridSize || 79" patternUnits="userSpaceOnUse">
@@ -11,7 +11,7 @@
           <path class="dot" fill="#fff" fill-opacity="1" d="M78 78h1v1h-1z" />
             <g class="lines" stroke="#fff" stroke-linecap="square" stroke-opacity=".13">
               <path class="d-line" 
-                    d="M.5.5l77 77" 
+                    d="M77.5,77.5 L0.5,0.5" 
                     :style="`stroke-dashoffset: ${lines.dLine.strokeDash}`" />
               <path class="v-line" 
                     d="M78.5.5v77" 
@@ -27,13 +27,13 @@
           <path class="dot" fill="#fff" fill-opacity="1" d="M78 78h1v1h-1z" />
           <g class="lines" stroke="#fff" stroke-linecap="square" stroke-opacity=".13">
               <path class="d-line" 
-                    d="M.5.5l77 77" 
+                    d="M77.5,77.5 L0.5,0.5" 
                     :style="`stroke-dashoffset: ${lines.dLine.strokeDash}`" />
               <path class="v-line" 
                     d="M78.5.5v77" 
                     :style="`stroke-dashoffset: ${lines.vLine.strokeDash}`" />
               <path class="h-line" 
-                    d="M77.5 78.5h-77" 
+                    d="M0.5,78.5 L77.5,78.5" 
                     :style="`stroke-dashoffset: ${lines.hLine.strokeDash}`" />
           </g>
         </g>
@@ -58,7 +58,7 @@ export default {
     lines () {
       return {
         dLine: {
-          strokeDash: !this.visible ? 0 : 110
+          strokeDash: !this.visible ? 0 : 330
         },
         vLine: {
           strokeDash: !this.visible ? 0 : 78
@@ -91,24 +91,18 @@ export default {
     transition: background-color .25s ease-out .05s;
   }
 
-  svg.grid-element .lines * {
-    transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    transition-duration: .7s;
-  }
-
-  svg.grid-element .lines .v-line {
-    stroke-dasharray: 78;
-    transition-delay: .0s;
-  }
-
+  svg.grid-element .lines .v-line,
   svg.grid-element .lines .h-line {
     stroke-dasharray: 78;
-    transition-delay: .0s;
-    animation: kek .3s ease-out;
+    transition-duration: .7s;
+    transition-delay: .05s;
+    transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
 
   svg.grid-element .lines .d-line {
     stroke-dasharray: 110;
-    transition-delay: .2s;
+    transition-delay: 0s;
+    transition-duration: 1.4s;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
   }
 </style>
