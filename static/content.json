@@ -1,0 +1,22 @@
+{
+  "test": "test",
+  "double-panel": {
+    "panel-left": {
+      "text": "UI",
+      "url": "#",
+      "images": [
+        "ui1",
+        "ui2",
+        "ui3"
+      ]
+    },
+    "panel-right": {
+      "text": "visdev",
+      "url": "#",
+      "images": [
+        "visdev1",
+        "visdev2"
+      ]
+    }
+  }
+}
