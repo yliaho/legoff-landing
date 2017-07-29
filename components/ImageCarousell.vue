@@ -5,6 +5,7 @@
          :key="index"
          v-if="index === activeIndex && ready"
          :style="`background-image: url('/${image}.jpg')`">
+         <img src="/visdev1.jpg" alt="">
     </div>  
   </div>
 </template>
