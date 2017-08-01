@@ -1,7 +1,7 @@
 <template>
   <div class="landing-modal"
-       v-show="!loading"
-       :class="!loading ? 'visible' : 'hidden'">
+       v-show="ready"
+       :class="ready ? 'visible' : 'hidden'">
     <div class="heading-container">
       <h1 class="landing-heading font--stylized">Thomas Le Goff</h1>
       <h2 class="landing-subtitle">UI Designer <span class="separator">/</span> visdev</h2>
@@ -27,7 +27,8 @@ import { mapState } from 'vuex'
 
 export default {
   computed: mapState([
-    'loading'
+    'loading',
+    'ready'
   ]),
   mounted () {
     // if (this.loading) {

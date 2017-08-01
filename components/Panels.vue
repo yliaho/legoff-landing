@@ -67,7 +67,7 @@ export default {
         setTimeout(() => {
           this.$store.commit('changeReady', true)
         }, 400)
-      }, 2000)
+      }, 1800)
     }
   },
   methods: {
