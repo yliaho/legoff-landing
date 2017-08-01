@@ -23,6 +23,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
+  pointer-events: none;
 }
 
 .loading-container {
@@ -33,8 +35,7 @@ export default {
 }
 
 #loading-circle {
-  animation: dash 2s cubic-bezier(0.7,-0, 0.15, 1) 1 forwards,
-             complete .15s linear 2 1.05s;
+  animation: dash 2s cubic-bezier(0.7,-0, 0.15, 1) 1 forwards;
   // stroke-linecap: round;
   transform-origin: center;
   stroke-dasharray: 150,200;
@@ -45,7 +46,7 @@ export default {
   0% {
     transform: rotate(-90deg);
   }
-  60%, 70% {
+  50%, 55% {
     transform: rotate(-90deg);
   }
   100% {
@@ -60,7 +61,7 @@ export default {
     stroke: white;
     stroke-width: 3;
   }
-  60%, 70% {
+  50%, 55% {
     stroke-dasharray: 128, 200;
     stroke-dashoffset: 0;
     stroke: #F8E71C;

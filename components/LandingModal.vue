@@ -48,7 +48,7 @@ export default {
     right: calc(50%);
     z-index: 100;
     background-color: #232323;
-    box-shadow: 0 0 0 1px rgba(255,255,255, 0);
+    box-shadow: 0 0 0 1px rgba(255,255,255, .15);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -71,12 +71,10 @@ export default {
     from {
       left: calc(50%);
       right: calc(50%);
-      box-shadow: 0 0 0 1px rgba(255,255,255, 0);
     }
     to {
       left: calc(50% - 80px * 2 + 2px);
       right: calc(50% - 79px * 2 + 2px);   
-      box-shadow: 0 0 0 1px rgba(255,255,255, 0);
     }
   } 
 

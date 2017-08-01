@@ -66,8 +66,8 @@ export default {
 
         setTimeout(() => {
           this.$store.commit('changeReady', true)
-        }, 400)
-      }, 1800)
+        }, 800)
+      }, 700)
     }
   },
   methods: {
@@ -94,6 +94,7 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
 
       .panel-title {
         position: relative;

@@ -1,6 +1,7 @@
 <!-- SVG definitions for patterns -->
 <template>
   <svg class="grid-element" 
+       :class="gridClasses"
        width="100%" 
        height="100%" 
        :style="!visible ? 'background-color: #232323' : 'background-color: transparent'"
@@ -47,6 +48,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 
 export default {
   props: [
@@ -55,6 +57,15 @@ export default {
     'visible'
   ],
   computed: {
+    ...mapState([
+      'loading'
+    ]),
+    gridClasses () {
+      return [
+        (this.loading) ? null : 'ready',
+        (this.gridPosition === 'left') ? 'left' : 'right'
+      ]
+    },
     lines () {
       return {
         dLine: {
@@ -88,22 +99,38 @@ export default {
     right: 0;
     left: 0;
     z-index: 2;
-    background-color: green;
     transition: background-color .25s ease-out .05s;
+    overflow: hidden;
   }
 
   svg.grid-element .lines .v-line,
   svg.grid-element .lines .h-line {
     stroke-dasharray: 78;
     transition-duration: .7s;
-    transition-delay: .05s;
+    transition-delay: .35s;
     transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
 
   svg.grid-element .lines .d-line {
     stroke-dasharray: 110;
-    transition-delay: 0s;
+    transition-delay: .30s;
     transition-duration: 1.4s;
     transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+  }
+
+  .ready {
+    animation: readyFlash .15s linear 2
+  } 
+  .ready.right {
+    animation: readyFlash .15s linear .15s 2
+  }
+
+  @keyframes readyFlash {
+    0%, 50% {
+      background-color: rgba(255, 255, 255, .05);
+    }
+    51%, 100% {
+      background-color: #232323;
+    }
   }
 </style>
