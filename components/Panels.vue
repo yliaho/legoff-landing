@@ -3,15 +3,20 @@
     <LandingModal></LandingModal>
     <div id="panel" 
          class="panelLeft"
-         @mousemove="changePanelState(left, true)"
+         @mouseover="changePanelState(left, true)"
          @mouseleave="changePanelState(left, false)">
       <span class="panel-title font--stylized"
             v-show="!loading"
             :class="!loading ? 'visible' : 'hidden'">
         UI
       </span>
-      <GridSvg grid-position="left" :visible="left.isActive"></GridSvg>
-      <ImageCarousell side="left"></ImageCarousell>  
+      <GridSvg grid-position="left" 
+               :visible="left.isActive">
+      </GridSvg>
+      <ImageCarousell side="left" 
+                      :active="left.isActive"
+                      :active-index="left.index">
+      </ImageCarousell>  
     </div>
     <div id="panel" 
          class="PanelRight" 
@@ -22,8 +27,13 @@
             :class="!loading ? 'visible' : 'hidden'">
         visdev
       </span>
-      <GridSvg grid-position="right" :visible="right.isActive"></GridSvg>
-      <ImageCarousell side="right"></ImageCarousell>  
+      <GridSvg grid-position="right" 
+               :visible="right.isActive">
+      </GridSvg>
+      <ImageCarousell side="right" 
+                      :active="right.isActive"
+                      :active-index="right.index">
+      </ImageCarousell>  
     </div>
   </div>
 </template>
@@ -32,7 +42,7 @@
 import LandingModal from './LandingModal'
 import ImageCarousell from './ImageCarousell'
 import GridSvg from './GridSvg'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -43,17 +53,26 @@ export default {
   data () {
     return {
       left: {
-        isActive: true
+        isActive: true,
+        index: 0,
+        intervalID: ''
       },
       right: {
-        isActive: true
+        isActive: true,
+        index: 0,
+        intervalID: ''
       }
     }
   },
-  computed: mapState([
-    'loading',
-    'ready'
-  ]),
+  computed: {
+    ...mapState([
+      'loading',
+      'ready'
+    ]),
+    ...mapGetters([
+      'imagesLength'
+    ])
+  },
   mounted () {
     if (this.loading) {
       this.right.isActive = true
@@ -72,8 +91,23 @@ export default {
   },
   methods: {
     changePanelState (side, state) {
+      const length = this.$store.getters.imagesLength(side)
+
       if (this.ready) {
         side.isActive = state
+        if (state) {
+          side.intervalID = setInterval(() => {
+            side.index = (side.index < length - 1)
+              ? side.index = side.index + 1
+              : side.index = 0
+            console.log(side.index)
+          }, 2000)
+        } else {
+          clearInterval(side.intervalID)
+          setTimeout(() => {
+            side.index = 0
+          }, 300)
+        }
       }
     }
   }
@@ -91,22 +125,26 @@ export default {
       flex-basis: 50%;
       height: 100%;
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       overflow: hidden;
 
       .panel-title {
-        position: relative;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         z-index: 3;
         overflow: hidden;
         transition: all 2.3s ease-out;
-        background-color: white;
-        transform-origin: 0% 50%;
+        color: white;
+        transform-origin: 50% 50%;
 
         &.visible {
-          opacity: 0;
-          animation: panelFadein .9s cubic-bezier(0.62, 0, 0, 1) .7s forwards;
+          opacity: 1;
+          // animation: panelFadein .9s cubic-bezier(0.62, 0, 0, 1) .7s forwards;
         }
       }
     }
@@ -115,16 +153,13 @@ export default {
 @keyframes panelFadein {
   0% {
     opacity: 1;
-    background-color: white;
     transform: scale(0,1);
   }
   20% {
-    background-color: white;
-    color: black;
     transform: scale(1,1)
   }
   80% {
-    background-color: transparent;
+
     color: white;
   }
   100% {
