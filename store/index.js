@@ -9,6 +9,7 @@ const createStore = () => {
       loading: true,
       ready: false,
       content: null,
+      contentReady: false,
       imagesLeft: null,
       imagesRight: null
     },

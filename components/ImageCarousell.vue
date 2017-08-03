@@ -39,7 +39,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .carousell {
     width: 100%;
     height: 100%;
@@ -62,11 +62,11 @@ export default {
    * Transition animation LEFT
    */
   .left-fade-leave-active {
-    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 1.3s cubic-bezier(0.165, 0.84, 0.44, 1);
     transform-origin: 100% 50%;
   }
   .left-fade-enter-active, {
-    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 1.3s cubic-bezier(0.165, 0.84, 0.44, 1);
     transform-origin: 100% 50%;   
   }
   .left-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
@@ -82,11 +82,11 @@ export default {
    * Transition animation RIGHT
    */
   .right-fade-leave-active {
-    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 1.3s cubic-bezier(0.165, 0.84, 0.44, 1);
     transform-origin: 100% 50%;
   }
   .right-fade-enter-active, {
-    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 1.3s cubic-bezier(0.165, 0.84, 0.44, 1);
     transform-origin: 100% 50%;   
   }
   .right-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {

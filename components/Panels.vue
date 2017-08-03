@@ -1,39 +1,43 @@
 <template>
   <div class="panels">
     <LandingModal></LandingModal>
-    <div id="panel" 
+    <div id="panel"
          class="panelLeft"
          @mouseover="changePanelState(left, true)"
          @mouseleave="changePanelState(left, false)">
-      <span class="panel-title font--stylized"
-            v-show="!loading"
-            :class="!loading ? 'visible' : 'hidden'">
-        UI
-      </span>
-      <GridSvg grid-position="left" 
-               :visible="left.isActive">
-      </GridSvg>
-      <ImageCarousell side="left" 
-                      :active="left.isActive"
-                      :active-index="left.index">
-      </ImageCarousell>  
+        <a :href="contentReady ? content.panels.left.url : '#'">
+          <span class="panel-title font--stylized"
+                v-show="!loading"
+                :class="!loading ? 'visible' : 'hidden'">
+            UI
+          </span>
+          <GridSvg grid-position="left" 
+                  :visible="left.isActive">
+          </GridSvg>
+          <ImageCarousell side="left" 
+                          :active="left.isActive"
+                          :active-index="left.index">
+          </ImageCarousell> 
+        </a>
     </div>
     <div id="panel" 
          class="PanelRight" 
          @mouseover="changePanelState(right, true)"
          @mouseleave="changePanelState(right, false)">
-      <span class="panel-title font--stylized"
-            v-show="!loading"
-            :class="!loading ? 'visible' : 'hidden'">
-        visdev
-      </span>
-      <GridSvg grid-position="right" 
-               :visible="right.isActive">
-      </GridSvg>
-      <ImageCarousell side="right" 
-                      :active="right.isActive"
-                      :active-index="right.index">
-      </ImageCarousell>  
+        <a :href="contentReady ? content.panels.right.url : '#'">
+          <span class="panel-title font--stylized"
+                v-show="!loading"
+                :class="!loading ? 'visible' : 'hidden'">
+            visdev
+          </span>
+          <GridSvg grid-position="right" 
+                  :visible="right.isActive">
+          </GridSvg>
+          <ImageCarousell side="right" 
+                          :active="right.isActive"
+                          :active-index="right.index">
+          </ImageCarousell>  
+        </a>
     </div>
   </div>
 </template>
@@ -67,10 +71,13 @@ export default {
   computed: {
     ...mapState([
       'loading',
+      'content',
+      'contentReady',
       'ready'
     ]),
     ...mapGetters([
-      'imagesLength'
+      'imagesLength',
+      'url'
     ])
   },
   mounted () {

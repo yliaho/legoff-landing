@@ -9,6 +9,7 @@ const mutations = {
     state.content = content
     state.imagesLeft = content.panels.left.images
     state.imagesRight = content.panels.right.images
+    state.contentReady = true
   }
 }
 
