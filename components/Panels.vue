@@ -5,7 +5,7 @@
          class="panelLeft"
          @mouseover="changePanelState(left, true)"
          @mouseleave="changePanelState(left, false)">
-        <a :href="contentReady ? content.panels.left.url : '#'">
+        <a :href="contentReady ? content.panels.left.url : null">
           <span class="panel-title font--stylized"
                 v-show="!loading"
                 :class="!loading ? 'visible' : 'hidden'">
@@ -24,7 +24,7 @@
          class="PanelRight" 
          @mouseover="changePanelState(right, true)"
          @mouseleave="changePanelState(right, false)">
-        <a :href="contentReady ? content.panels.right.url : '#'">
+        <a :href="contentReady ? content.panels.right.url : null">
           <span class="panel-title font--stylized"
                 v-show="!loading"
                 :class="!loading ? 'visible' : 'hidden'">

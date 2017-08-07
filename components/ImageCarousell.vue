@@ -51,10 +51,9 @@ export default {
       bottom: 0;
       left: 0;
       right: 0;
-      width: 100%;
-      height: 100%;
-      background-size: fit;
+      background-size: cover;
       background-position: center;
+      perspective: 500px;
     }
   }
 
@@ -70,11 +69,11 @@ export default {
     transform-origin: 100% 50%;   
   }
   .left-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    transform: translateX(-50vw) scale(1);
+    transform: translate3D(-50vw, 0, 0) scale(1);
     opacity: .4;
   }
   .left-fade-enter {
-    transform: translateX(50vw);
+    transform: translate3D(50vw, 0, 0);
     opacity: 1;
   }
 
@@ -90,11 +89,11 @@ export default {
     transform-origin: 100% 50%;   
   }
   .right-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    transform: translateX(50vw) scale(1);
+    transform: translate3D(50vw, 0, 0);
     opacity: .4;
   }
   .right-fade-enter {
-    transform: translateX(-50vw);
+    transform: translate3D(-50vw, 0, 0);
     opacity: 1;
   }
 </style>

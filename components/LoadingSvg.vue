@@ -50,7 +50,7 @@ export default {
     transform: rotate(-90deg);
   }
   100% {
-    transform: rotate(270deg);
+    transform: rotate(-90deg);
   }
 }
 
@@ -59,19 +59,20 @@ export default {
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
     stroke: white;
-    stroke-width: 3;
   }
   50%, 55% {
     stroke-dasharray: 128, 200;
     stroke-dashoffset: 0;
     stroke: #F8E71C;
-    stroke-width: 3;
+  }
+  55.1% {
+    stroke-dasharray: 128, 128;
+    stroke-dashoffset: 256;
   }
   100% {
-    stroke-dasharray: 128, 600;
-    stroke-dashoffset: 128;
+    stroke-dasharray: 0, 600;
+    stroke-dashoffset: 0;
     stroke: white;
-    stroke-width: 3;
   }
 }
 

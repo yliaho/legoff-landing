@@ -9,12 +9,14 @@
 
   @font-face {
     font-family: 'Akkurat';
-    src:  url('~assets/fonts/Akkurat-Normal.woff') format('woff')
+    src: url('~assets/fonts/Akkurat-Normal.woff') 
+         format('woff')
   }
 
   @font-face {
     font-family: 'Akkurat Mono';
-    src:  url('~assets/fonts/Akkurat-Mono.woff') format('woff')
+    src: url('~assets/fonts/Akkurat-Mono.woff') 
+         format('woff')
   }
 
   html {

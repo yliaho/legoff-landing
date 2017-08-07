@@ -11,13 +11,13 @@
         <g fill="none">
           <path class="dot" fill="#fff" fill-opacity="1" d="M78 78h1v1h-1z" />
             <g class="lines" stroke="#fff" stroke-linecap="square" stroke-opacity=".13">
-              <path class="d-line" 
+              <path class="d-line"
                     d="M77.5,77.5 L0.5,0.5" 
                     :style="`stroke-dashoffset: ${lines.dLine.strokeDash}`" />
               <path class="v-line" 
                     d="M78.5.5v77" 
                     :style="`stroke-dashoffset: ${lines.vLine.strokeDash}`" />
-              <path class="h-line" 
+              <path class="h-line"
                     d="M0.5,78.5 L77.5,78.5" 
                     :style="`stroke-dashoffset: ${lines.hLine.strokeDash}`" />
             </g>
@@ -99,7 +99,7 @@ export default {
     right: 0;
     left: 0;
     z-index: 2;
-    transition: background-color .25s ease-out .05s;
+    transition: background-color .15s ease-out .2s;
     overflow: hidden;
   }
 
@@ -107,13 +107,13 @@ export default {
   svg.grid-element .lines .h-line {
     stroke-dasharray: 78;
     transition-duration: .7s;
-    transition-delay: .35s;
+    transition-delay: .05s;
     transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
 
   svg.grid-element .lines .d-line {
     stroke-dasharray: 110;
-    transition-delay: .30s;
+    transition-delay: .0s;
     transition-duration: 1.4s;
     transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
   }
