@@ -12,7 +12,7 @@ module.exports = {
   siteURL: 'https://yliaho.github.io/legoff-landing',
 
   env: {
-    baseURL: (process.env.NODE_ENV === 'production' ? siteURL : 'http://localhost:3000/')
+    baseURL: (process.env.NODE_ENV === 'production' ? siteURL : 'https://yliaho.github.io/legoff-landing')
   },
 
   /*
