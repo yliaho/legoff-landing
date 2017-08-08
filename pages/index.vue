@@ -19,7 +19,6 @@ export default {
     axios.get('/content.json').then(res => {
       this.$store.commit('setContent', res.data)
     })
-    console.log(process.env.NODE_ENV)
   }
 }
 </script>
