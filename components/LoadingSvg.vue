@@ -31,7 +31,11 @@ export default {
   width: 40px;
   height: 40px;
   transform: rotate(-90deg);
-  animation: jumpOut .3s cubic-bezier(0.7,-0, 0.15, 1) 1.1s 1 forwards;
+  color: #232323;
+  box-shadow: 0 0 0 4px;
+  background-color: #232323;
+  border-radius: 50%;
+  animation: jumpOut .6s cubic-bezier(0.7,-0, 0.15, 1) 1.15s 1 forwards;
 }
 
 #loading-circle {
@@ -47,8 +51,15 @@ export default {
   0% {
     transform: scale(1);
   }
+  30% {
+    transform: scale(1.1);
+  }
+  99% {
+    transform: scale(0);
+    opacity: 1;
+  }
   100% {
-    transform: scale(1.2);
+    opacity: 0;
   }
 }
 
@@ -83,14 +94,12 @@ export default {
     // stroke-dasharray: 128, 128;
     // stroke-dashoffset: 256;
     stroke-width: 3;
-    transform: scale(1);
   }
   100% {
     // stroke-dasharray: 0, 600;
     // stroke-dashoffset: 0;
     // stroke: white;
     stroke-width: 40;
-    transform: scale(.0);
   }
 }
 @keyframes complete {

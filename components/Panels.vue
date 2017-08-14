@@ -3,12 +3,13 @@
     <LandingModal></LandingModal>
     <div id="panel"
          class="panelLeft"
-         @mouseover="changePanelState(left, true)">
+         @mousemove="changePanelState(left, true)">
         <a :href="contentReady ? content.panels.left.url : null">
           <div class="panel-title font--stylized"
-                v-show="!loading"
                 :class="!loading ? 'visible' : 'hidden'">
-            <span :class="left.isActive ? 'active' : null">UI</span>
+            <span v-if="!loading" :class="left.isActive ? 'active' : null">
+              {{content.panels.left.text}}
+            </span>
           </div>
           <GridSvg grid-position="left" 
                   :visible="left.isActive">
@@ -21,12 +22,13 @@
     </div>
     <div id="panel" 
          class="PanelRight" 
-         @mouseover="changePanelState(right, true)">
+         @mousemove="changePanelState(right, true)">
         <a :href="contentReady ? content.panels.right.url : null">
           <div class="panel-title font--stylized"
-                v-show="!loading"
                 :class="!loading ? 'visible' : 'hidden'">
-            <span :class="right.isActive ? 'active' : null">visdev</span>
+            <span v-if="!loading" :class="right.isActive ? 'active' : null">
+              {{content.panels.right.text}}
+            </span>
           </div>
           <GridSvg grid-position="right" 
                   :visible="right.isActive">
@@ -147,8 +149,9 @@ export default {
         align-items: center;
         z-index: 3;
         overflow: hidden;
-        transition: all 2.3s ease-out;
+        transition: all .6s ease-out;
         color: white;
+        opacity: 0;
         transform-origin: 50% 50%;
 
         span {

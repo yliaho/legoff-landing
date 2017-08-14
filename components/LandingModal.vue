@@ -9,8 +9,12 @@
     <div class="vertical-line"></div>
     <div class="modal-links">
       <ul class="links-default">
-        <li>contact</li>
-        <li>info &amp; other projects</li>
+        <li>
+          <a href="#">contact</a>
+        </li>
+        <li>
+          <a href="#">info &amp; other projects</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -54,7 +58,7 @@ export default {
       transition: all .3s ease-out;
     }
     &.visible {
-      animation: modalFadein .3s cubic-bezier(0.455, 0.03, 0.515, 0.955) .3s forwards;
+      animation: modalFadein .6s cubic-bezier(0.455, 0.03, 0.515, 0.955) .15s forwards;
     }
 
     > * {

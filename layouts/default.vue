@@ -34,4 +34,9 @@
     font-size: 17px;
   }
 
+  a {
+    color: #fff!important;
+    text-decoration: none!important;
+  }
+
 </style>
