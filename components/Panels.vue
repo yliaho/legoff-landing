@@ -5,11 +5,11 @@
          class="panelLeft"
          @mouseover="changePanelState(left, true)">
         <a :href="contentReady ? content.panels.left.url : null">
-          <span class="panel-title font--stylized"
+          <div class="panel-title font--stylized"
                 v-show="!loading"
                 :class="!loading ? 'visible' : 'hidden'">
-            UI
-          </span>
+            <span :class="left.isActive ? 'active' : null">UI</span>
+          </div>
           <GridSvg grid-position="left" 
                   :visible="left.isActive">
           </GridSvg>
@@ -23,11 +23,11 @@
          class="PanelRight" 
          @mouseover="changePanelState(right, true)">
         <a :href="contentReady ? content.panels.right.url : null">
-          <span class="panel-title font--stylized"
+          <div class="panel-title font--stylized"
                 v-show="!loading"
                 :class="!loading ? 'visible' : 'hidden'">
-            visdev
-          </span>
+            <span :class="right.isActive ? 'active' : null">visdev</span>
+          </div>
           <GridSvg grid-position="right" 
                   :visible="right.isActive">
           </GridSvg>
@@ -139,7 +139,7 @@ export default {
       .panel-title {
         position: absolute;
         top: 0;
-        bottom: 0;
+        bottom: 21px;
         left: 0;
         right: 0;
         display: flex;
@@ -150,6 +150,29 @@ export default {
         transition: all 2.3s ease-out;
         color: white;
         transform-origin: 50% 50%;
+
+        span {
+          position: relative;
+          padding-bottom: 3px;
+         
+          &:after {
+            content: "";
+            color: rgba(255,255,255,.5);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            box-shadow: 0 1px;
+            transition: .5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+          }
+
+          &.active {
+            &:after {
+              width: 100%;
+            }
+          }
+        }
 
         &.visible {
           opacity: 1;
