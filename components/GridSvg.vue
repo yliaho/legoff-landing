@@ -12,7 +12,7 @@
           <path class="dot" fill="#fff" fill-opacity="1" d="M78 78h1v1h-1z" />
             <g class="lines" stroke="#fff" stroke-linecap="square" stroke-opacity=".13">
               <path class="d-line"
-                    d="M77.5,77.5 L0.5,0.5" 
+                    d="M0.5,0.5 L77.5,77.5" 
                     :style="`stroke-dashoffset: ${lines.dLine.strokeDash}`" />
               <path class="v-line" 
                     d="M78.5.5v77" 
@@ -28,7 +28,7 @@
           <path class="dot" fill="#fff" fill-opacity="1" d="M78 78h1v1h-1z" />
           <g class="lines" stroke="#fff" stroke-linecap="square" stroke-opacity=".13">
               <path class="d-line" 
-                    d="M77.5,77.5 L0.5,0.5" 
+                    d="M0.5,0.5 L77.5,77.5" 
                     :style="`stroke-dashoffset: ${lines.dLine.strokeDash}`" />
               <path class="v-line" 
                     d="M78.5.5v77" 
@@ -69,7 +69,7 @@ export default {
     lines () {
       return {
         dLine: {
-          strokeDash: !this.visible ? 0 : 330
+          strokeDash: !this.visible ? 0 : 110
         },
         vLine: {
           strokeDash: !this.visible ? 0 : 78
@@ -113,8 +113,8 @@ export default {
 
   svg.grid-element .lines .d-line {
     stroke-dasharray: 110;
-    transition-delay: .0s;
-    transition-duration: 1.4s;
+    transition-delay: .05s;
+    transition-duration: 1.3s;
     transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
   }
 
