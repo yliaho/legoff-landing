@@ -7,7 +7,7 @@
        :style="!visible ? 'background-color: #232323' : 'background-color: transparent'"
        xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <pattern v-if="gridPosition === 'left'" id="gridleft" x="100%" y="50%" :width="gridSize || 79" :height="gridSize || 79" patternUnits="userSpaceOnUse">
+      <pattern v-if="gridPosition === 'left'" id="gridleft" x="100%" y="49.9%" :width="gridSize || 79" :height="gridSize || 79" patternUnits="userSpaceOnUse">
         <g fill="none">
           <path class="dot" fill="#fff" fill-opacity="1" d="M78 78h1v1h-1z" />
             <g class="lines" stroke="#fff" stroke-linecap="square" stroke-opacity=".13">
@@ -23,7 +23,7 @@
             </g>
         </g>
       </pattern>
-      <pattern v-if="gridPosition === 'right'" id="gridright" x="0%" y="50%" :width="gridSize || 79" :height="gridSize || 79" patternUnits="userSpaceOnUse" patternTransform="translate(0, 0)">
+      <pattern v-if="gridPosition === 'right'" id="gridright" x="0%" y="49.9%" :width="gridSize || 79" :height="gridSize || 79" patternUnits="userSpaceOnUse">
         <g fill="none">
           <path class="dot" fill="#fff" fill-opacity="1" d="M78 78h1v1h-1z" />
           <g class="lines" stroke="#fff" stroke-linecap="square" stroke-opacity=".13">
@@ -94,7 +94,7 @@ export default {
 <style lang="scss" scoped>
   .grid-element {
     position: absolute;
-    top: 0;
+    top: 0px;
     bottom: 0;
     right: 0;
     left: 0;
