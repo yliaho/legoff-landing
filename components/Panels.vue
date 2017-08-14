@@ -3,8 +3,7 @@
     <LandingModal></LandingModal>
     <div id="panel"
          class="panelLeft"
-         @mouseover="changePanelState(left, true)"
-         @mouseleave="changePanelState(left, false)">
+         @mouseover="changePanelState(left, true)">
         <a :href="contentReady ? content.panels.left.url : null">
           <span class="panel-title font--stylized"
                 v-show="!loading"
@@ -22,8 +21,7 @@
     </div>
     <div id="panel" 
          class="PanelRight" 
-         @mouseover="changePanelState(right, true)"
-         @mouseleave="changePanelState(right, false)">
+         @mouseover="changePanelState(right, true)">
         <a :href="contentReady ? content.panels.right.url : null">
           <span class="panel-title font--stylized"
                 v-show="!loading"
@@ -59,12 +57,12 @@ export default {
       left: {
         isActive: true,
         index: 0,
-        intervalID: ''
+        intervalID: null
       },
       right: {
         isActive: true,
         index: 0,
-        intervalID: ''
+        intervalID: null
       }
     }
   },
@@ -100,15 +98,24 @@ export default {
       const length = this.$store.getters.imagesLength(side)
 
       if (this.ready) {
-        side.isActive = state
-        if (state) {
+        // clearInterval(side.intervalID)
+        // side.isActive = state
+        /*eslint-disable */
+        this.left.isActive = (side === this.left)
+          ? true
+          : false
+        this.right.isActive = (side === this.right)
+          ? true
+          : false
+
+        if (side.isActive && !side.intervalID) {
           side.intervalID = setInterval(() => {
             side.index = (side.index < length - 1)
               ? side.index = side.index + 1
               : side.index = 0
             console.log(side.index)
           }, 1000)
-        } else {
+        } else if (!side.isActive && side.intervalID) {
           clearInterval(side.intervalID)
           setTimeout(() => {
             side.index = 0

@@ -31,27 +31,24 @@ export default {
   width: 40px;
   height: 40px;
   transform: rotate(-90deg);
-  animation: rotate 2s cubic-bezier(0.7,-0, 0.15, 1) 1 forwards;
+  animation: jumpOut .3s cubic-bezier(0.7,-0, 0.15, 1) 1.1s 1 forwards;
 }
 
 #loading-circle {
   animation: dash 1s cubic-bezier(0.7,-0, 0.15, 1) 1 forwards,
-             out .6s cubic-bezier(0.7,-0, 0.15, 1) 1s 1 forwards;
+             out .6s cubic-bezier(0.7,-0, 0.15, 1) 1.15s 1 forwards;
   // stroke-linecap: round;
   transform-origin: center;
   stroke-dasharray: 150,200;
   stroke-dashoffset: -10;
 }
 
-@keyframes rotate {
+@keyframes jumpOut {
   0% {
-    transform: rotate(-90deg);
-  }
-  50%, 55% {
-    transform: rotate(-90deg);
+    transform: scale(1);
   }
   100% {
-    transform: rotate(-90deg);
+    transform: scale(1.2);
   }
 }
 
@@ -92,13 +89,13 @@ export default {
     // stroke-dasharray: 0, 600;
     // stroke-dashoffset: 0;
     // stroke: white;
-    stroke-width: 0;
-    transform: scale(.8);
+    stroke-width: 40;
+    transform: scale(.0);
   }
 }
 @keyframes complete {
   0%, 50% {
-    stroke: red
+    stroke: red;
   }
   100% {
     stroke: transparent;
