@@ -117,20 +117,4 @@ export default {
     transition-duration: 1.3s;
     transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
   }
-
-  .ready {
-    animation: readyFlash .15s linear 2
-  } 
-  .ready.right {
-    animation: readyFlash .15s linear .15s 2
-  }
-
-  @keyframes readyFlash {
-    0%, 50% {
-      background-color: rgba(255, 255, 255, .05);
-    }
-    51%, 100% {
-      background-color: #232323;
-    }
-  }
 </style>
