@@ -35,7 +35,8 @@ export default {
 }
 
 #loading-circle {
-  animation: dash 2s cubic-bezier(0.7,-0, 0.15, 1) 1 forwards;
+  animation: dash 1s cubic-bezier(0.7,-0, 0.15, 1) 1 forwards,
+             out .6s cubic-bezier(0.7,-0, 0.15, 1) 1s 1 forwards;
   // stroke-linecap: round;
   transform-origin: center;
   stroke-dasharray: 150,200;
@@ -60,22 +61,41 @@ export default {
     stroke-dashoffset: 0;
     stroke: white;
   }
-  50%, 55% {
+  100% {
     stroke-dasharray: 128, 200;
     stroke-dashoffset: 0;
     stroke: #F8E71C;
   }
-  55.1% {
-    stroke-dasharray: 128, 128;
-    stroke-dashoffset: 256;
-  }
-  100% {
-    stroke-dasharray: 0, 600;
+}
+
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
     stroke: white;
   }
+  90%, 100% {
+    stroke-dasharray: 128, 200;
+    stroke-dashoffset: 0;
+    stroke: #F8E71C;
+  }
 }
-
+@keyframes out {
+  0% {
+    // stroke-dasharray: 128, 128;
+    // stroke-dashoffset: 256;
+    stroke-width: 3;
+    transform: scale(1);
+  }
+  100% {
+    // stroke-dasharray: 0, 600;
+    // stroke-dashoffset: 0;
+    // stroke: white;
+    stroke-width: 0;
+    transform: scale(.8);
+  }
+}
 @keyframes complete {
   0%, 50% {
     stroke: red
