@@ -42,8 +42,8 @@ export default {
   .landing-modal {
     overflow: hidden;
     position: absolute;
-    top: calc(50% - 80px * 2 + 2px);
-    bottom: calc(50% - 79px * 2 + 2px);
+    top: calc(50% - 80px * 2 + 1px);
+    bottom: calc(50% - 79px * 2 + 1px);
     left: calc(50%);
     right: calc(50%);
     z-index: 100;
@@ -74,7 +74,7 @@ export default {
     }
     to {
       left: calc(50% - 80px * 2 + 2px);
-      right: calc(50% - 79px * 2 + 2px);   
+      right: calc(50% - 79px * 2 + 1px);   
     }
   } 
 
