@@ -13,10 +13,6 @@
         <li>contact</li>
         <li>info &amp; other projects</li>
       </ul>
-      <ul class="links-lang">
-        <li>FR</li>
-        <li>EN</li>
-      </ul>
     </div>
   </div>
 </template>
@@ -83,11 +79,11 @@ export default {
   }
 
   .landing-modal > *:first-of-type {
-    padding-top: 35px;
+    padding-top: 25px;
   }
 
   .landing-modal > *:last-of-type {
-    padding-bottom: 20px;
+    padding-bottom: 0px;
     white-space: normal;
   }
 
@@ -107,5 +103,11 @@ export default {
     .links-default {
       margin-bottom: 25px;
     }
+  }
+
+  .vertical-line {
+    height: 125px;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    margin-bottom: 5px;
   }
 </style>
