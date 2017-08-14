@@ -10,7 +10,7 @@
       <pattern v-if="gridPosition === 'left'" id="gridleft" x="100%" y="49.9%" :width="gridSize || 79" :height="gridSize || 79" patternUnits="userSpaceOnUse">
         <g fill="none">
           <path class="dot" fill="#fff" fill-opacity="1" d="M78 78h1v1h-1z" />
-            <g class="lines" stroke="#fff" stroke-linecap="square" stroke-opacity=".13">
+            <g class="lines" stroke="#fff" stroke-width="1" stroke-linecap="square" stroke-opacity=".13">
               <path class="d-line"
                     d="M0.5,0.5 L77.5,77.5" 
                     :style="`stroke-dashoffset: ${lines.dLine.strokeDash}`" />
@@ -26,7 +26,7 @@
       <pattern v-if="gridPosition === 'right'" id="gridright" x="0%" y="49.9%" :width="gridSize || 79" :height="gridSize || 79" patternUnits="userSpaceOnUse">
         <g fill="none">
           <path class="dot" fill="#fff" fill-opacity="1" d="M78 78h1v1h-1z" />
-          <g class="lines" stroke="#fff" stroke-linecap="square" stroke-opacity=".13">
+          <g class="lines" stroke="#fff" stroke-width="1" stroke-linecap="square" stroke-opacity=".13">
               <path class="d-line" 
                     d="M0.5,0.5 L77.5,77.5" 
                     :style="`stroke-dashoffset: ${lines.dLine.strokeDash}`" />
@@ -101,6 +101,10 @@ export default {
     z-index: 2;
     transition: background-color .15s ease-out .2s;
     overflow: hidden;
+  }
+
+  svg.grid-element .lines {
+    shape-rendering: crispedges;
   }
 
   svg.grid-element .lines .v-line,

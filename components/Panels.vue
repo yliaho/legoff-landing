@@ -95,33 +95,29 @@ export default {
   },
   methods: {
     changePanelState (side, state) {
-      const length = this.$store.getters.imagesLength(side)
-
       if (this.ready) {
-        // clearInterval(side.intervalID)
-        // side.isActive = state
         /*eslint-disable */
-        this.left.isActive = (side === this.left)
-          ? true
-          : false
-        this.right.isActive = (side === this.right)
-          ? true
-          : false
-
-        if (side.isActive && !side.intervalID) {
-          side.intervalID = setInterval(() => {
-            side.index = (side.index < length - 1)
-              ? side.index = side.index + 1
-              : side.index = 0
-            console.log(side.index)
-          }, 1000)
-        } else if (!side.isActive && side.intervalID) {
-          clearInterval(side.intervalID)
-          setTimeout(() => {
-            side.index = 0
-          }, 300)
+        if (side === this.left && !side.isActive) {
+          this.left.isActive = true
+          this.right.isActive = false
+          clearInterval(this.right.intervalID)
+          this.doImageInterval(this.left)
+        } else if (!side.isActive) {
+          this.left.isActive = false
+          this.right.isActive = true
+          clearInterval(this.left.intervalID)
+          this.doImageInterval(this.right)
         }
       }
+    },
+    doImageInterval(side) {
+      const length = this.$store.getters.imagesLength(side)
+      side.intervalID = setInterval(() => {
+        side.index = (side.index < length - 1)
+          ? side.index = side.index + 1
+          : side.index = 0
+        console.log(side.index)
+      }, 1000)
     }
   }
 }
