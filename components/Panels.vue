@@ -108,7 +108,7 @@ export default {
               ? side.index = side.index + 1
               : side.index = 0
             console.log(side.index)
-          }, 2000)
+          }, 1000)
         } else {
           clearInterval(side.intervalID)
           setTimeout(() => {
