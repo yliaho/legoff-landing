@@ -118,7 +118,6 @@ export default {
         side.index = (side.index < length - 1)
           ? side.index = side.index + 1
           : side.index = 0
-        console.log(side.index)
       }, 1000)
     }
   }

@@ -10,7 +10,11 @@
       <pattern v-if="gridPosition === 'left'" id="gridleft" x="100%" y="49.9%" :width="gridSize || 79" :height="gridSize || 79" patternUnits="userSpaceOnUse">
         <g fill="none">
           <path class="dot" fill="#fff" fill-opacity="1" d="M78 78h1v1h-1z" />
-            <g class="lines" stroke="#fff" stroke-width="1" stroke-linecap="square" stroke-opacity=".13">
+            <g class="lines" 
+               stroke="#fff" 
+               stroke-width="1" 
+               stroke-linecap="square" 
+               stroke-opacity=".13">
               <path class="d-line"
                     d="M0.5,0.5 L77.5,77.5" 
                     :style="`stroke-dashoffset: ${lines.dLine.strokeDash}`" />
@@ -26,7 +30,11 @@
       <pattern v-if="gridPosition === 'right'" id="gridright" x="0%" y="49.9%" :width="gridSize || 79" :height="gridSize || 79" patternUnits="userSpaceOnUse">
         <g fill="none">
           <path class="dot" fill="#fff" fill-opacity="1" d="M78 78h1v1h-1z" />
-          <g class="lines" stroke="#fff" stroke-width="1" stroke-linecap="square" stroke-opacity=".13">
+          <g class="lines" 
+             stroke="#fff" 
+             stroke-width="1" 
+             stroke-linecap="square" 
+             stroke-opacity=".13">
               <path class="d-line" 
                     d="M0.5,0.5 L77.5,77.5" 
                     :style="`stroke-dashoffset: ${lines.dLine.strokeDash}`" />
@@ -48,7 +56,9 @@
 </template>
 
 <script>
+/* eslint-disable */
 import { mapState } from 'vuex'
+// import TWEEN from '@tweenjs/tween.js'
 
 export default {
   props: [
@@ -56,9 +66,26 @@ export default {
     'gridSize',
     'visible'
   ],
+  data () {
+    return {
+      transitionDuration: 600,
+      path: {
+        dLine: 110,
+        gridLine: 78
+      },
+      lineReset: false
+    }
+  },
+  watch: {
+    visible: function (value) {
+      this.path.gridLine = this.path.gridLine + 78
+      this.path.dLine = this.path.dLine + 110
+    }
+  },
   computed: {
     ...mapState([
-      'loading'
+      'loading',
+      'ready'
     ]),
     gridClasses () {
       return [
@@ -69,13 +96,13 @@ export default {
     lines () {
       return {
         dLine: {
-          strokeDash: !this.visible ? 0 : 110
+          strokeDash: this.path.dLine
         },
         vLine: {
-          strokeDash: !this.visible ? 0 : 78
+          strokeDash: this.path.gridLine
         },
         hLine: {
-          strokeDash: !this.visible ? 0 : 78
+          strokeDash: this.path.gridLine
         }
       }
     }
@@ -110,15 +137,15 @@ export default {
   svg.grid-element .lines .v-line,
   svg.grid-element .lines .h-line {
     stroke-dasharray: 78;
-    transition-duration: .7s;
+    transition-duration: .5s;
     transition-delay: .05s;
     transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
 
   svg.grid-element .lines .d-line {
     stroke-dasharray: 110;
+    transition-duration: .5s;
     transition-delay: .05s;
-    transition-duration: 1.3s;
-    transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+    transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
 </style>
