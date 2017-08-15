@@ -3,8 +3,7 @@
        :class="ready ? 'visible' : 'hidden'">
     <div class="heading-container">
       <h1 class="landing-heading font--stylized">Thomas Le Goff</h1>
-      <h2 class="landing-subtitle">UI Designer <span class="separator">/</span> visdev</h2>
-      <h2 class="landing-subtitle">artist</h2>
+      <h2 class="landing-subtitle">UI designer <span class="separator">/</span> visdev artist</h2>
     </div>
     <div class="vertical-line"></div>
     <div class="modal-links">
@@ -90,7 +89,7 @@ export default {
   }
 
   .landing-subtitle span {
-    padding: 0 10px;
+    padding: 0 7px;
   }
 
   .modal-links {
@@ -100,6 +99,7 @@ export default {
       white-space: nowrap;
       li {
         padding: 2px 0;
+        line-height: 1.3;
       }
     }
 
