@@ -9,12 +9,12 @@
     <defs>
       <pattern v-if="gridPosition === 'left'" id="gridleft" x="100%" y="49.9%" :width="gridSize || 79" :height="gridSize || 79" patternUnits="userSpaceOnUse">
         <g fill="none">
-          <path class="dot" fill="#fff" fill-opacity="1" d="M78 78h1v1h-1z" />
+          <path class="dot" fill="#fff" fill-opacity=".6" d="M78 78h1v1h-1z" />
             <g class="lines" 
                stroke="#fff" 
                stroke-width="1" 
                stroke-linecap="square" 
-               stroke-opacity=".13">
+               stroke-opacity=".08">
               <path class="d-line"
                     d="M0.5,0.5 L77.5,77.5" 
                     :style="`stroke-dashoffset: ${lines.dLine.strokeDash}`" />
@@ -29,12 +29,12 @@
       </pattern>
       <pattern v-if="gridPosition === 'right'" id="gridright" x="0%" y="49.9%" :width="gridSize || 79" :height="gridSize || 79" patternUnits="userSpaceOnUse">
         <g fill="none">
-          <path class="dot" fill="#fff" fill-opacity="1" d="M78 78h1v1h-1z" />
+          <path class="dot" fill="#fff" fill-opacity=".7" d="M78 78h1v1h-1z" />
           <g class="lines" 
              stroke="#fff" 
              stroke-width="1" 
              stroke-linecap="square" 
-             stroke-opacity=".13">
+             stroke-opacity=".08">
               <path class="d-line" 
                     d="M0.5,0.5 L77.5,77.5" 
                     :style="`stroke-dashoffset: ${lines.dLine.strokeDash}`" />

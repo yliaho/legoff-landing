@@ -47,7 +47,7 @@ export default {
     right: calc(50%);
     z-index: 100;
     background-color: #232323;
-    box-shadow: 0 0 0 1px rgba(255,255,255, .15);
+    box-shadow: 0 0 0 1px rgba(255,255,255, .08);
     display: flex;
     flex-direction: column;
     justify-content: space-between;

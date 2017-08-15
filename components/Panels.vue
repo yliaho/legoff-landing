@@ -140,7 +140,7 @@ export default {
       .panel-title {
         position: absolute;
         top: 0;
-        bottom: 21px;
+        bottom: 10px;
         left: 0;
         right: 0;
         display: flex;
@@ -166,7 +166,7 @@ export default {
             left: 0;
             width: 0;
             box-shadow: 0 1px;
-            transition: .5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+            transition: .25s cubic-bezier(0.455, 0.03, 0.515, 0.955);
           }
 
           &.active {
