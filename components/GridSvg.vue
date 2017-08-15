@@ -104,7 +104,7 @@ export default {
   }
 
   svg.grid-element .lines {
-    shape-rendering: crispedges;
+    shape-rendering: optimizeSpeed;
   }
 
   svg.grid-element .lines .v-line,
