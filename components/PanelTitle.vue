@@ -68,7 +68,6 @@ export default {
         bottom: 2px;
         left: 0;
         right: 0;
-        -webkit-backface-visibility: hidden;
       }
 
       .safari-sucks::after,
@@ -81,7 +80,6 @@ export default {
         right: 0;
         width: 100%;
         animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
-        -webkit-backface-visibility: hidden;
         animation-fill-mode: forwards!important;
       }
 
