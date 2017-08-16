@@ -81,13 +81,13 @@ export default {
       .from-enter.safari-sucks::after {
         color: rgba(255,255,255,.5);
         box-shadow: inset 0 -1px;
-        animation: spanEnter .3s;
+        // animation: spanEnter .3s;
       }
 
       .from-leave.safari-sucks::before {
         color: rgba(255,255,255,.5);
         box-shadow: inset 0 -1px;
-        animation: spanLeave .3s;
+        // animation: spanLeave .3s;
       }
     }
 
