@@ -63,8 +63,6 @@ export default {
         bottom: 2px;
         left: 0;
         right: 0;
-        transform: translate3d(0,0,0);
-        backface-visibility: hidden;
       }
 
       .safari-sucks::after,
@@ -83,7 +81,6 @@ export default {
       .from-enter.safari-sucks::after {
         color: rgba(255,255,255,.5);
         box-shadow: inset 0 -1px;
-        transform: translateX(-102%);
         animation: spanEnter .3s;
       }
 
