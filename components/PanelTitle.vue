@@ -82,13 +82,12 @@ export default {
         width: 100%;
         animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
         animation-fill-mode: forwards!important;
-        perspective: 1000px;
       }
 
       .from-enter.safari-sucks::after {
         color: rgba(255,255,255,.5);
         box-shadow: inset 0 -1px;
-        transform: translate3d(-102%,0,0);
+        transform: translateX(-102%);
         animation: spanEnter .3s;
       }
 
@@ -107,19 +106,19 @@ export default {
 
   @keyframes spanEnter {
     from {
-      transform: translate3d(-102%,0,0)
+      transform: translateX(-102%)
     }
     to {
-      transform: translate3d(0,0,0)
+      transform: translateX(0)
     }
   }
 
   @keyframes spanLeave {
     from {
-      transform: translate3d(0,0,0)
+      transform: translateX(0)
     }
     to {
-      transform: translate3d(102%,0,0)
+      transform: translateX(102%)
     }
   }
 </style>
