@@ -5,9 +5,9 @@
          class="panelLeft"
          @mousemove="changePanelState(left, true)">
         <a :href="contentReady ? content.panels.left.url : null">
-          <!-- <PanelTitle :is-active="left.isActive"
+          <PanelTitle :is-active="left.isActive"
                       :title="!loading ? content.panels.left.text : null">
-          </PanelTitle> -->
+          </PanelTitle>
           <GridSvg grid-position="left" 
                   :visible="left.isActive">
           </GridSvg>
@@ -21,9 +21,9 @@
          class="PanelRight" 
          @mousemove="changePanelState(right, true)">
         <a :href="contentReady ? content.panels.right.url : null">
-          <!-- <PanelTitle :is-active="right.isActive"
+          <PanelTitle :is-active="right.isActive"
                       :title="!loading ? content.panels.right.text : null">
-          </PanelTitle> -->
+          </PanelTitle>
           <GridSvg grid-position="right" 
                   :visible="right.isActive">
           </GridSvg>

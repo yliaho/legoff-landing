@@ -61,7 +61,6 @@ export default {
       overflow: hidden;
       font-size: 15px;
       perspective: 500px;
-      transform: rotate3d(0deg);
       
       .safari-sucks {
         position: absolute;
