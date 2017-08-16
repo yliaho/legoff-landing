@@ -1,13 +1,13 @@
 <template>
   <div class="carousell">
     <transition :name="`fade`">
-      <!-- <div class="image"
+      <div class="image"
           v-for="(image, index) in images(side)" 
           :key="index"
           v-if="index === indexer && ready && active"
           @mousemove="doCarousell()"
           :style="`background-image: url('/legoff-landing/${image}.jpg')`">
-      </div> -->
+      </div>
     </transition>
   </div>
 </template>
