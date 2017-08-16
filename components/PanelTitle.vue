@@ -29,11 +29,6 @@ export default {
     ...mapState([
       'loading'
     ])
-  },
-  mounted () {
-    setTimeout(() => {
-      this.mouseOver = false
-    }, 550)
   }
 }
 </script>
