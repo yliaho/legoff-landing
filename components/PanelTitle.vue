@@ -83,8 +83,6 @@ export default {
         animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
         animation-fill-mode: forwards!important;
         perspective: 1000px;
-        -webkit-transform-style: preserve-3d;
-        -webkit-backface-visibility: hidden;
       }
 
       .from-enter.safari-sucks::after {
