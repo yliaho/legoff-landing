@@ -5,12 +5,9 @@
          class="panelLeft"
          @mousemove="changePanelState(left, true)">
         <a :href="contentReady ? content.panels.left.url : null">
-          <div class="panel-title font--stylized"
-                :class="!loading ? 'visible' : 'hidden'">
-            <span v-if="!loading" :class="left.isActive ? 'active' : null">
-              {{content.panels.left.text}}
-            </span>
-          </div>
+          <PanelTitle :is-active="left.isActive"
+                      :title="!loading ? content.panels.left.text : null">
+          </PanelTitle>
           <GridSvg grid-position="left" 
                   :visible="left.isActive">
           </GridSvg>
@@ -24,12 +21,9 @@
          class="PanelRight" 
          @mousemove="changePanelState(right, true)">
         <a :href="contentReady ? content.panels.right.url : null">
-          <div class="panel-title font--stylized"
-                :class="!loading ? 'visible' : 'hidden'">
-            <span v-if="!loading" :class="right.isActive ? 'active' : null">
-              {{content.panels.right.text}}
-            </span>
-          </div>
+          <PanelTitle :is-active="right.isActive"
+                      :title="!loading ? content.panels.right.text : null">
+          </PanelTitle>
           <GridSvg grid-position="right" 
                   :visible="right.isActive">
           </GridSvg>
@@ -46,13 +40,15 @@
 import LandingModal from './LandingModal'
 import ImageCarousell from './ImageCarousell'
 import GridSvg from './GridSvg'
+import PanelTitle from './PanelTitle'
 import { mapState, mapGetters } from 'vuex'
 
 export default {
   components: {
     LandingModal,
     ImageCarousell,
-    GridSvg
+    GridSvg,
+    PanelTitle
   },
   data () {
     return {
@@ -136,51 +132,6 @@ export default {
       height: 100%;
       position: relative;
       overflow: hidden;
-
-      .panel-title {
-        position: absolute;
-        top: 0;
-        bottom: 10px;
-        left: 0;
-        right: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 3;
-        overflow: hidden;
-        transition: all .6s ease-out;
-        color: white;
-        opacity: 0;
-        transform-origin: 50% 50%;
-
-        span {
-          position: relative;
-          padding-bottom: 3px;
-         
-          &:after {
-            content: "";
-            color: rgba(255,255,255,.5);
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            box-shadow: 0 1px;
-            transition: .25s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-          }
-
-          &.active {
-            &:after {
-              width: 100%;
-            }
-          }
-        }
-
-        &.visible {
-          opacity: 1;
-          // animation: panelFadein .9s cubic-bezier(0.62, 0, 0, 1) .7s forwards;
-        }
-      }
     }
   }
 

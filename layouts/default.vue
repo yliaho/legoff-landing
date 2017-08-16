@@ -8,9 +8,15 @@
   @import '~nanoreset';
 
   @font-face {
-    font-family: 'Akkurat';
+    font-family: 'Akkurat Regular';
     src: url('~assets/fonts/Akkurat-Normal.woff') 
          format('woff')
+  }
+
+  @font-face {
+    font-family: 'Akkurat Light';
+    src: url('~assets/fonts/Akkurat-Light.woff') 
+          format('woff')
   }
 
   @font-face {
@@ -19,8 +25,9 @@
          format('woff')
   }
 
+
   html {
-    font-family: 'Akkurat';
+    font-family: 'Akkurat Light';
     color: #fff;
     font-size: 14px;
   }
