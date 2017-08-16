@@ -3,8 +3,11 @@
        :class="!loading ? 'visible' : 'hidden'"
        @mousemove="mouseOver = true"
        @mouseleave="mouseOver = false">
-    <span :class="mouseOver ? 'from-enter' : 'from-leave'">
+    <span >
       {{title}}
+      <span class="safari-sucks"
+            :class="mouseOver ? 'from-enter' : 'from-leave'">
+      </span>
     </span>
   </div>
 </template>
@@ -19,13 +22,18 @@ export default {
   ],
   data () {
     return {
-      mouseOver: false
+      mouseOver: true
     }
   },
   computed: {
     ...mapState([
       'loading'
     ])
+  },
+  mounted () {
+    setTimeout(() => {
+      this.mouseOver = false
+    }, 550)
   }
 }
 </script>
@@ -42,7 +50,7 @@ export default {
     align-items: center;
     z-index: 3;
     overflow: hidden;
-    transition: all .6s ease-out;
+    transition: all .3s ease-out 1s;
     color: white;
     opacity: 0;
     transform-origin: 50% 50%;
@@ -52,29 +60,44 @@ export default {
       padding-bottom: 5px;
       overflow: hidden;
       font-size: 15px;
+      perspective: 500px;
+      transform: rotate3d(0deg);
       
-      &:after {
-        content: "";
-        color: rgba(255,255,255,.5);
+      .safari-sucks {
         position: absolute;
         top: 0;
         bottom: 2px;
-        width: 0;
-        box-shadow: 0 1px;
+        left: 0;
+        right: 0;
+      }
+
+      .safari-sucks::after,
+      .safari-sucks::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
         animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        animation-fill-mode: forwards!important;
+        perspective: 1000px;
+        -webkit-transform-style: preserve-3d;
+        -webkit-backface-visibility: hidden;
       }
 
-      &.from-enter:after {
-        width: 100%;
-        transform: translate3d(105%,0,0);
-        animation: spanEnter .3s forwards;
+      .from-enter.safari-sucks::after {
+        color: rgba(255,255,255,.5);
+        box-shadow: inset 0 -1px;
+        transform: translate3d(-102%,0,0);
+        animation: spanEnter .3s;
       }
 
-      &.from-leave:after {
-        width: 100%;
-        transform: translate3d(0%,0,0);
-        animation: spanLeave .3s forwards;
-        animation-delay: .15s;
+      .from-leave.safari-sucks::before {
+        color: rgba(255,255,255,.5);
+        box-shadow: inset 0 -1px;
+        animation: spanLeave .3s;
       }
     }
 
@@ -86,23 +109,19 @@ export default {
 
   @keyframes spanEnter {
     from {
-      width: 100%;
-      transform: translate3d(105%,0,0)
+      transform: translate3d(-102%,0,0)
     }
     to {
-      width: 100%;
-      transform: translate3d(0%,0,0)
+      transform: translate3d(0,0,0)
     }
   }
 
   @keyframes spanLeave {
     from {
-      width: 100%;
-      transform: translate3d(0%,0,0)
+      transform: translate3d(0,0,0)
     }
     to {
-      width: 100%;
-      transform: translate3d(-105%,0,0)
+      transform: translate3d(102%,0,0)
     }
   }
 </style>
