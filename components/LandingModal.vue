@@ -57,7 +57,7 @@ export default {
       transition: all .3s ease-out;
     }
     &.visible {
-      animation: modalFadein .6s cubic-bezier(0.455, 0.03, 0.515, 0.955) .15s forwards;
+      animation: modalFadein .7s cubic-bezier(0.215, 0.610, 0.355, 1) .15s forwards;
     }
 
     > * {

@@ -137,14 +137,14 @@ export default {
   svg.grid-element .lines .v-line,
   svg.grid-element .lines .h-line {
     stroke-dasharray: 78;
-    transition-duration: .5s;
+    transition-duration: .55s;
     transition-delay: .05s;
     transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
 
   svg.grid-element .lines .d-line {
     stroke-dasharray: 110;
-    transition-duration: .5s;
+    transition-duration: .55s;
     transition-delay: .05s;
     transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
