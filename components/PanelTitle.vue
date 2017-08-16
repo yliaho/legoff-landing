@@ -68,6 +68,8 @@ export default {
         bottom: 2px;
         left: 0;
         right: 0;
+        transform: translate3d(0,0,0);
+        backface-visibility: hidden;
       }
 
       .safari-sucks::after,
