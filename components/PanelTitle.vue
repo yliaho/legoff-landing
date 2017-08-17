@@ -3,9 +3,9 @@
        :class="!loading ? 'visible' : 'hidden'"
        @mousemove="ready ? mouseOver = true : null"
        @mouseleave="ready ? mouseOver = false : null">
-    <div :class="mouseOver ? 'from-enter' : 'from-leave'">
-      {{title}}
-      <div class="underline"></div>
+    <div class="text" :class="mouseOver ? 'from-enter' : 'from-leave'">
+      <span>{{title}}</span>
+      <span class="underline"></span>
     </div>
   </div>
 </template>
@@ -49,7 +49,7 @@ export default {
     opacity: 0;
     transform-origin: 50% 50%;
 
-    span {
+    .text {
       position: relative;
       padding-bottom: 5px;
       overflow: hidden;
