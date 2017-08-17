@@ -7,7 +7,12 @@
        :style="!visible ? 'background-color: #232323' : 'background-color: transparent'"
        xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <pattern v-if="gridPosition === 'left'" id="gridleft" x="100%" y="49.9%" :width="gridSize || 79" :height="gridSize || 79" patternUnits="userSpaceOnUse">
+      <pattern :id="`grid${gridPosition}`" 
+               :x="(gridPosition === 'left') ? '100%' : '0%'" 
+               y="49.9%" 
+               :width="gridSize || 79" 
+               :height="gridSize || 79" 
+               patternUnits="userSpaceOnUse">
         <g fill="none">
           <path class="dot" fill="#fff" fill-opacity=".6" d="M78 78h1v1h-1z" />
             <g class="lines" 
@@ -17,17 +22,20 @@
                stroke-opacity=".08">
               <path class="d-line"
                     d="M0.5,0.5 L77.5,77.5" 
-                    :style="`stroke-dashoffset: ${lines.dLine.strokeDash}`" />
+                    :style="`stroke-dashoffset: ${lines.dLine.strokeDash};
+                             transition-duration: ${transitionDuration}ms;`" />
               <path class="v-line" 
                     d="M78.5.5v77" 
-                    :style="`stroke-dashoffset: ${lines.vLine.strokeDash}`" />
+                    :style="`stroke-dashoffset: ${lines.vLine.strokeDash};
+                             transition-duration: ${transitionDuration}ms;`" />
               <path class="h-line"
                     d="M0.5,78.5 L77.5,78.5" 
-                    :style="`stroke-dashoffset: ${lines.hLine.strokeDash}`" />
+                    :style="`stroke-dashoffset: ${lines.hLine.strokeDash};
+                             transition-duration: ${transitionDuration}ms;`" />
             </g>
         </g>
       </pattern>
-      <pattern v-if="gridPosition === 'right'" id="gridright" x="0%" y="49.9%" :width="gridSize || 79" :height="gridSize || 79" patternUnits="userSpaceOnUse">
+      <!-- <pattern v-if="gridPosition === 'right'" id="gridright" x="0%" y="49.9%" :width="gridSize || 79" :height="gridSize || 79" patternUnits="userSpaceOnUse">
         <g fill="none">
           <path class="dot" fill="#fff" fill-opacity=".7" d="M78 78h1v1h-1z" />
           <g class="lines" 
@@ -46,7 +54,7 @@
                     :style="`stroke-dashoffset: ${lines.hLine.strokeDash}`" />
           </g>
         </g>
-      </pattern>
+      </pattern> -->
     </defs>
   
     <rect :fill="`url('#grid${gridPosition}')`" 
@@ -80,6 +88,16 @@ export default {
     visible: function (value) {
       this.path.gridLine = this.path.gridLine + 78
       this.path.dLine = this.path.dLine + 110
+    },
+    path: {
+      handler (event) {
+        if (event.dLine === 220) {
+          setTimeout(() => {
+            this.$store.commit('changeReady', true)
+          }, this.transitionDuration)
+        }
+      },
+      deep: true
     }
   },
   computed: {
@@ -106,14 +124,6 @@ export default {
         }
       }
     }
-  },
-  methods: {
-    fadeoutGrid (line) {
-      this.strokeDashoffset.line = 0
-    },
-    fadeinGrid (line) {
-      this.strokeDashoffset.line = 110
-    }
   }
 }
 </script>
@@ -137,14 +147,14 @@ export default {
   svg.grid-element .lines .v-line,
   svg.grid-element .lines .h-line {
     stroke-dasharray: 78;
-    transition-duration: .55s;
+    // transition-duration: .55s;
     transition-delay: .05s;
     transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
 
   svg.grid-element .lines .d-line {
     stroke-dasharray: 110;
-    transition-duration: .55s;
+    // transition-duration: .55s;
     transition-delay: .05s;
     transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }

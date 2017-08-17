@@ -84,10 +84,6 @@ export default {
         this.$store.commit('changeLoading', false)
         this.right.isActive = false
         this.left.isActive = false
-
-        setTimeout(() => {
-          this.$store.commit('changeReady', true)
-        }, 800)
       }, 500)
     }
   },

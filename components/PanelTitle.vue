@@ -1,8 +1,8 @@
 <template>
   <div class="panel-title font--stylized" 
        :class="!loading ? 'visible' : 'hidden'"
-       @mousemove="mouseOver = true"
-       @mouseleave="mouseOver = false">
+       @mousemove="ready ? mouseOver = true : null"
+       @mouseleave="ready ? mouseOver = false : null">
     <span :class="mouseOver ? 'from-enter' : 'from-leave'">
       {{title}}
     </span>
@@ -24,7 +24,8 @@ export default {
   },
   computed: {
     ...mapState([
-      'loading'
+      'loading',
+      'ready'
     ])
   }
 }
