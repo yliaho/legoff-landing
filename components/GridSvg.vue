@@ -146,12 +146,12 @@ export default {
   svg.grid-element .lines .h-line {
     stroke-dasharray: 78;
     transition-delay: .05s;
-    transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 
   svg.grid-element .lines .d-line {
     stroke-dasharray: 110;
     transition-delay: .05s;
-    transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 </style>
