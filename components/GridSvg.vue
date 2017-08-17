@@ -57,6 +57,7 @@ export default {
   data () {
     return {
       transitionDuration: 600,
+      transitioning: false,
       path: {
         dLine: 110,
         gridLine: 78
@@ -64,9 +65,20 @@ export default {
     }
   },
   watch: {
-    visible: function (value) {
-      this.path.gridLine = this.path.gridLine + 78
-      this.path.dLine = this.path.dLine + 110
+    visible: function (value) {   
+      if (this.transitioning && !value) {
+        this.transitioning = false
+        this.path.gridLine = this.path.gridLine - 78
+        this.path.dLine = this.path.dLine - 110
+      } else {
+        this.transitioning = true
+        this.path.gridLine = this.path.gridLine + 78
+        this.path.dLine = this.path.dLine + 110
+      }
+
+      setTimeout(() => {
+        this.transitioning = false
+      }, this.transitionDuration);
     },
     path: {
       handler (event) {
