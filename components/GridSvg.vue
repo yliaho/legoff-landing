@@ -14,7 +14,7 @@
                :height="gridSize || 79" 
                patternUnits="userSpaceOnUse">
         <g fill="none">
-          <path class="dot" fill="#fff" fill-opacity=".6" d="M78 78h1v1h-1z" />
+          <path class="dot" fill="#fff" fill-opacity=".60" d="M78 78h1v1h-1z" />
             <g class="lines" 
                stroke="#fff" 
                stroke-width="1" 
@@ -35,26 +35,6 @@
             </g>
         </g>
       </pattern>
-      <!-- <pattern v-if="gridPosition === 'right'" id="gridright" x="0%" y="49.9%" :width="gridSize || 79" :height="gridSize || 79" patternUnits="userSpaceOnUse">
-        <g fill="none">
-          <path class="dot" fill="#fff" fill-opacity=".7" d="M78 78h1v1h-1z" />
-          <g class="lines" 
-             stroke="#fff" 
-             stroke-width="1" 
-             stroke-linecap="square" 
-             stroke-opacity=".08">
-              <path class="d-line" 
-                    d="M0.5,0.5 L77.5,77.5" 
-                    :style="`stroke-dashoffset: ${lines.dLine.strokeDash}`" />
-              <path class="v-line" 
-                    d="M78.5.5v77" 
-                    :style="`stroke-dashoffset: ${lines.vLine.strokeDash}`" />
-              <path class="h-line" 
-                    d="M0.5,78.5 L77.5,78.5" 
-                    :style="`stroke-dashoffset: ${lines.hLine.strokeDash}`" />
-          </g>
-        </g>
-      </pattern> -->
     </defs>
   
     <rect :fill="`url('#grid${gridPosition}')`" 
@@ -80,8 +60,7 @@ export default {
       path: {
         dLine: 110,
         gridLine: 78
-      },
-      lineReset: false
+      }
     }
   },
   watch: {
@@ -94,7 +73,7 @@ export default {
         if (event.dLine === 220) {
           setTimeout(() => {
             this.$store.commit('changeReady', true)
-          }, this.transitionDuration)
+          }, this.transitionDuration + 400)
         }
       },
       deep: true
@@ -147,14 +126,12 @@ export default {
   svg.grid-element .lines .v-line,
   svg.grid-element .lines .h-line {
     stroke-dasharray: 78;
-    // transition-duration: .55s;
     transition-delay: .05s;
     transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
 
   svg.grid-element .lines .d-line {
     stroke-dasharray: 110;
-    // transition-duration: .55s;
     transition-delay: .05s;
     transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }

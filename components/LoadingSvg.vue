@@ -46,6 +46,7 @@ export default {
   align-items: center;
   z-index: -1;
 }
+
 .loading-background::after {
   content: "";
   width: 40px;

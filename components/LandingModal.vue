@@ -46,18 +46,24 @@ export default {
     right: calc(50%);
     z-index: 100;
     background-color: #232323;
-    box-shadow: 0 0 0 1px rgba(255,255,255, .08);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     align-content: space-between;
+    border-left: 1px solid rgba(255,255,255, .08);
+    transform: translateX(-1px);
 
     &.hidden {
       transition: all .3s ease-out;
     }
     &.visible {
-      animation: modalFadein .7s cubic-bezier(0.215, 0.610, 0.355, 1) .15s forwards;
+      border-left: 0;
+      transform: none;
+      box-shadow: 0 0 0 1px rgba(255,255,255, .08), 
+            0 0 0 0px rgba(255,255,255, .08),
+            0 0 0 0px rgba(255,255,255, .08); 
+      animation: modalFadein .6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
     }
 
     > * {
@@ -66,13 +72,13 @@ export default {
   }
 
   @keyframes modalFadein {
-    from {
+    0% {
       left: calc(50%);
       right: calc(50%);
     }
-    to {
+    100% {
       left: calc(50% - 80px * 2 + 2px);
-      right: calc(50% - 79px * 2 + 1px);   
+      right: calc(50% - 79px * 2 + 1px);  
     }
   } 
 
