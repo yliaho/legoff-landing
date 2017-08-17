@@ -5,9 +5,7 @@
        @mouseleave="ready ? mouseOver = false : null">
     <span :class="mouseOver ? 'from-enter' : 'from-leave'">
       {{title}}
-    </span>
-    <span class="underline" :class="mouseOver ? 'from-enter' : 'from-leave'">
-      {{title}}
+      <span class="underline"></span>
     </span>
   </div>
 </template>
@@ -56,6 +54,38 @@ export default {
       padding-bottom: 5px;
       overflow: hidden;
       font-size: 15px;
+      
+      .underline {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .underline:after,
+      .underline:before {
+        content: "";
+        color: rgba(255,255,255,.5);
+        position: absolute;
+        top: 0;
+        bottom: 2px;
+        width: 100%;
+        animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+      }
+
+      &.from-enter .underline:after {
+        transform: translate3d(105%,0,0);
+        animation: spanEnter .3s forwards;
+        box-shadow: inset 0 -1px;
+      }
+
+      &.from-leave .underline:after {
+        transform: translate3d(0%,0,0);
+        animation: spanLeave .3s forwards;
+        animation-delay: .15s;
+        box-shadow: inset 0 -1px;
+      }
     }
 
     &.visible {
@@ -64,54 +94,20 @@ export default {
     }
   }
 
-  .underline {
-    color: transparent;
-    position: absolute!important;
-  }
-
-  .underline:before,
-  .underline:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  }
-
-  .underline.from-enter:after {
-    box-shadow: inset 0 -1px rgba(255,255,255,.5);
-    width: 100%;
-    transform: translate3d(105%,0,0);
-    animation: spanEnter .3s forwards;
-  }
-
-  .underline.from-leave:after {
-    box-shadow: inset 0 -1px rgba(255,255,255,.5);
-    width: 100%;
-    transform: translate3d(0%,0,0);
-    animation: spanLeave .3s forwards;
-    animation-delay: .15s;
-  }
-
   @keyframes spanEnter {
     from {
-      width: 100%;
       transform: translate3d(105%,0,0)
     }
     to {
-      width: 100%;
       transform: translate3d(0%,0,0)
     }
   }
 
   @keyframes spanLeave {
     from {
-      width: 100%;
       transform: translate3d(0%,0,0)
     }
     to {
-      width: 100%;
       transform: translate3d(-105%,0,0)
     }
   }
