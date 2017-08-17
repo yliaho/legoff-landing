@@ -43,6 +43,7 @@ import GridSvg from './GridSvg'
 import PanelTitle from './PanelTitle'
 import { mapState, mapGetters } from 'vuex'
 
+//yay
 export default {
   components: {
     LandingModal,
