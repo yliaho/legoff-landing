@@ -3,7 +3,8 @@
        :class="!loading ? 'visible' : 'hidden'"
        @mousemove="ready ? mouseOver = true : null"
        @mouseleave="ready ? mouseOver = false : null">
-    <div class="text" :class="mouseOver ? 'from-enter' : 'from-leave'">
+    <div class="text" 
+         :class="mouseOver ? 'from-enter' : (mouseOver === false ? 'from-leave' : null)">
       <span>{{title}}</span>
       <span class="underline"></span>
     </div>
@@ -20,7 +21,7 @@ export default {
   ],
   data () {
     return {
-      mouseOver: true // I know, but safari is being a dick about the animation
+      mouseOver: null // I know, but safari is being a dick about the animation
     }
   },
   computed: {
@@ -30,9 +31,6 @@ export default {
     ])
   },
   mounted () {
-    setTimeout(() => {
-      this.mouseOver = false
-    }, 351)
   }
 }
 </script>
