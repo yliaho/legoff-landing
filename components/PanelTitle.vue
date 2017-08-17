@@ -76,13 +76,13 @@ export default {
 
       &.from-enter .underline:after {
         transform: translate3d(105%,0,0);
-        animation: spanEnter .3s forwards;
+        // animation: spanEnter .3s forwards;
         box-shadow: inset 0 -1px;
       }
 
       &.from-leave .underline:after {
         transform: translate3d(0%,0,0);
-        animation: spanLeave .3s forwards;
+        // animation: spanLeave .3s forwards;
         animation-delay: .15s;
         box-shadow: inset 0 -1px;
       }
