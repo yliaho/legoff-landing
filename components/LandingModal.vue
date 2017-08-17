@@ -26,7 +26,8 @@ import { mapState } from 'vuex'
 export default {
   computed: mapState([
     'loading',
-    'ready'
+    'ready',
+    'contentReady'
   ]),
   mounted () {
     // if (this.loading) {
@@ -61,10 +62,7 @@ export default {
       z-index: 200;
       border-left: 0;
       transform: none;
-      box-shadow: 0 0 0 1px rgba(255,255,255, .08), 
-            0 0 0 0px rgba(255,255,255, .08),
-            0 0 0 0px rgba(255,255,255, .08); 
-      animation: modalFadein .6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+      animation: modalFadein .6s cubic-bezier(0.165, 0.84, 0.44, 1) .4s forwards;
     }
 
     > * {
@@ -74,10 +72,12 @@ export default {
 
   @keyframes modalFadein {
     0% {
+      box-shadow: 0 0 0 1px rgba(255,255,255, .08);
       left: calc(50%);
       right: calc(50%);
     }
     100% {
+      box-shadow: 0 0 0 1px rgba(255,255,255, .08);
       left: calc(50% - 80px * 2 + 2px);
       right: calc(50% - 79px * 2 + 1px);  
     }

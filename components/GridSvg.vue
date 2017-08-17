@@ -67,25 +67,22 @@ export default {
   watch: {
     visible: function (value) {   
       if (this.transitioning && !value) {
-        this.transitioning = false
-        this.path.gridLine = this.path.gridLine - 78
-        this.path.dLine = this.path.dLine - 110
+        this.moveLines('down')
       } else {
-        this.transitioning = true
-        this.path.gridLine = this.path.gridLine + 78
-        this.path.dLine = this.path.dLine + 110
+        this.moveLines('up')
       }
 
+      this.transitioning = true
       setTimeout(() => {
         this.transitioning = false
-      }, this.transitionDuration);
+      }, this.transitionDuration / 2);
     },
     path: {
       handler (event) {
         if (event.dLine === 220) {
           setTimeout(() => {
             this.$store.commit('changeReady', true)
-          }, this.transitionDuration + 400)
+          }, this.transitionDuration)
         }
       },
       deep: true
@@ -114,6 +111,16 @@ export default {
           strokeDash: this.path.gridLine
         }
       }
+    }
+  },
+  methods: {
+    moveLines (toValue) {
+      this.path.gridLine = (toValue === 'up')
+        ? this.path.gridLine + 78
+        : this.path.gridLine - 78
+      this.path.dLine = (toValue === 'up')
+        ? this.path.dLine + 110
+        : this.path.dLine - 110
     }
   }
 }

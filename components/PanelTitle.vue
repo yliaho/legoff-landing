@@ -1,10 +1,12 @@
 <template>
   <div class="panel-title font--stylized" 
-       :class="!loading ? 'visible' : 'hidden'"
+       :class="ready ? 'visible' : 'hidden'"
        @mousemove="ready ? mouseOver = true : null"
        @mouseleave="ready ? mouseOver = false : null">
     <div class="text" 
-         :class="mouseOver ? 'from-enter' : (mouseOver === false ? 'from-leave' : null)">
+         :class="mouseOver 
+                 ? 'from-enter' 
+                 : (mouseOver === false ? 'from-leave' : null)">
       <span>{{title}}</span>
       <span class="underline"></span>
     </div>
@@ -21,13 +23,15 @@ export default {
   ],
   data () {
     return {
-      mouseOver: null // I know, but safari is being a dick about the animation
+      // need to be null, thank safari
+      mouseOver: null
     }
   },
   computed: {
     ...mapState([
       'loading',
-      'ready'
+      'ready',
+      'contentReady'
     ])
   },
   mounted () {
@@ -47,9 +51,8 @@ export default {
     align-items: center;
     z-index: 3;
     overflow: hidden;
-    transition: all .6s ease-out;
     color: white;
-    opacity: 0;
+    opacity: .3;
     transform-origin: 50% 50%;
 
     .text {
@@ -85,7 +88,7 @@ export default {
 
       &.from-leave .underline:after {
         transform: translate3d(0%,0,0);
-        animation: spanLeave .3s forwards;
+        animation: spanLeave .2s forwards;
         animation-delay: .15s;
         box-shadow: inset 0 -1px;
       }

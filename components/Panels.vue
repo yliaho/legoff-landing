@@ -6,7 +6,7 @@
          @mousemove="changePanelState(left, true)">
         <a :href="contentReady ? content.panels.left.url : null">
           <PanelTitle :is-active="left.isActive"
-                      :title="!loading ? content.panels.left.text : null">
+                      title="UI">
           </PanelTitle>
           <GridSvg grid-position="left" 
                   :visible="left.isActive">
@@ -22,7 +22,7 @@
          @mousemove="changePanelState(right, true)">
         <a :href="contentReady ? content.panels.right.url : null">
           <PanelTitle :is-active="right.isActive"
-                      :title="!loading ? content.panels.right.text : null">
+                      title="visdev">
           </PanelTitle>
           <GridSvg grid-position="right" 
                   :visible="right.isActive">
