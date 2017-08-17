@@ -3,10 +3,10 @@
        :class="!loading ? 'visible' : 'hidden'"
        @mousemove="ready ? mouseOver = true : null"
        @mouseleave="ready ? mouseOver = false : null">
-    <span :class="mouseOver ? 'from-enter' : 'from-leave'">
+    <div :class="mouseOver ? 'from-enter' : 'from-leave'">
       {{title}}
-      <span class="underline"></span>
-    </span>
+      <div class="underline"></div>
+    </div>
   </div>
 </template>
 
