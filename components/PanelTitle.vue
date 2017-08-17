@@ -5,7 +5,6 @@
        @mouseleave="ready ? mouseOver = false : null">
     <span :class="mouseOver ? 'from-enter' : 'from-leave'">
       {{title}}
-      <!-- <span class="underline"></span> -->
     </span>
   </div>
 </template>
@@ -55,36 +54,28 @@ export default {
       overflow: hidden;
       font-size: 15px;
       
-      .underline {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-      }
-
-      .underline:after,
-      .underline:before {
+      &:after {
         content: "";
         color: rgba(255,255,255,.5);
         position: absolute;
         top: 0;
         bottom: 2px;
-        width: 100%;
+        width: 0;
+        box-shadow: 0 1px;
         animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
       }
 
-      &.from-enter .underline:after {
+      &.from-enter:after {
+        width: 100%;
         transform: translate3d(105%,0,0);
-        // animation: spanEnter .3s forwards;
-        box-shadow: inset 0 -1px;
+        animation: spanEnter .3s forwards;
       }
 
-      &.from-leave .underline:after {
+      &.from-leave:after {
+        width: 100%;
         transform: translate3d(0%,0,0);
-        // animation: spanLeave .3s forwards;
+        animation: spanLeave .3s forwards;
         animation-delay: .15s;
-        box-shadow: inset 0 -1px;
       }
     }
 
