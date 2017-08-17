@@ -58,6 +58,7 @@ export default {
       transition: all .3s ease-out;
     }
     &.visible {
+      z-index: 200;
       border-left: 0;
       transform: none;
       box-shadow: 0 0 0 1px rgba(255,255,255, .08), 

@@ -88,20 +88,6 @@ export default {
     stroke-dashoffset: 0;
     stroke: white;
   }
-  100% {
-    stroke-dasharray: 128, 200;
-    stroke-dashoffset: 0;
-    stroke: #F8E71C;
-  }
-}
-
-
-@keyframes dash {
-  0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-    stroke: white;
-  }
   90%, 100% {
     stroke-dasharray: 128, 200;
     stroke-dashoffset: 0;
