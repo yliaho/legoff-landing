@@ -5,7 +5,7 @@
        @mouseleave="ready ? mouseOver = false : null">
     <span :class="mouseOver ? 'from-enter' : 'from-leave'">
       {{title}}
-      <span class="underline"></span>
+      <!-- <span class="underline"></span> -->
     </span>
   </div>
 </template>
