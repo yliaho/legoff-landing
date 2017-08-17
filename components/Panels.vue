@@ -84,7 +84,7 @@ export default {
         this.$store.commit('changeLoading', false)
         this.right.isActive = false
         this.left.isActive = false
-      }, 200)
+      }, 300)
     }
   },
   methods: {
