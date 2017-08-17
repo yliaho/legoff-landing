@@ -20,7 +20,7 @@ export default {
   ],
   data () {
     return {
-      mouseOver: false
+      mouseOver: true // I know, but safari is being a dick about the animation
     }
   },
   computed: {
@@ -28,6 +28,11 @@ export default {
       'loading',
       'ready'
     ])
+  },
+  mounted () {
+    setTimeout(() => {
+      this.mouseOver = false
+    }, 351)
   }
 }
 </script>
