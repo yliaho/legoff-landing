@@ -6,6 +6,9 @@
     <span :class="mouseOver ? 'from-enter' : 'from-leave'">
       {{title}}
     </span>
+    <span class="underline" :class="mouseOver ? 'from-enter' : 'from-leave'">
+      {{title}}
+    </span>
   </div>
 </template>
 
@@ -53,36 +56,42 @@ export default {
       padding-bottom: 5px;
       overflow: hidden;
       font-size: 15px;
-      
-      &:after {
-        content: "";
-        color: rgba(255,255,255,.5);
-        position: absolute;
-        top: 0;
-        bottom: 2px;
-        width: 0;
-        box-shadow: 0 1px;
-        animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
-      }
-
-      &.from-enter:after {
-        width: 100%;
-        transform: translate3d(105%,0,0);
-        animation: spanEnter .3s forwards;
-      }
-
-      &.from-leave:after {
-        width: 100%;
-        transform: translate3d(0%,0,0);
-        animation: spanLeave .3s forwards;
-        animation-delay: .15s;
-      }
     }
 
     &.visible {
       opacity: 1;
       // animation: panelFadein .9s cubic-bezier(0.62, 0, 0, 1) .7s forwards;
     }
+  }
+
+  .underline {
+    color: transparent;
+    position: absolute!important;
+  }
+
+  .underline:before,
+  .underline:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+
+  .underline.from-enter:after {
+    box-shadow: inset 0 -1px rgba(255,255,255,.5);
+    width: 100%;
+    transform: translate3d(105%,0,0);
+    animation: spanEnter .3s forwards;
+  }
+
+  .underline.from-leave:after {
+    box-shadow: inset 0 -1px rgba(255,255,255,.5);
+    width: 100%;
+    transform: translate3d(0%,0,0);
+    animation: spanLeave .3s forwards;
+    animation-delay: .15s;
   }
 
   @keyframes spanEnter {
