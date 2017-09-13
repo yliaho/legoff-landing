@@ -10,6 +10,9 @@ const mutations = {
     state.imagesLeft = content.panels.left.images
     state.imagesRight = content.panels.right.images
     state.contentReady = true
+  },
+  getWindowWidth (state, w) {
+    state.windowWidth = w
   }
 }
 

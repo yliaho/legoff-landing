@@ -4,12 +4,11 @@
        :class="gridClasses"
        width="100%" 
        height="100%" 
-       :style="!visible ? 'background-color: #232323' : 'background-color: transparent'"
        xmlns="http://www.w3.org/2000/svg">
     <defs>
       <pattern :id="`grid${gridPosition}`" 
-               :x="(gridPosition === 'left') ? '100%' : '0%'" 
-               y="49.9%" 
+               :x="(gridPosition === 'left') ? (windowWidth === 'sm' ? '50%' : '100%') : (windowWidth === 'sm' ? '50%' : '0%')" 
+               :y="(gridPosition === 'left') ? (windowWidth === 'sm' ? '100%' : '49.9%') : (windowWidth === 'sm' ? '0%' : '49.9%')" 
                :width="gridSize || 79" 
                :height="gridSize || 79" 
                patternUnits="userSpaceOnUse">
@@ -45,7 +44,7 @@
 
 <script>
 /* eslint-disable */
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 // import TWEEN from '@tweenjs/tween.js'
 
 export default {
@@ -86,12 +85,18 @@ export default {
         }
       },
       deep: true
+    },
+    strokedashcss: function (val) {
+      console.log(val)
     }
   },
   computed: {
     ...mapState([
       'loading',
       'ready'
+    ]),
+    ...mapGetters([
+      'windowWidth'
     ]),
     gridClasses () {
       return [
@@ -111,6 +116,9 @@ export default {
           strokeDash: this.path.gridLine
         }
       }
+    },
+    strokedashcss () {
+      return this.$el
     }
   },
   methods: {
@@ -122,6 +130,10 @@ export default {
         ? this.path.dLine + 110
         : this.path.dLine - 110
     }
+  },
+  mounted () {
+    console.log(this.$children)
+    
   }
 }
 </script>

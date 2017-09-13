@@ -1,30 +1,34 @@
 <template>
   <div class="panel-title font--stylized" 
-       :class="ready ? 'visible' : 'hidden'"
+       :class="[ready ? 'visible' : 'hidden', titlePositionClass]"
        @mousemove="ready ? mouseOver = true : null"
        @mouseleave="ready ? mouseOver = false : null">
     <div class="text" 
+         :style="`font-size: ${fontSize}px`"
          :class="mouseOver 
                  ? 'from-enter' 
                  : (mouseOver === false ? 'from-leave' : null)">
-      <span>{{title}}</span>
+      <span>{{title}} {{(fontSize > normalSize ? '→' : null)}}</span>
       <span class="underline"></span>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   props: [
     'isActive',
+    'fontSize',
+    'side',
     'title'
   ],
   data () {
     return {
       // need to be null, thank safari
-      mouseOver: null
+      mouseOver: null,
+      normalSize: 15
     }
   },
   computed: {
@@ -32,7 +36,15 @@ export default {
       'loading',
       'ready',
       'contentReady'
-    ])
+    ]),
+    ...mapGetters([
+      'windowWidth'
+    ]),
+    titlePositionClass () {
+      return (this.windowWidth === ('sm' || 'xs'))
+        ? `mobile-${this.side}`
+        : null
+    }
   },
   mounted () {
   }
@@ -48,18 +60,26 @@ export default {
     right: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
     z-index: 3;
     overflow: hidden;
     color: white;
     opacity: .3;
+    align-items: center;
     transform-origin: 50% 50%;
+
+    &.mobile-left {
+      align-items: flex-start;
+      margin-top: 70px;
+    }
+    &.mobile-right {
+      align-items: flex-end;
+      margin-bottom: 60px;
+    }
 
     .text {
       position: relative;
       padding-bottom: 5px;
       overflow: hidden;
-      font-size: 15px;
       
       .underline {
         position: absolute;

@@ -1,11 +1,14 @@
 <template>
-  <div class="panels">
+  <div class="panels"
+       :class="windowWidth">
     <LandingModal></LandingModal>
     <div id="panel"
          class="panelLeft"
          @mousemove="changePanelState(left, true)">
         <a :href="contentReady ? content.panels.left.url : null">
           <PanelTitle :is-active="left.isActive"
+                      :font-size="windowWidth === ('sm' || 'xs') ? 24 : 15"
+                      side="left"
                       title="UI">
           </PanelTitle>
           <GridSvg grid-position="left" 
@@ -22,6 +25,8 @@
          @mousemove="changePanelState(right, true)">
         <a :href="contentReady ? content.panels.right.url : null">
           <PanelTitle :is-active="right.isActive"
+                      :font-size="windowWidth === ('sm' || 'xs') ? 24 : 15"
+                      side="right"
                       title="visdev">
           </PanelTitle>
           <GridSvg grid-position="right" 
@@ -43,7 +48,6 @@ import GridSvg from './GridSvg'
 import PanelTitle from './PanelTitle'
 import { mapState, mapGetters } from 'vuex'
 
-//yay
 export default {
   components: {
     LandingModal,
@@ -74,7 +78,8 @@ export default {
     ]),
     ...mapGetters([
       'imagesLength',
-      'url'
+      'url',
+      'windowWidth'
     ])
   },
   mounted () {
@@ -107,11 +112,13 @@ export default {
     },
     doImageInterval(side) {
       const length = this.$store.getters.imagesLength(side)
-      side.intervalID = setInterval(() => {
-        side.index = (side.index < length - 1)
-          ? side.index = side.index + 1
-          : side.index = 0
-      }, 1000)
+      if (this.windowWidth !== ('sm' || 'xs')) {
+        side.intervalID = setInterval(() => {
+          side.index = (side.index < length - 1)
+            ? side.index = side.index + 1
+            : side.index = 0
+        }, 1000)
+      }
     }
   }
 }
@@ -122,6 +129,10 @@ export default {
     display: flex;
     height: 100vh;
     width: 100vw;
+
+    &.sm {
+      flex-direction: column;
+    }
 
     #panel {
       background-color: #232323;   

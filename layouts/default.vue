@@ -30,6 +30,11 @@
     font-family: 'Akkurat Light';
     color: #fff;
     font-size: 14px;
+    overflow: hidden;
+  }
+
+  body {
+    overflow: hidden;
   }
 
   .font--stylized {

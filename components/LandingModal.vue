@@ -21,14 +21,19 @@
 
 <script>
 // import anime from 'animejs'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
-  computed: mapState([
-    'loading',
-    'ready',
-    'contentReady'
-  ]),
+  computed: {
+    ...mapState([
+      'loading',
+      'ready',
+      'contentReady'
+    ]),
+    ...mapGetters([
+      'windowWidth'
+    ])
+  },
   mounted () {
     // if (this.loading) {
 
@@ -62,7 +67,7 @@ export default {
       z-index: 200;
       border-left: 0;
       transform: none;
-      animation: modalFadein .6s cubic-bezier(0.165, 0.84, 0.44, 1) .4s forwards;
+      animation: modalFadeinHorizontal .6s cubic-bezier(0.165, 0.84, 0.44, 1) .4s forwards;
     }
 
     > * {
@@ -70,7 +75,7 @@ export default {
     }
   }
 
-  @keyframes modalFadein {
+  @keyframes modalFadeinHorizontal {
     0% {
       box-shadow: 0 0 0 1px rgba(255,255,255, .08);
       left: calc(50%);
