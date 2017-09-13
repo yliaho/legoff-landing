@@ -29,9 +29,6 @@ export default {
     })
     this.getWindowWidth(window.innerWidth)
     window.onresize = () => this.getWindowWidth(window.innerWidth)
-  },
-  readye() {
-
   }
 }
 </script>
@@ -43,6 +40,6 @@ export default {
   }
 
   .container {
-    height: calc(100vh - 0px);
+    height: calc(100vh + 1px - 1px);
   }
 </style>
