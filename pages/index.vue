@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <section class="container" :style="`height: ${windowHeight}px`">
     <Panels></Panels>
     <Loading></Loading>
   </section>
@@ -18,6 +18,11 @@ export default {
     Panels,
     Loading
   },
+  data () {
+    return {
+      windowHeight: 0
+    }
+  },
   methods: {
     ...mapMutations([
       'getWindowWidth'
@@ -27,8 +32,13 @@ export default {
     axios.get('/content.json').then(res => {
       this.$store.commit('setContent', res.data)
     })
+    
     this.getWindowWidth(window.innerWidth)
-    window.onresize = () => this.getWindowWidth(window.innerWidth)
+    this.windowHeight = window.innerHeight
+    window.onresize = () => {
+      this.getWindowWidth(window.innerWidth)
+      this.windowHeight = window.innerHeight
+    }
   }
 }
 </script>
@@ -40,6 +50,6 @@ export default {
   }
 
   .container {
-    height: calc(100vh + 1px - 1px);
+    /* height: calc(100vh + 1px - 1px); */
   }
 </style>
