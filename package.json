@@ -8,7 +8,8 @@
     "@tweenjs/tween.js": "^17.1.0",
     "axios": "^0.16.2",
     "nanoreset": "^1.1.0",
-    "nuxt": "latest"
+    "nuxt": "latest",
+    "viewport-units-buggyfill": "^0.6.2"
   },
   "scripts": {
     "dev": "NODE_ENV=development nuxt",

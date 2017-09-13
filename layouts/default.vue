@@ -4,6 +4,10 @@
   </div>
 </template>
 
+<script>
+</script>
+
+
 <style>
   @import '~nanoreset';
 
@@ -35,6 +39,7 @@
 
   body {
     overflow: hidden;
+    height: 100%;
   }
 
   .font--stylized {

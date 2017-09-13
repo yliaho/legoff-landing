@@ -41,4 +41,8 @@ export default {
     background-color: #232323;
     overflow-y: auto;
   }
+
+  .container {
+    height: calc(100vh - 0px);
+  }
 </style>

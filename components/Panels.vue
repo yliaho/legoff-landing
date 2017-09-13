@@ -127,7 +127,7 @@ export default {
 <style lang="scss">
   .panels {
     display: flex;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
 
     &.sm {
