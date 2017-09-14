@@ -13,6 +13,12 @@ const mutations = {
   },
   getWindowWidth (state, w) {
     state.windowWidth = w
+  },
+  incrementTransitionPhase (state) {
+    state.transitionPhase = state.transitionPhase + 1
+  },
+  changeTransitionPhase (state, int) {
+    state.transitionPhase = int
   }
 }
 

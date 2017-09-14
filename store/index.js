@@ -12,7 +12,8 @@ const createStore = () => {
       contentReady: false,
       imagesLeft: null,
       imagesRight: null,
-      windowWidth: 1280
+      windowWidth: null,
+      transitionPhase: 0
     },
     getters,
     mutations

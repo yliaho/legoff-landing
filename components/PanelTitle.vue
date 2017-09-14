@@ -8,7 +8,7 @@
          :class="mouseOver 
                  ? 'from-enter' 
                  : (mouseOver === false ? 'from-leave' : null)">
-      <span>{{title}} {{(fontSize > normalSize ? '→' : null)}}</span>
+      <span>{{title}}{{(fontSize > normalSize ? '→' : null)}}</span>
       <span class="underline"></span>
     </div>
   </div>
@@ -68,12 +68,13 @@ export default {
     transform-origin: 50% 50%;
 
     &.mobile-left {
-      align-items: flex-start;
-      margin-top: 70px;
+      bottom: calc(50% + 50px);
+      align-items: flex-end;
     }
     &.mobile-right {
-      align-items: flex-end;
-      margin-bottom: 60px;
+      top: calc(50% + 60px);
+      bottom: 0;
+      align-items: flex-start;
     }
 
     .text {

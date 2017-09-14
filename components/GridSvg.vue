@@ -6,9 +6,9 @@
        height="100%" 
        xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <pattern :id="`grid${gridPosition}`" 
-               :x="(gridPosition === 'left') ? (windowWidth === 'sm' ? '50%' : '100%') : (windowWidth === 'sm' ? '50%' : '0%')" 
-               :y="(gridPosition === 'left') ? (windowWidth === 'sm' ? '100%' : '49.9%') : (windowWidth === 'sm' ? '0%' : '49.9%')" 
+      <pattern :id="`grid${gridSide}`" 
+               :x="gridPosition.x" 
+               :y="gridPosition.y" 
                :width="gridSize || 79" 
                :height="gridSize || 79" 
                patternUnits="userSpaceOnUse">
@@ -36,7 +36,7 @@
       </pattern>
     </defs>
   
-    <rect :fill="`url('#grid${gridPosition}')`" 
+    <rect :fill="`url('#grid${gridSide}')`" 
           width="100%" 
           height="100%" />
   </svg>
@@ -49,7 +49,7 @@ import { mapState, mapGetters } from 'vuex'
 
 export default {
   props: [
-    'gridPosition',
+    'gridSide',
     'gridSize',
     'visible'
   ],
@@ -58,8 +58,8 @@ export default {
       transitionDuration: 600,
       transitioning: false,
       path: {
-        dLine: 110,
-        gridLine: 78
+        dLine: 220,
+        gridLine: 156
       }
     }
   },
@@ -85,9 +85,6 @@ export default {
         }
       },
       deep: true
-    },
-    strokedashcss: function (val) {
-      console.log(val)
     }
   },
   computed: {
@@ -96,29 +93,37 @@ export default {
       'ready'
     ]),
     ...mapGetters([
-      'windowWidth'
+      'windowWidth',
+      'getTransitionPhase'
     ]),
     gridClasses () {
       return [
         (this.loading) ? null : 'ready',
-        (this.gridPosition === 'left') ? 'left' : 'right'
+        (this.gridSide === 'left') ? 'left' : 'right'
       ]
     },
     lines () {
       return {
         dLine: {
-          strokeDash: this.path.dLine
+          strokeDash: (this.getTransitionPhase !== 4) ? 110 : this.path.dLine
         },
         vLine: {
-          strokeDash: this.path.gridLine
+          strokeDash: (this.getTransitionPhase !== 4) ? 78 : this.path.gridLine
         },
         hLine: {
-          strokeDash: this.path.gridLine
+          strokeDash: (this.getTransitionPhase !== 4) ? 78 : this.path.gridLine
         }
       }
     },
-    strokedashcss () {
-      return this.$el
+    gridPosition() {
+      return {
+        x: (this.gridSide === 'left')
+          ? (this.windowWidth === 'sm' || this.windowWidth === 'xs' ? '50%' : '100%')
+          : (this.windowWidth === 'sm' || this.windowWidth === 'xs' ? '50%' : '0%'),
+        y: (this.gridSide === 'left')
+          ? (this.windowWidth === 'sm' || this.windowWidth === 'xs' ? '100%' : '49.9%')
+          : (this.windowWidth === 'sm' || this.windowWidth === 'xs' ? '0%' : '49.9%')
+      }
     }
   },
   methods: {
@@ -130,10 +135,6 @@ export default {
         ? this.path.dLine + 110
         : this.path.dLine - 110
     }
-  },
-  mounted () {
-    console.log(this.$children)
-    
   }
 }
 </script>

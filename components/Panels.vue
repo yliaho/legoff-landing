@@ -7,11 +7,11 @@
          @mousemove="changePanelState(left, true)">
         <a :href="contentReady ? content.panels.left.url : null">
           <PanelTitle :is-active="left.isActive"
-                      :font-size="windowWidth === ('sm' || 'xs') ? 24 : 15"
+                      :font-size="windowWidth === 'sm' || windowWidth === 'xs' ? 24 : 15"
                       side="left"
                       title="UI">
           </PanelTitle>
-          <GridSvg grid-position="left" 
+          <GridSvg grid-side="left" 
                   :visible="left.isActive">
           </GridSvg>
           <ImageCarousell side="left" 
@@ -25,11 +25,11 @@
          @mousemove="changePanelState(right, true)">
         <a :href="contentReady ? content.panels.right.url : null">
           <PanelTitle :is-active="right.isActive"
-                      :font-size="windowWidth === ('sm' || 'xs') ? 24 : 15"
+                      :font-size="windowWidth === 'sm' || windowWidth === 'xs' ? 24 : 15"
                       side="right"
                       title="visdev">
           </PanelTitle>
-          <GridSvg grid-position="right" 
+          <GridSvg grid-side="right" 
                   :visible="right.isActive">
           </GridSvg>
           <ImageCarousell side="right" 
@@ -58,12 +58,12 @@ export default {
   data () {
     return {
       left: {
-        isActive: true,
+        isActive: false,
         index: 0,
         intervalID: null
       },
       right: {
-        isActive: true,
+        isActive: false,
         index: 0,
         intervalID: null
       }
@@ -79,23 +79,30 @@ export default {
     ...mapGetters([
       'imagesLength',
       'url',
-      'windowWidth'
+      'windowWidth',
+      'isContentReady',
+      'getTransitionPhase'
     ])
   },
   mounted () {
-    if (this.loading) {
-      this.right.isActive = true
-      this.left.isActive = true
+    if (this.getTransitionPhase === 0) {
       setTimeout(() => {
-        this.$store.commit('changeLoading', false)
-        this.right.isActive = false
-        this.left.isActive = false
-      }, 300)
+        this.$store.commit('incrementTransitionPhase')
+        setTimeout(() => {
+          this.$store.commit('incrementTransitionPhase')
+          setTimeout(() => {
+            this.$store.commit('incrementTransitionPhase')
+            setTimeout(() => {
+              this.$store.commit('incrementTransitionPhase')
+            }, 400)
+          }, 600)
+        }, 800)
+      }, 200)
     }
   },
   methods: {
     changePanelState (side, state) {
-      if (this.ready) {
+      if (this.getTransitionPhase >= 4) {
         /*eslint-disable */
         if (side === this.left && !side.isActive) {
           this.left.isActive = true
@@ -112,7 +119,7 @@ export default {
     },
     doImageInterval(side) {
       const length = this.$store.getters.imagesLength(side)
-      if (this.windowWidth !== ('sm' || 'xs')) {
+      if (this.windowWidth !== 'sm') {
         side.intervalID = setInterval(() => {
           side.index = (side.index < length - 1)
             ? side.index = side.index + 1
@@ -130,7 +137,7 @@ export default {
     height: 100%;
     width: 100vw;
 
-    &.sm {
+    &.sm, &.xs {
       flex-direction: column;
     }
 

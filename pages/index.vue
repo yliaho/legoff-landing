@@ -20,7 +20,7 @@ export default {
   },
   data () {
     return {
-      windowHeight: 0
+      windowHeight: null
     }
   },
   methods: {
@@ -29,16 +29,16 @@ export default {
     ])
   },
   mounted () {
-    axios.get('/content.json').then(res => {
-      this.$store.commit('setContent', res.data)
-    })
-    
     this.getWindowWidth(window.innerWidth)
     this.windowHeight = window.innerHeight
     window.onresize = () => {
       this.getWindowWidth(window.innerWidth)
       this.windowHeight = window.innerHeight
     }
+
+    axios.get('/content.json').then(res => {
+      this.$store.commit('setContent', res.data)
+    })
   }
 }
 </script>
@@ -51,5 +51,6 @@ export default {
 
   .container {
     /* height: calc(100vh + 1px - 1px); */
+    overflow: visible;
   }
 </style>
