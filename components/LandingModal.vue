@@ -73,7 +73,7 @@ export default {
 
   &.line-horizontal {
     transform: translateX(-1px);
-    border-left: 1px solid rgba(255, 255, 255, .26);
+    border-left: 1px solid #7B7B7B;
     top: calc(50% - 80px * 2 + 1px);
     bottom: calc(50% - 80px * 2 + 4px);
     left: calc(50%);
@@ -81,7 +81,7 @@ export default {
   }
 
   &.line-vertical {
-    border-bottom: 1px solid rgba(255, 255, 255, .26);
+    border-bottom: 1px solid #7B7B7B;
     top: calc(50%);
     bottom: calc(50%);
     left: calc(50% - 40px * 3 + 2px);
