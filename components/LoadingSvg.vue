@@ -7,6 +7,12 @@
     </div>
 </template>
 
+<script>
+export default {
+}
+</script>
+
+
 
 <style lang="scss" scoped>
 
@@ -42,21 +48,10 @@
   z-index: -1;
 }
 
-.loading-background::after {
-  content: "";
-  width: 40px;
-  height: 40px;
-  color: #232323;
-  box-shadow: 0 0 0 4px;
-  background-color: #232323;
-  border-radius: 50%;
-  z-index: -1;
-  animation: jumpOut .6s cubic-bezier(0.7,-0, 0.15, 1) 1.15s 1 forwards;
-}
 
 #loading-circle {
   animation: dash 1s cubic-bezier(0.7,-0, 0.15, 1) 1 forwards,
-             out .6s cubic-bezier(0.7,-0, 0.15, 1) 1.15s 1 forwards;
+             out .3s cubic-bezier(0.7,-0, 0.15, 1) 1.0s 1 forwards;
   // stroke-linecap: round;
   transform-origin: center;
   stroke-dasharray: 150,200;
