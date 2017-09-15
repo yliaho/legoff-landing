@@ -5,7 +5,10 @@
       <h2 class="landing-subtitle">UI designer
         <span class="separator">/</span> visdev artist</h2>
     </div>
-    <div class="vertical-line"></div>
+    <transition name="line" mode="out-in">
+      <div v-if="windowWidth !== 'md'" class="vertical-line" key="vertical"></div>
+      <div v-if="windowWidth === 'md'" class="horizontal-line" key="horizontal"></div>
+    </transition>
     <div class="modal-links">
       <ul class="links-default">
         <li>
@@ -183,5 +186,21 @@ export default {
   height: 125px;
   border-left: 1px solid rgba(255, 255, 255, 0.4);
   margin-bottom: 5px;
+  will-change: transform;
+}
+
+.horizontal-line {
+  width: calc(100% - 35%);
+  height: 1px;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  margin-bottom: 5px;
+  will-change: transform;
+}
+
+.line-enter-active, .line-leave-active {
+  transition: all .4s;
+}
+.line-enter, .line-leave-to /* .list-leave-active below version 2.1.8 */ {
+  transform: scale(0);
 }
 </style>
