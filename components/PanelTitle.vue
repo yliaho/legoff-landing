@@ -10,7 +10,7 @@
                  ? 'from-enter' 
                  : (mouseOver === false ? 'from-leave' : null)">
       <span>{{title}} {{(fontSize > normalSize && clickable ? '→' : null)}}</span>
-      <span :class="windowWidth !== 'sm' ? 'underline' : null"></span>
+      <span :class="windowWidth !== 'md' ? 'underline' : null"></span>
     </div>
     <transition name="fade">
       <div v-if="contentReady && !clickable && getTransitionPhase >= 3"
@@ -55,7 +55,7 @@ export default {
       'getTransitionPhase'
     ]),
     titlePositionClass () {
-      return (this.windowWidth === 'sm')
+      return (this.windowWidth === 'md')
         ? `mobile-${this.side}`
         : `${this.side}`
     }

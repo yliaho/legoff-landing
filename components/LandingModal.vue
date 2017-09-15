@@ -36,9 +36,9 @@ export default {
     ]),
     phaseClasses () {
       if (this.getTransitionPhase === 2) {
-        return (this.windowWidth !== 'sm') ? 'line-horizontal' : 'line-vertical'
+        return (this.windowWidth !== 'md') ? 'line-horizontal' : 'line-vertical'
       } else if (this.getTransitionPhase >= 3) {
-        return (this.windowWidth !== 'sm') ? 'expand-horizontal' : 'expand-vertical'
+        return (this.windowWidth !== 'md') ? 'expand-horizontal' : 'expand-vertical'
       } else {
         return 'hidden'
       }

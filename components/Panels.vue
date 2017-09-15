@@ -7,7 +7,7 @@
          @mousemove="changePanelState(left, true)">
         <a :href="isContentReady ? panelLink('left') : null">
           <PanelTitle :is-active="left.isActive"
-                      :font-size="windowWidth === 'sm' || windowWidth === 'xs' ? 24 : 15"
+                      :font-size="windowWidth === 'md' ? 24 : 15"
                       :clickable="isContentReady ? panelLink('left') : null"
                       side="left"
                       :title="isContentReady ? content.panels.left.text : null">
@@ -26,7 +26,7 @@
          @mousemove="changePanelState(right, true)">
         <a :href="isContentReady ? panelLink('right') : null">
           <PanelTitle :is-active="right.isActive"
-                      :font-size="windowWidth === 'sm' || windowWidth === 'xs' ? 24 : 15"
+                      :font-size="windowWidth === 'md' || windowWidth === 'xs' ? 24 : 15"
                       :clickable="isContentReady ? panelLink('right') : null"
                       side="right"
                       :title="isContentReady ? content.panels.right.text : null">
@@ -122,7 +122,7 @@ export default {
     doImageInterval(side) {
       const length = this.imagesLength(side)
       side.intervalID = setInterval(() => {
-        side.index = (side.index < length - 1 && this.windowWidth !== 'sm')
+        side.index = (side.index < length - 1 && this.windowWidth !== 'md')
           ? side.index = side.index + 1
           : side.index = 0
       }, 1000)
@@ -144,7 +144,7 @@ export default {
     height: 100%;
     width: 100vw;
 
-    &.sm, &.xs {
+    &.md {
       flex-direction: column;
     }
 

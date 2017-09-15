@@ -119,11 +119,11 @@ export default {
     gridPosition() {
       return {
         x: (this.gridSide === 'left')
-          ? (this.windowWidth === 'sm' || this.windowWidth === 'xs' ? '50%' : '100%')
-          : (this.windowWidth === 'sm' || this.windowWidth === 'xs' ? '50%' : '0%'),
+          ? (this.windowWidth === 'md' ? '50%' : '100%')
+          : (this.windowWidth === 'md' ? '50%' : '0%'),
         y: (this.gridSide === 'left')
-          ? (this.windowWidth === 'sm' || this.windowWidth === 'xs' ? '100%' : '49.9%')
-          : (this.windowWidth === 'sm' || this.windowWidth === 'xs' ? '0%' : '49.9%')
+          ? (this.windowWidth === 'md' ? '100%' : '49.9%')
+          : (this.windowWidth === 'md' ? '0%' : '49.9%')
       }
     }
   },
