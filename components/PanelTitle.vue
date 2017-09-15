@@ -13,8 +13,13 @@
       <span :class="windowWidth !== 'sm' ? 'underline' : null"></span>
     </div>
     <transition name="fade">
-      <div v-if="contentReady && !clickable" class="unclickable" :style="`font-size: ${fontSize}px`">
-        <span>coming soon</span>
+      <div v-if="contentReady && !clickable && getTransitionPhase >= 3"
+           class="unclickable" 
+           :style="`font-size: ${fontSize}px`">
+        <span 
+          :style="`font-size: calc(${fontSize}px - ${fontSize !== normalSize ? `10px` : `2px`})`">
+          coming soon
+        </span>
       </div>
     </transition>
   </div>
@@ -159,7 +164,7 @@ export default {
     }
 
     .unclickable {
-      height: 1em;
+      height: 0;
       user-select: none;
       pointer-events: none;
 
@@ -198,7 +203,7 @@ export default {
     transition: all .5s cubic-bezier(0.19, 1, 0.22, 1) .25s;
   }
   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
     opacity: 0;
   }
 </style>
