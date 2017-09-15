@@ -89,6 +89,7 @@ export default {
     left: 0;
     right: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     z-index: 3;
     overflow: hidden;
@@ -101,12 +102,12 @@ export default {
     &.mobile-left {
       font-size: 24px;
       padding-bottom: calc(25vh + 25px);
-      align-items: flex-end;
+      justify-content: flex-end;
     }
     &.mobile-right {
       font-size: 24px;
       padding-top: calc(25vh + 25px);
-      align-items: flex-start;
+      justify-content: flex-start;
     }
 
     &.right {
@@ -122,6 +123,7 @@ export default {
       padding-bottom: 5px;
       overflow: hidden;
       user-select: none;
+      display: block;
       
       .underline {
         position: absolute;
@@ -157,10 +159,7 @@ export default {
     }
 
     .unclickable {
-      display: block;
-      position: absolute;
       height: 1em;
-      padding-top: calc(11px * 2);
       user-select: none;
       pointer-events: none;
 
