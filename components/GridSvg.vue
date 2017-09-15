@@ -4,6 +4,7 @@
        :class="gridClasses"
        width="100%" 
        height="100%" 
+       :style="getTransitionPhase <= 3 ? `background-color: #232323` : `background-color: transparent`"
        xmlns="http://www.w3.org/2000/svg">
     <defs>
       <pattern :id="`grid${gridSide}`" 

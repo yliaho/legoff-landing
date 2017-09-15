@@ -4,7 +4,7 @@
       <div class="image"
           v-for="(image, index) in images(side)" 
           :key="index"
-          v-if="index === indexer && (windowWidth !== ('sm' || 'xs') ? ready && active : true)"
+          v-if="index === indexer && getTransitionPhase >= 3 && (windowWidth !== 'sm' ? active : true)"
           @mousemove="doCarousell()"
           :style="`background-image: url('/legoff-landing/${image}.jpg')`">
       </div>
@@ -25,7 +25,8 @@ export default {
     ...mapGetters([
       'images',
       'imagesLength',
-      'windowWidth'
+      'windowWidth',
+      'getTransitionPhase'
     ]),
     ...mapState([
       'ready'

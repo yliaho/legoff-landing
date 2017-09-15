@@ -67,6 +67,8 @@ export default {
   bottom: calc(50%);
   left: calc(50%);
   right: calc(50%);
+  overflow: hidden;
+  white-space: nowrap;
   transition: top, bottom, right, left;
   transition-duration: .4s;
   transition-timing-function: ease-out;
@@ -81,6 +83,7 @@ export default {
   }
 
   &.line-vertical {
+    transform: translateY(-1px);
     border-bottom: 1px solid #7B7B7B;
     top: calc(50%);
     bottom: calc(50%);
@@ -102,41 +105,7 @@ export default {
     left: calc(50% - 40px * 3 + 2px);
     right: calc(50% - 39px * 3 + 1px);
     box-shadow: 0 0 0 1px rgba(255, 255, 255, .08);
-  }
-
-  &.md,
-  &.lg,
-  &.xl {
-    top: calc(50% - 80px * 2 + 1px);
-    bottom: calc(50% - 80px * 2 + 4px);
-    left: calc(50%);
-    right: calc(50%);
-  }
-
-  &.sm {
-    border-bottom: 1px solid rgba(255, 255, 255, .08);
-    top: calc(50%);
-    bottom: calc(50%);
-    left: calc(50% - 40px * 3 + 2px);
-    right: calc(50% - 39px * 3 + 1px);
-  }
-
-  &.visible {
-    z-index: 200;
-    border-left: 0;
-    transform: none;
-    animation: modalFadeinHorizontal .6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s forwards;
-  }
-
-  &.visible.sm {
-    animation: modalFadeinVerticalXS .6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s forwards;
-  }
-
-  >* {
-    white-space: nowrap;
-  }
-
-  
+  }  
 }
 
 @keyframes modalFadeinHorizontal {

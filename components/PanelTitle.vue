@@ -1,15 +1,15 @@
 <template>
   <div class="panel-title font--stylized" 
-       :class="[ready ? 'visible' : 'hidden', titlePositionClass]"
-       @mousemove="ready ? mouseOver = true : null"
-       @mouseleave="ready ? mouseOver = false : null">
+       :class="[getTransitionPhase >= 3 ? 'visible' : 'hidden', titlePositionClass]"
+       @mousemove="getTransitionPhase >= 3 ? mouseOver = true : null"
+       @mouseleave="getTransitionPhase >= 3 ? mouseOver = false : null">
     <div class="text" 
          :style="`font-size: ${fontSize}px`"
          :class="mouseOver 
                  ? 'from-enter' 
                  : (mouseOver === false ? 'from-leave' : null)">
       <span>{{title}}{{(fontSize > normalSize ? '→' : null)}}</span>
-      <span class="underline"></span>
+      <span :class="windowWidth !== 'sm' ? 'underline' : null"></span>
     </div>
   </div>
 </template>
@@ -38,7 +38,8 @@ export default {
       'contentReady'
     ]),
     ...mapGetters([
-      'windowWidth'
+      'windowWidth',
+      'getTransitionPhase'
     ]),
     titlePositionClass () {
       return (this.windowWidth === ('sm' || 'xs'))
@@ -68,11 +69,11 @@ export default {
     transform-origin: 50% 50%;
 
     &.mobile-left {
-      bottom: calc(50% + 50px);
+      bottom: calc(50% + 30px);
       align-items: flex-end;
     }
     &.mobile-right {
-      top: calc(50% + 60px);
+      top: calc(50% + 40px);
       bottom: 0;
       align-items: flex-start;
     }

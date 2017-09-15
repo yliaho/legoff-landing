@@ -125,6 +125,9 @@ export default {
             ? side.index = side.index + 1
             : side.index = 0
         }, 1000)
+      } else {
+        side.index = 0
+        clearInterval(side.intervalID)
       }
     }
   }
