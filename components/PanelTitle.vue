@@ -2,23 +2,27 @@
   <div class="panel-title font--stylized" 
        :class="[getTransitionPhase >= 3 ? 'visible' : 'hidden', titlePositionClass]"
        @mousemove="getTransitionPhase >= 3 ? mouseOver = true : null"
-       @mouseleave="getTransitionPhase >= 3 ? mouseOver = false : null">
+       @mouseleave="getTransitionPhase >= 3 ? mouseOver = false : null"
+       @click="unclickableShake">
     <div class="text" 
          :style="`font-size: ${fontSize}px`"
          :class="mouseOver 
                  ? 'from-enter' 
                  : (mouseOver === false ? 'from-leave' : null)">
-      <span>{{title}}{{(fontSize > normalSize ? '→' : null)}}</span>
+      <span>{{title}}{{(fontSize > normalSize && clickable ? '→' : null)}}</span>
       <span :class="windowWidth !== 'sm' ? 'underline' : null"></span>
     </div>
     <transition name="fade">
-      <span v-if="!clickable && isActive" class="unclickable">coming soon</span>
+      <div v-if="contentReady && !clickable" class="unclickable" :style="`font-size: ${fontSize}px`">
+        <span>coming soon</span>
+      </div>
     </transition>
   </div>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+import anime from 'animejs'
 
 export default {
   props: [
@@ -46,13 +50,33 @@ export default {
       'getTransitionPhase'
     ]),
     titlePositionClass () {
-      return (this.windowWidth === ('sm' || 'xs'))
+      return (this.windowWidth === 'sm')
         ? `mobile-${this.side}`
-        : null
+        : `${this.side}`
     }
   },
-  mounted () {
-    console.log(this.clickable)
+  methods: {
+    unclickableShake () {
+      console.log('moi')
+      if (this.contentReady && !this.clickable) {
+        const shake = anime({
+          targets: this.$el.querySelector('.unclickable'),
+          translateX: [
+            { value: -10 },
+            { value: 9 },
+            { value: -6 },
+            { value: 5 },
+            { value: -2 },
+            { value: 1 },
+            { value: 0 }
+          ],
+          offset: 0,
+          easing: 'linear',
+          duration: 400
+        })
+        shake.restart
+      }
+    }
   }
 }
 </script>
@@ -73,20 +97,31 @@ export default {
     align-items: center;
     transform-origin: 50% 50%;
 
+
     &.mobile-left {
-      bottom: calc(50% + 30px);
+      font-size: 24px;
+      padding-bottom: calc(25vh + 25px);
       align-items: flex-end;
     }
     &.mobile-right {
-      top: calc(50% + 40px);
-      bottom: 0;
+      font-size: 24px;
+      padding-top: calc(25vh + 25px);
       align-items: flex-start;
+    }
+
+    &.right {
+      padding-left: calc(80px * 2);
+    }
+
+    &.left {
+      padding-right: calc(80px * 2);
     }
 
     .text {
       position: relative;
       padding-bottom: 5px;
       overflow: hidden;
+      user-select: none;
       
       .underline {
         position: absolute;
@@ -124,9 +159,16 @@ export default {
     .unclickable {
       display: block;
       position: absolute;
-      margin-top: 2rem;
-      font-family: 'Akkurat Mono', sans-serif;
-      color: rgba(white, .5);
+      height: 1em;
+      padding-top: calc(11px * 2);
+      user-select: none;
+      pointer-events: none;
+
+      span {
+        font-family: 'Akkurat Mono', sans-serif;
+        color: rgba(white, .5);
+        font-size: 11px;      
+      }
     }
 
     &.visible {
