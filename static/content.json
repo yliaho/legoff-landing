@@ -3,20 +3,30 @@
     "left": {
       "text": "UI",
       "url": "#moi",
-      "images": [
-        "ui1",
-        "ui2",
-        "ui3"
-      ]
+      "images": {
+        "horizontal": [
+          "ui1",
+          "ui2",
+          "ui3"
+        ],
+        "vertical": [
+          "SMXS-ui"
+        ]
+      }
     },
     "right": {
       "text": "visdev",
       "url": "#disable",
-      "images": [
-        "visdev1",
-        "visdev2",
-        "visdev3"
-      ]
+      "images": {
+        "horizontal": [
+          "visdev1",
+          "visdev2",
+          "visdev3"
+        ],
+        "vertical": [
+          "SMXS-visdev"
+        ]
+      }
     }
   }
 }

@@ -2,7 +2,7 @@
   <div class="carousell">
     <transition :name="`fade`">
       <div class="image"
-          v-for="(image, index) in images(side)" 
+          v-for="(image, index) in images(side, windowWidth)" 
           :key="index"
           v-if="index === indexer && getTransitionPhase >= 3 && (windowWidth !== 'sm' ? active : true)"
           @mousemove="doCarousell()"

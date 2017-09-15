@@ -17,7 +17,7 @@
            class="unclickable" 
            :style="`font-size: ${fontSize}px`">
         <span 
-          :style="`font-size: calc(${fontSize}px - ${fontSize !== normalSize ? `10px` : `2px`})`">
+          :style="`font-size: calc(${fontSize}px - ${fontSize !== normalSize ? `10px` : `4px`})`">
           coming soon
         </span>
       </div>
@@ -62,18 +62,17 @@ export default {
   },
   methods: {
     unclickableShake () {
-      console.log('moi')
-      if (this.contentReady && !this.clickable) {
+      if (this.contentReady && !this.clickable && this.getTransitionPhase >= 3) {
         const shake = anime({
           targets: this.$el.querySelector('.unclickable'),
           translateX: [
-            { value: -10 },
-            { value: 9 },
-            { value: -6 },
-            { value: 5 },
-            { value: -2 },
-            { value: 1 },
-            { value: 0 }
+            {value: -10},
+            {value: 9},
+            {value: -6},
+            {value: 5},
+            {value: -2},
+            {value: 1},
+            {value: 0}
           ],
           offset: 0,
           easing: 'linear',
@@ -202,8 +201,7 @@ export default {
   .fade-enter-active, .fade-leave-active {
     transition: all .5s cubic-bezier(0.19, 1, 0.22, 1) .25s;
   }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    transform: translateY(-4px);
+  .fade-enter, .fade-leave-to {
     opacity: 0;
   }
 </style>

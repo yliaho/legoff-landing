@@ -10,7 +10,7 @@
                       :font-size="windowWidth === 'sm' || windowWidth === 'xs' ? 24 : 15"
                       :clickable="isContentReady ? panelLink('left') : null"
                       side="left"
-                      title="UI">
+                      :title="isContentReady ? content.panels.left.text : null">
           </PanelTitle>
           <GridSvg grid-side="left" 
                   :visible="left.isActive">
@@ -29,7 +29,7 @@
                       :font-size="windowWidth === 'sm' || windowWidth === 'xs' ? 24 : 15"
                       :clickable="isContentReady ? panelLink('right') : null"
                       side="right"
-                      title="visdev">
+                      :title="isContentReady ? content.panels.right.text : null">
           </PanelTitle>
           <GridSvg grid-side="right" 
                   :visible="right.isActive">
@@ -120,17 +120,12 @@ export default {
       }
     },
     doImageInterval(side) {
-      const length = this.$store.getters.imagesLength(side)
-      if (this.windowWidth !== 'sm') {
-        side.intervalID = setInterval(() => {
-          side.index = (side.index < length - 1)
-            ? side.index = side.index + 1
-            : side.index = 0
-        }, 1000)
-      } else {
-        side.index = 0
-        clearInterval(side.intervalID)
-      }
+      const length = this.imagesLength(side)
+      side.intervalID = setInterval(() => {
+        side.index = (side.index < length - 1 && this.windowWidth !== 'sm')
+          ? side.index = side.index + 1
+          : side.index = 0
+      }, 1000)
     },
     panelLink (side) {
       if (this.isContentReady) {

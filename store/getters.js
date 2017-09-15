@@ -1,10 +1,14 @@
 const getters = {
-  images: (state) => (side) => {
-    return (side === 'left') ? state.imagesLeft : state.imagesRight
+  images: (state) => (side, breakpoint) => {
+    return (side === 'left')
+      ? (breakpoint !== 'sm' ? state.imagesLeft.horizontal : state.imagesLeft.vertical)
+      : (breakpoint !== 'sm' ? state.imagesRight.horizontal : state.imagesRight.vertical)
   },
-  imagesLength: (state) => (side) => {
+  imagesLength: (state) => (side, breakpoint) => {
     if (state.content) {
-      return (side === 'left') ? state.imagesLeft.length : state.imagesRight.length
+      return (side === 'left')
+      ? (breakpoint !== 'sm' ? state.imagesLeft.horizontal.length : 0)
+      : (breakpoint !== 'sm' ? state.imagesRight.horizontal.length : 0)
     }
   },
   windowWidth: (state) => {
