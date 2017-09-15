@@ -9,7 +9,7 @@
          :class="mouseOver 
                  ? 'from-enter' 
                  : (mouseOver === false ? 'from-leave' : null)">
-      <span>{{title}}{{(fontSize > normalSize && clickable ? '→' : null)}}</span>
+      <span>{{title}} {{(fontSize > normalSize && clickable ? '→' : null)}}</span>
       <span :class="windowWidth !== 'sm' ? 'underline' : null"></span>
     </div>
     <transition name="fade">
