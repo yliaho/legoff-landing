@@ -5,9 +5,10 @@
     <div id="panel"
          class="panelLeft"
          @mousemove="changePanelState(left, true)">
-        <a :href="contentReady ? content.panels.left.url : null">
+        <a :href="isContentReady ? panelLink('left') : null">
           <PanelTitle :is-active="left.isActive"
                       :font-size="windowWidth === 'sm' || windowWidth === 'xs' ? 24 : 15"
+                      :clickable="isContentReady ? panelLink('left') : null"
                       side="left"
                       title="UI">
           </PanelTitle>
@@ -23,9 +24,10 @@
     <div id="panel" 
          class="PanelRight" 
          @mousemove="changePanelState(right, true)">
-        <a :href="contentReady ? content.panels.right.url : null">
+        <a :href="isContentReady ? panelLink('right') : null">
           <PanelTitle :is-active="right.isActive"
                       :font-size="windowWidth === 'sm' || windowWidth === 'xs' ? 24 : 15"
+                      :clickable="isContentReady ? panelLink('right') : null"
                       side="right"
                       title="visdev">
           </PanelTitle>
@@ -128,6 +130,13 @@ export default {
       } else {
         side.index = 0
         clearInterval(side.intervalID)
+      }
+    },
+    panelLink (side) {
+      if (this.isContentReady) {
+        return this.content.panels[side].url !== '#disable'
+          ? this.content.panels[side].url
+          : null
       }
     }
   }

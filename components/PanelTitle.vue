@@ -11,6 +11,9 @@
       <span>{{title}}{{(fontSize > normalSize ? '→' : null)}}</span>
       <span :class="windowWidth !== 'sm' ? 'underline' : null"></span>
     </div>
+    <transition name="fade">
+      <span v-if="!clickable && isActive" class="unclickable">coming soon</span>
+    </transition>
   </div>
 </template>
 
@@ -22,7 +25,8 @@ export default {
     'isActive',
     'fontSize',
     'side',
-    'title'
+    'title',
+    'clickable'
   ],
   data () {
     return {
@@ -48,6 +52,7 @@ export default {
     }
   },
   mounted () {
+    console.log(this.clickable)
   }
 }
 </script>
@@ -56,7 +61,7 @@ export default {
   .panel-title {
     position: absolute;
     top: 0;
-    bottom: 10px;
+    bottom: 6px;
     left: 0;
     right: 0;
     display: flex;
@@ -116,6 +121,14 @@ export default {
       }
     }
 
+    .unclickable {
+      display: block;
+      position: absolute;
+      margin-top: 2rem;
+      font-family: 'Akkurat Mono', sans-serif;
+      color: rgba(white, .5);
+    }
+
     &.visible {
       opacity: 1;
       // animation: panelFadein .9s cubic-bezier(0.62, 0, 0, 1) .7s forwards;
@@ -138,5 +151,13 @@ export default {
     to {
       transform: translate3d(-105%,0,0)
     }
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: all .5s cubic-bezier(0.19, 1, 0.22, 1) .25s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    transform: translateY(-2px);
+    opacity: 0;
   }
 </style>
