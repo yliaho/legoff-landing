@@ -11,20 +11,12 @@ const createStore = () => {
       content: null,
       contentReady: false,
       imagesLeft: {
-        horizontal: {
-
-        },
-        vertical: {
-
-        }
+        horizontal: {},
+        vertical: {}
       },
       imagesRight: {
-        horizontal: {
-
-        },
-        vertical: {
-
-        }
+        horizontal: {},
+        vertical: {}
       },
       windowWidth: null,
       transitionPhase: 0

@@ -4,7 +4,7 @@
       <div class="image"
           v-for="(image, index) in images(side, windowWidth)" 
           :key="index"
-          v-if="index === indexer && getTransitionPhase >= 3 && (windowWidth !== 'md' ? active : true)"
+          v-if="getTransitionPhase >= 3 && (windowWidth !== 'md' ? (index === indexer && active) : true)"
           @mousemove="doCarousell()"
           :style="`background-image: url('/legoff-landing/${image}.jpg')`">
       </div>

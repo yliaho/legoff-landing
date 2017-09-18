@@ -8,7 +8,42 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
+import anime from 'animejs'
+
 export default {
+  methods: {
+    startLoadingCircle () {
+      const timeline = anime.timeline()
+
+      timeline
+        .add({
+          targets: this.$el.querySelector('#loading-circle'),
+          easing: [0.7, 0, 0.3, 1],
+          strokeDashoffset: [anime.setDashoffset, 0],
+          duration: 800,
+          complete: () => {
+            console.log('moi')
+          }
+        })
+        .add({
+          targets: this.$el.querySelector('#loading-circle'),
+          easing: [0.7, 0, 0.15, 1],
+          scale: 0,
+          strokeWidth: 50,
+          duration: 300
+        })
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'windowWidth'
+    ])
+  },
+  mounted () {
+    this.startLoadingCircle()
+  }
 }
 </script>
 
@@ -50,12 +85,10 @@ export default {
 
 
 #loading-circle {
-  animation: dash 1s cubic-bezier(0.7,-0, 0.15, 1) 1 forwards,
-             out .3s cubic-bezier(0.7,-0, 0.15, 1) .8s 1 forwards;
-  // stroke-linecap: round;
+  // animation: dash 1s cubic-bezier(0.7,-0, 0.15, 1) 1 forwards,
+  //            out .3s cubic-bezier(0.7,-0, 0.15, 1) .8s 1 forwards;
+  stroke-dasharray: 125;
   transform-origin: center;
-  stroke-dasharray: 150,200;
-  stroke-dashoffset: -10;
   display: inline-block;
 }
 
@@ -97,14 +130,6 @@ export default {
     // stroke: white;
     transform: scale(0);
     stroke-width: 40;
-  }
-}
-@keyframes complete {
-  0%, 50% {
-    stroke: red;
-  }
-  100% {
-    stroke: transparent;
   }
 }
 </style>

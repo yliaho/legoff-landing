@@ -9,7 +9,15 @@
          :class="mouseOver 
                  ? 'from-enter' 
                  : (mouseOver === false ? 'from-leave' : null)">
-      <span>{{title}} {{(fontSize > normalSize && clickable ? '→' : null)}}</span>
+      <div>
+        <transition-group name="arrow">
+          <span key="title" class="title">{{title}}</span>
+          <span key="arrow" class="arrow" 
+                v-if="getTransitionPhase >= 3 && fontSize > normalSize && clickable">
+            →
+          </span>
+        </transition-group>
+      </div>
       <span :class="windowWidth !== 'md' ? 'underline' : null"></span>
     </div>
     <transition name="fade">
@@ -128,6 +136,15 @@ export default {
       overflow: hidden;
       user-select: none;
       display: block;
+
+      .arrow, .title {
+        display: inline-block;
+        transform: rotate3d(0deg);
+      }
+
+      .arrow {
+        padding-left: 1ex;
+      }
       
       .underline {
         position: absolute;
@@ -199,9 +216,21 @@ export default {
   }
 
   .fade-enter-active, .fade-leave-active {
-    transition: all .5s cubic-bezier(0.19, 1, 0.22, 1) .25s;
+    transition: transform .5s cubic-bezier(0.19, 1, 0.22, 1);
   }
   .fade-enter, .fade-leave-to {
     opacity: 0;
+  }
+
+  .arrow-enter-active, .arrow-leave-active {
+    transition: transform .4s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .arrow-enter, .arrow-leave-to /* .list-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  .arrow-move {
+    transition: transform .4s cubic-bezier(0.19, 1, 0.22, 1);
   }
 </style>

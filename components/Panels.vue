@@ -10,7 +10,7 @@
                       :font-size="windowWidth === 'md' ? 24 : 15"
                       :clickable="isContentReady ? panelLink('left') : null"
                       side="left"
-                      :title="isContentReady ? content.panels.left.text : null">
+                      :title="'UI'">
           </PanelTitle>
           <GridSvg grid-side="left" 
                   :visible="left.isActive">
@@ -29,7 +29,7 @@
                       :font-size="windowWidth === 'md' || windowWidth === 'xs' ? 24 : 15"
                       :clickable="isContentReady ? panelLink('right') : null"
                       side="right"
-                      :title="isContentReady ? content.panels.right.text : null">
+                      :title="'visdev'">
           </PanelTitle>
           <GridSvg grid-side="right" 
                   :visible="right.isActive">
@@ -99,7 +99,7 @@ export default {
             }, 400)
           }, 600)
         }, 800)
-      }, 200)
+      }, 300)
     }
   },
   methods: {

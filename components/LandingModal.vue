@@ -73,12 +73,12 @@ export default {
   overflow: hidden;
   white-space: nowrap;
   transition: top, bottom, right, left;
-  transition-duration: .4s;
-  transition-timing-function: ease-out;
+  transition-duration: .8s;
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
 
   &.line-horizontal {
     transform: translateX(-1px);
-    border-left: 1px solid #7B7B7B;
+    border-left: 1px solid rgba(white, .24);
     top: calc(50% - 80px * 2 + 1px);
     bottom: calc(50% - 80px * 2 + 4px);
     left: calc(50%);
@@ -87,7 +87,7 @@ export default {
 
   &.line-vertical {
     transform: translateY(-1px);
-    border-bottom: 1px solid #7B7B7B;
+    border-bottom: 1px solid rgba(white, .24);
     top: calc(50%);
     bottom: calc(50%);
     left: calc(50% - 40px * 3 + 2px);
@@ -99,7 +99,7 @@ export default {
     bottom: calc(50% - 80px * 2 + 4px);
     left: calc(50% - 80px * 2 + 2px);
     right: calc(50% - 79px * 2 + 1px);
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, .08);
+    box-shadow: 0 0 0 1px #404040;
   }
 
   &.expand-vertical {
@@ -107,7 +107,7 @@ export default {
     bottom: calc(50% - 40px * 3 + 4px);
     left: calc(50% - 40px * 3 + 2px);
     right: calc(50% - 39px * 3 + 1px);
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, .08);
+    box-shadow: 0 0 0 1px #404040;
   }  
 }
 
