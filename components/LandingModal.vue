@@ -15,7 +15,7 @@
           <a href="#">contact</a>
         </li>
         <li>
-          <a href="#">info &amp; other projects</a>
+          <nuxt-link to="/test">info &amp; other projects</nuxt-link>
         </li>
       </ul>
     </div>

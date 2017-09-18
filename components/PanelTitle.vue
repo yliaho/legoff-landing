@@ -13,7 +13,7 @@
         <transition-group name="arrow">
           <span key="title" class="title">{{title}}</span>
           <span key="arrow" class="arrow" 
-                v-if="getTransitionPhase >= 3 && fontSize > normalSize && clickable">
+                v-if="getTransitionPhase >= 4 && fontSize > normalSize && clickable">
             →
           </span>
         </transition-group>

@@ -22,10 +22,7 @@ export default {
           targets: this.$el.querySelector('#loading-circle'),
           easing: [0.7, 0, 0.3, 1],
           strokeDashoffset: [120, 0],
-          duration: 800,
-          complete: () => {
-            console.log('moi')
-          }
+          duration: 800
         })
         .add({
           targets: this.$el.querySelector('#loading-circle'),
@@ -38,11 +35,14 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'windowWidth'
+      'windowWidth',
+      'getTransitionPhase'
     ])
   },
   mounted () {
-    this.startLoadingCircle()
+    if (this.getTransitionPhase === 0) {
+      this.startLoadingCircle()
+    }
   }
 }
 </script>
@@ -87,6 +87,7 @@ export default {
 #loading-circle {
   // animation: dash 1s cubic-bezier(0.7,-0, 0.15, 1) 1 forwards,
   //            out .3s cubic-bezier(0.7,-0, 0.15, 1) .8s 1 forwards;
+  stroke-dashoffset: 125;
   stroke-dasharray: 125;
   transform-origin: center;
   display: inline-block;

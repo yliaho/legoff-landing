@@ -17,6 +17,12 @@ module.exports = {
       : 'http://localhost:3000/')
   },
 
+  transition: 'page',
+
+  css: [
+    'assets/main.css'
+  ],
+
   /*
    * Headers of the page
    */
