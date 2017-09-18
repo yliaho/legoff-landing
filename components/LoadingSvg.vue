@@ -21,7 +21,7 @@ export default {
         .add({
           targets: this.$el.querySelector('#loading-circle'),
           easing: [0.7, 0, 0.3, 1],
-          strokeDashoffset: [anime.setDashoffset, 0],
+          strokeDashoffset: [120, 0],
           duration: 800,
           complete: () => {
             console.log('moi')
