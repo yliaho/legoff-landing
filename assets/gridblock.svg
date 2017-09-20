@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="79px" height="79px" version="1.1" viewBox="0 0 79 79">
+<!--Generator: Sketch 46.1 (44463) - http://www.bohemiancoding.com/sketch-->
+    <desc>
+        Created with Sketch.
+    </desc>
+    <defs/>
+    <g id="Page-1" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+        <g id="Artboard" transform="translate(-151.000000, -22.000000)">
+            <g id="grid-element" transform="translate(151.000000, 22.000000)">
+                <g id="dot" fill="#FFFFFF" fill-opacity="0.8" transform="translate(78.000000, 78.000000)">
+                    <rect width="1" height="1" x="0" y="0"/>
+                </g>
+                <g id="lines" stroke="#FFFFFF" stroke-linecap="square" stroke-opacity="0.1">
+                    <path id="d-line" d="M0.5,0.5 L77.5,77.5" transform="translate(39.000000, 39.000000) scale(-1, -1) translate(-39.000000, -39.000000) "/>
+                    <path id="v-line" d="M78.5,0.5 L78.5,77.5"/>
+                    <path id="h-line" d="M0.5,78.5 L77.5,78.5"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
