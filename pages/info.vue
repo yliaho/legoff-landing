@@ -23,7 +23,9 @@
         <div class="projects-container">
           <ul class="elements">
             <li>
-              <div v-lazy:background-image="`info.jpg`" class="thumbnail"/>
+              <div v-lazy:background-image="`info.jpg`" class="thumbnail">
+                <div class="curtain"/>
+              </div>
               <div class="text">
                 <h2 class="title font--stylized">UI Portofolio</h2>
                 <div class="description">
@@ -33,7 +35,9 @@
 
             </li>
             <li>
-              <div v-lazy:background-image="`info.jpg`" class="thumbnail"/>
+              <div v-lazy:background-image="`info.jpg`" class="thumbnail">
+                <div class="curtain"/>
+              </div>
               <div class="text">
                 <h2 class="title font--stylized">Visdev Portofolio</h2>
                 <div class="description">
@@ -80,6 +84,8 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      text-align: justify;
+      text-justify: inter-word;
       font-size: 29px;
       margin-left: calc(79px * 2);
     }
@@ -105,7 +111,7 @@ export default {
           
           &:not(:first-of-type) {margin-left: 54px};
           &.facebook { background-image: url(~assets/social-icons/facebook.svg) }
-          &.twitter { background-image: url(~assets/social-icons/twitter.svg) }
+          &.twitter { background-image: url(~assets/social-icons/twitter.svg); height: 22px;}
           &.instagram { background-image: url(~assets/social-icons/instagram.svg) }
 
           a {
@@ -151,6 +157,25 @@ export default {
       background-position: center;
       transform: translateX(-100%);
       opacity: .7;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .thumbnail[lazy=loading] {
+      transform: translateX(-100%)
+    }
+    .thumbnail[lazy=error] {
+      /*your style here*/
+      transform: translateX(100%);
+    }
+    .thumbnail[lazy=loaded] {
+      transform: translateX(0%);
+
+      .curtain {
+        color: black!important;
+      }
     }
 
     li:hover .thumbnail {opacity: 1;}
@@ -169,16 +194,5 @@ export default {
 
 
 
-  }
-
-  .thumbnail[lazy=loading] {
-    transform: translateX(-100%)
-  }
-  .thumbnail[lazy=error] {
-    /*your style here*/
-    transform: translateX(100%)
-  }
-  .thumbnail[lazy=loaded] {
-    transform: translateX(0%)
   }
 </style>
