@@ -81,20 +81,19 @@ export default {
       flex-direction: column;
       justify-content: center;
       font-size: 29px;
-      padding: 0 27px;
       margin-left: calc(79px * 2);
     }
 
     .social-icons {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-end;
       height: 79px;
       margin-left: calc(79px * 2);
 
       ul {
         height: auto;
-        padding: 0 27px;
+        padding: 4px;
 
         .social {
           display: inline-block;
