@@ -44,12 +44,7 @@ export default {
 }
 </script>
 
-<style>
-  html {
-    background-color: #232323;
-    overflow-y: auto;
-  }
-
+<style scoped>
   .container {
     /* height: calc(100vh + 1px - 1px); */
     overflow: visible;

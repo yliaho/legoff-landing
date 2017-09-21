@@ -1,5 +1,5 @@
 <template>
-  <vue-scroll class="scroller" v-once>
+  <vue-scroll class="scroller">
     <div class="info-container">
       <div class="info"
           :class="windowWidth" 
@@ -84,13 +84,14 @@ export default {
   height: auto;
   left: 0;
   right: 0;
-  z-index: 100000;
+  z-index: 100;
   overflow: hidden;
 }
 
 .info-container {
   position: absolute;
   top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
   display: flex;

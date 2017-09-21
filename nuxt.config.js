@@ -1,4 +1,11 @@
 module.exports = {
+  /**
+   * plugins
+   */
+  plugins: [
+    '~plugins/lazyload'
+  ],
+
   /*
    * router config 
    */

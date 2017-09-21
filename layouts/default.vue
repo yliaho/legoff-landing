@@ -34,11 +34,13 @@
     font-family: 'Akkurat Light';
     color: #fff;
     font-size: 14px;
-    overflow: hidden;
+    overflow-x: hidden;
+    background-color: #232323;
+    overflow-y: auto;
   }
 
   body {
-    overflow: hidden;
+    overflow-x: hidden;
     height: 100%;
   }
 
