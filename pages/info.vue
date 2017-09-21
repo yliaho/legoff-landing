@@ -186,10 +186,25 @@ export default {
       .title {
         font-size: 24px;
         margin-bottom: 27px;
+
+        &:after {
+          content: "→";
+          display: inline-block;
+          padding-left: 1ex;
+          transition: all .3s cubic-bezier(0.19, 1, 0.22, 1) .15s;
+        }
       }
 
       .description {
         font-size: initial;
+        margin-right: calc(79px * 2 - 1px);
+      }
+    }
+
+    li:hover .title {
+      &:after {
+        transform: translateX(.5ex);
+        transition: all .6s cubic-bezier(0.19, 1, 0.22, 1);
       }
     }
 
