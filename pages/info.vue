@@ -64,7 +64,8 @@ export default {
     background-image: url(~assets/gridblock.svg);
     background-repeat: repeat;
     background-position: 50% calc(0% + 40px);
-    padding-top: calc(40px * 3);
+    padding-top: calc(40px * 1);
+    min-height: 100vh;
   }
 
   .container {
@@ -74,7 +75,7 @@ export default {
   }
 
   .intro {
-    height: calc(79px * 4);
+    height: calc(79px * 3);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
