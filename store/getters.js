@@ -26,6 +26,7 @@ const getters = {
     return state.transitionPhase
   },
   isContentReady: (state) => {
+    console.log(state.content)
     return state.content !== null
   }
 }

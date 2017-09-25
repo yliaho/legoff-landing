@@ -1,21 +1,21 @@
 <template>
-  <v-bar wrapper="wrapper" vBar="scroller" vBarInternal="scrollerInternal">
+  <!-- <v-bar wrapper="wrapper" vBar="scroller" vBarInternal="scrollerInternal"> -->
     <div wrapper="info-page" class="info-page">
-      <div class="container">
+      <div v-if="isContentReady" class="container">
         <div class="intro">
           <div class="bio">
-            My name is Thomas Le Goff. I mainly work as a UI designer and visual development artist for media, fashion and games.
+            {{content.info.introduction}}
           </div>
           <div class="social-icons">
             <ul>
               <li class="social facebook">
-                <a href="#facebook" />
+                <a :href="content.info.social[0]" />
               </li>
               <li class="social twitter">
-                <a href="#twitter" />
+                <a :href="content.info.social[1]" />
               </li>
               <li class="social instagram">
-                <a href="#instagram" />
+                <a :href="content.info.social[2]" />
               </li>
             </ul>
           </div>
@@ -24,43 +24,72 @@
           <div class="projects-container">
             <ul class="elements">
               <li class="el-ui">
-                <div v-lazy:background-image="`info-ui.jpg`" class="thumbnail">
+                <div v-lazy:background-image="`${content.info.portals.ui.imagename}.jpg`" class="thumbnail">
                   <div class="curtain" />
                 </div>
                 <div class="text">
-                  <h2 class="title font--stylized">UI Portofolio</h2>
+                  <h2 class="title font--stylized">{{content.info.portals.ui.title}}</h2>
                   <div class="description">
-                    An overview of the web and advertising projects I’ve worked on for agencies or in freelance, with a focus on corporate identity, branding, and typography.
+                    {{content.info.portals.ui.description}}
                   </div>
                 </div>
 
               </li>
               <li class="el-visdev">
-                <div v-lazy:background-image="`info-visdev.jpg`" class="thumbnail">
+                <div v-lazy:background-image="`${content.info.portals.visdev.imagename}.jpg`" class="thumbnail">
                   <div class="curtain" />
                 </div>
                 <div class="text">
-                  <h2 class="title font--stylized">Visdev Portofolio</h2>
+                  <h2 class="title font--stylized">{{content.info.portals.visdev.title}}</h2>
                   <div class="description">
-                    An overview of the web and advertising projects I’ve worked on for agencies or in freelance, with a focus on corporate identity, branding, and typography.
+                    {{content.info.portals.visdev.description}}
                   </div>
                 </div>
-
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- other projects -->
+        <div class="other-projects">
+          <div class="other-projects-description">
+            {{content.info.links.introduction}} what
+          </div>
+          <div class="projects-container">
+            <ul class="elements">
+              <li v-for="element in content.info.links.elements" :key="element.imagename" class="el-ui">
+                <div v-lazy:background-image="`${element.imagename}.jpg`" class="thumbnail">
+                  <div class="curtain" />
+                </div>
+                <div class="text">
+                  <h2 class="title font--stylized">{{element.title}}</h2>
+                  <div class="description">
+                    {{element.description}}
+                  </div>
+                </div>
               </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-  </v-bar>
+  <!-- </v-bar> -->
 </template>
 
 <script>
-import VBar from 'v-bar'
+// import VBar from 'v-bar'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   components: {
-    VBar
+    // VBar
+  },
+  computed: {
+    ...mapState([
+      'content'
+    ]),
+    ...mapGetters([
+      'isContentReady'
+    ])
   }
 }
 </script>
@@ -91,7 +120,6 @@ export default {
   min-height: 100vh;
   z-index: 1000;
   padding-right: 0!important;
-  padding-left: 24px;
 }
 
 .container {
@@ -100,13 +128,7 @@ export default {
   height: auto;
 }
 
-.intro {
-  height: calc(79px * 3);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  .bio {
+.bio, .other-projects-description {
     height: calc(80px * 2);
     display: flex;
     flex-direction: column;
@@ -115,8 +137,14 @@ export default {
     text-justify: inter-word;
     font-size: 29px;
     margin-left: calc(79px * 2);
-    line-height: 1.3em;
+    line-height: 1.2em;
   }
+
+.intro {
+  height: calc(79px * 3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   .social-icons {
     display: flex;
@@ -127,7 +155,6 @@ export default {
 
     ul {
       height: auto;
-      padding: 4px;
 
       .social {
         display: inline-block;
@@ -166,7 +193,7 @@ export default {
   }
 }
 
-.projects {
+.projects, .other-projects {
   overflow: hidden;
 
   .projects-container>ul>li {

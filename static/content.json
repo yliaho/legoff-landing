@@ -14,7 +14,7 @@
         ]
       }
     },
-    "right": {
+    "right": { 
       "text": "visdev",
       "url": "#disable",
       "images": {
@@ -28,5 +28,47 @@
         ]
       }
     }
+  },
+  "info": {
+    "introduction": "My name is Thomas Le Goff. I mainly work as a UI designer and visual development artist for media, fashion and games.",
+    "social": ["#facebook", "#twitter", "#instagram"],
+    "portals": {
+      "ui": {
+        "title": "UI Portofolio",
+        "description": "An overview of the web and advertising projects I’ve worked on for agencies or in freelance, with a focus on corporate identity, branding, and typography.",
+        "imagename": "info-ui",
+        "url": "#url"
+      },
+      "visdev": {
+        "title": "Visdev Portofolio",
+        "description": "An overview of the web and advertising projects I’ve worked on for agencies or in freelance, with a focus on corporate identity, branding, and typography.",
+        "imagename": "info-visdev",
+        "url": "#url"
+      }
+    },
+    "links":{
+      "introduction": "Here’s a selection of a couple places on the internet I use to showcase other kinds of works.",
+      "elements": [
+        {
+          "title": "Other link",
+          "description": "An overview of the web and advertising projects I’ve worked on for agencies or in freelance, with a focus on corporate identity, branding, and typography.",
+          "imagename": "info-visdev",
+          "url": "#url"
+        },
+        {
+          "title": "Yet another link",
+          "description": "An overview of the web and advertising projects I’ve worked on for agencies or in freelance, with a focus on corporate identity, branding, and typography.",
+          "imagename": "info-ui",
+          "url": "#url"
+        },
+        {
+          "title": "It's a link",
+          "description": "An overview of the web and advertising projects I’ve worked on for agencies or in freelance, with a focus on corporate identity, branding, and typography.",
+          "imagename": "info-visdev",
+          "url": "#url"
+        }
+      ]
+    } 
+      
   }
 }

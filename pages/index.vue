@@ -9,7 +9,6 @@
 /* eslint-disable */
 import Panels from '~/components/Panels'
 import Loading from '~/components/LoadingSvg'
-import axios from '~/plugins/axios'
 
 import { mapMutations } from 'vuex'
 
@@ -36,10 +35,6 @@ export default {
       this.getWindowWidth(window.innerWidth)
       this.windowHeight = window.innerHeight
     }
-
-    axios.get('/content.json').then(res => {
-      this.$store.commit('setContent', res.data)
-    })
   }
 }
 </script>

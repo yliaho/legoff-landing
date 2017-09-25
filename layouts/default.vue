@@ -5,7 +5,17 @@
 </template>
 
 <script>
+import axios from '~/plugins/axios'
+
+export default {
+  mounted () {
+    axios.get('/content.json').then(res => {
+      this.$store.commit('setContent', res.data)
+    })
+  }
+}
 </script>
+
 
 
 <style>
