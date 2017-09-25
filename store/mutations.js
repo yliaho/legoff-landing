@@ -14,6 +14,9 @@ const mutations = {
   getWindowWidth (state, w) {
     state.windowWidth = w
   },
+  getWindowHeight (state, h) {
+    state.windowHeight = h
+  },
   incrementTransitionPhase (state) {
     state.transitionPhase = state.transitionPhase + 1
   },

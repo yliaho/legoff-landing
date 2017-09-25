@@ -2,6 +2,14 @@
   <!-- <v-bar wrapper="wrapper" vBar="scroller" vBarInternal="scrollerInternal"> -->
     <div wrapper="info-page" class="info-page">
       <div v-if="isContentReady" class="container">
+        <div class="close" @click="goBack">
+          <svg v-if="windowWidthInPx > 576"xmlns="http://www.w3.org/2000/svg" width="80" height="81" viewBox="0 0 80 81">
+              <g fill="none" stroke="#fff" stroke-width="2">
+                  <path d="M2.016 81.123l78.557-79.395"/>
+                  <path d="M2.051 2l78.557 79.395"/>
+              </g>
+          </svg>
+        </div>
         <div class="intro">
           <div class="bio">
             {{content.info.introduction}}
@@ -88,8 +96,15 @@ export default {
       'content'
     ]),
     ...mapGetters([
-      'isContentReady'
+      'isContentReady',
+      'windowWidth',
+      'windowWidthInPx'
     ])
+  },
+  methods: {
+    goBack () {
+      this.$router.go(-1)
+    }
   }
 }
 </script>
@@ -120,6 +135,22 @@ export default {
   min-height: 100vh;
   z-index: 1000;
   padding-right: 0!important;
+  position: relative;
+}
+
+.close {
+  position: fixed;
+  height: calc(80px * 2);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  transform: translateX(-80px);
+  overflow: hidden;
+  cursor: pointer;
+
+  @media (max-width: 576px) {
+    background-color: green;
+  }
 }
 
 .container {

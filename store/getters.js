@@ -28,6 +28,12 @@ const getters = {
   isContentReady: (state) => {
     console.log(state.content)
     return state.content !== null
+  },
+  windowWidthInPx: (state) => {
+    return state.windowWidth
+  },
+  windowHeightInPx: (state) => {
+    return state.windowHeight
   }
 }
 

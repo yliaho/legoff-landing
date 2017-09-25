@@ -1,5 +1,5 @@
 <template>
-  <section class="container" :style="`height: ${windowHeight}px`">
+  <section class="container" :style="`height: ${windowHeightInPx}px`">
     <Panels></Panels>
     <Loading></Loading>
   </section>
@@ -10,31 +10,20 @@
 import Panels from '~/components/Panels'
 import Loading from '~/components/LoadingSvg'
 
-import { mapMutations } from 'vuex'
+import { mapMutations, mapGetters } from 'vuex'
 
 export default {
   components: {
     Panels,
     Loading
   },
-  data () {
-    return {
-      windowHeight: null
-    }
-  },
-  transition: 'page',
-  methods: {
-    ...mapMutations([
-      'getWindowWidth'
+  computed: {
+    ...mapGetters([
+      'windowHeightInPx'
     ])
   },
   mounted () {
-    this.getWindowWidth(window.innerWidth)
-    this.windowHeight = window.innerHeight
-    window.onresize = () => {
-      this.getWindowWidth(window.innerWidth)
-      this.windowHeight = window.innerHeight
-    }
+    
   }
 }
 </script>

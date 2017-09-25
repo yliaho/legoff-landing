@@ -19,6 +19,7 @@ const createStore = () => {
         vertical: {}
       },
       windowWidth: null,
+      windowHeight: null,
       transitionPhase: 0
     },
     getters,

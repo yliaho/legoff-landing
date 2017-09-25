@@ -6,9 +6,29 @@
 
 <script>
 import axios from '~/plugins/axios'
+import { mapMutations } from 'vuex'
 
 export default {
+  data () {
+    return {
+      windowHeight: null
+    }
+  },
+  transition: 'page',
+  methods: {
+    ...mapMutations([
+      'getWindowWidth',
+      'getWindowHeight'
+    ])
+  },
   mounted () {
+    this.getWindowWidth(window.innerWidth)
+    this.getWindowHeight(window.innerHeight)
+    window.onresize = () => {
+      this.getWindowWidth(window.innerWidth)
+      this.getWindowHeight(window.innerHeight)
+    }
+
     axios.get('/content.json').then(res => {
       this.$store.commit('setContent', res.data)
     })
