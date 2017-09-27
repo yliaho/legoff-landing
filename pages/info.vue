@@ -84,7 +84,7 @@
 
 <script>
 // import VBar from 'v-bar'
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapMutations } from 'vuex'
 
 export default {
   components: {
@@ -97,13 +97,22 @@ export default {
     ...mapGetters([
       'isContentReady',
       'windowWidth',
-      'windowWidthInPx'
+      'windowWidthInPx',
+      'getTransitionPhase'
     ])
   },
   methods: {
+    ...mapMutations([
+      'incrementTransitionPhase',
+      'changeTransitionPhase'
+    ]),
     goBack () {
       this.$router.go(-1)
     }
+  },
+  mounted () {
+    this.changeTransitionPhase(7)
+    console.log(this.getTransitionPhase)
   }
 }
 </script>
@@ -250,8 +259,7 @@ export default {
     transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
     background-size: 100%;
     background-position: center;
-    transform: translateX(-100%);
-    opacity: .7;
+    opacity: .75;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -267,14 +275,15 @@ export default {
   }
   
   .thumbnail[lazy=loading] {
-    transform: translateX(-100%)
+    opacity: 0;
   }
   .thumbnail[lazy=error] {
     /*your style here*/
-    transform: translateX(100%);
+    opacity: 1;
   }
   .thumbnail[lazy=loaded] {
-    transform: translateX(0%);
+    opacity: .75;
+    transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1);
 
     .curtain {
       color: black!important;
@@ -282,8 +291,9 @@ export default {
   }
 
   li:hover .thumbnail {
-    opacity: 1;
+    opacity: .8;
     background-position: 0 100%!important;
+    transition: none;
   }
 
   .text {

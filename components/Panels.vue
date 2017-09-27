@@ -13,10 +13,10 @@
                       :title="'UI'">
           </PanelTitle>
           <GridSvg grid-side="left" 
-                  :visible="left.isActive">
+                  :visible="left.isActive && getTransitionPhase < 5">
           </GridSvg>
           <ImageCarousell side="left" 
-                          :active="left.isActive"
+                          :active="left.isActive && getTransitionPhase < 5"
                           :active-index="left.index">
           </ImageCarousell> 
         </a>
@@ -32,10 +32,10 @@
                       :title="'visdev'">
           </PanelTitle>
           <GridSvg grid-side="right" 
-                  :visible="right.isActive">
+                  :visible="right.isActive && getTransitionPhase < 5">
           </GridSvg>
           <ImageCarousell side="right" 
-                          :active="right.isActive"
+                          :active="right.isActive && getTransitionPhase < 5"
                           :active-index="right.index">
           </ImageCarousell>  
         </a>

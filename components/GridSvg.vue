@@ -4,7 +4,7 @@
        :class="gridClasses"
        width="100%" 
        height="100%" 
-       :style="getTransitionPhase <= 3 ? `background-color: #232323` : `background-color: transparent`"
+       :style="getTransitionPhase <= 3 && visible ? `background-color: #232323` : `background-color: transparent`"
        xmlns="http://www.w3.org/2000/svg">
     <defs>
       <pattern :id="`grid${gridSide}`" 
@@ -106,13 +106,13 @@ export default {
     lines () {
       return {
         dLine: {
-          strokeDash: (this.getTransitionPhase !== 4) ? 110 : this.path.dLine
+          strokeDash: (this.getTransitionPhase < 4) ? 110 : this.path.dLine
         },
         vLine: {
-          strokeDash: (this.getTransitionPhase !== 4) ? 78 : this.path.gridLine
+          strokeDash: (this.getTransitionPhase < 4) ? 78 : this.path.gridLine
         },
         hLine: {
-          strokeDash: (this.getTransitionPhase !== 4) ? 78 : this.path.gridLine
+          strokeDash: (this.getTransitionPhase < 4) ? 78 : this.path.gridLine
         }
       }
     },

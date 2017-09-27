@@ -15,7 +15,7 @@
           <a href="#">contact</a>
         </li>
         <li>
-          <nuxt-link to="/info">info &amp; other projects</nuxt-link>
+          <a @click.prevent="gotoInfo" href="/info">info &amp; other projects</a>
         </li>
       </ul>
     </div>
@@ -38,11 +38,11 @@ export default {
       'getTransitionPhase'
     ]),
     phaseClasses () {
-      if (this.getTransitionPhase === 2) {
+      if (this.getTransitionPhase === 2 || this.getTransitionPhase === 5) {
         return (this.windowWidth !== 'md') ? 'line-horizontal' : 'line-vertical'
-      } else if (this.getTransitionPhase >= 3) {
+      } else if (this.getTransitionPhase >= 3 && this.getTransitionPhase <= 4) {
         return (this.windowWidth !== 'md') ? 'expand-horizontal' : 'expand-vertical'
-      } else {
+      } else if (this.getTransitionPhase === 0 || this.getTransitionPhase === 6) {
         return 'hidden'
       }
     }
@@ -50,7 +50,16 @@ export default {
   methods: {
     ...mapMutations([
       'incrementTransitionPhase'
-    ])
+    ]),
+    gotoInfo () {
+      this.$store.commit('incrementTransitionPhase')
+      setTimeout(() => {
+        this.$store.commit('incrementTransitionPhase')
+        setTimeout(() => {
+          this.$router.push('/info')
+        }, 600)
+      }, 800)
+    }
   }
 }
 </script>
@@ -107,6 +116,13 @@ export default {
     bottom: calc(50% - 40px * 3 + 4px);
     left: calc(50% - 40px * 3 + 2px);
     right: calc(50% - 39px * 3 + 1px);
+    box-shadow: 0 0 0 1px #404040;
+  }  
+  &.hidden {
+    top: calc(50%);
+    bottom: calc(50%);
+    left: calc(50%);
+    right: calc(50%);
     box-shadow: 0 0 0 1px #404040;
   }  
 }

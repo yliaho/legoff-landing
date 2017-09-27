@@ -19,11 +19,20 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'windowHeightInPx'
+      'windowHeightInPx',
+      'getTransitionPhase'
+    ])
+  },
+  methods: {
+    ...mapMutations([
+      'changeTransitionPhase'
     ])
   },
   mounted () {
-    
+    if (this.getTransitionPhase >= 7) {
+      this.changeTransitionPhase(4)
+      console.log(this.getTransitionPhase)
+    }
   }
 }
 </script>

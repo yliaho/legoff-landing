@@ -1,6 +1,6 @@
 <template>
   <div class="panel-title font--stylized" 
-       :class="[getTransitionPhase >= 3 ? 'visible' : 'hidden', titlePositionClass]"
+       :class="[getTransitionPhase >= 3 && getTransitionPhase <= 4 ? 'visible' : 'hidden', titlePositionClass]"
        @mousemove="getTransitionPhase >= 3 ? mouseOver = true : null"
        @mouseleave="getTransitionPhase >= 3 ? mouseOver = false : null"
        @click="unclickableShake">
@@ -13,7 +13,7 @@
         <transition-group name="arrow">
           <span key="title" class="title">{{title}}</span>
           <span key="arrow" class="arrow" 
-                v-if="getTransitionPhase >= 4 && fontSize > normalSize && clickable">
+                v-if="getTransitionPhase === 4 && fontSize > normalSize && clickable">
             →
           </span>
         </transition-group>

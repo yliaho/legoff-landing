@@ -1,5 +1,5 @@
 <template>
-    <div class="loading">
+    <div v-if="getTransitionPhase < 4" class="loading">
       <svg class="loading-container"viewBox="25 25 50 50" >
         <circle id="loading-circle" cx="50" cy="50" r="20" fill="none" stroke="#F8E71C" stroke-width="3" />
       </svg>
