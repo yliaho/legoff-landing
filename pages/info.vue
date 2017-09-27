@@ -41,7 +41,6 @@
                     {{content.info.portals.ui.description}}
                   </div>
                 </div>
-
               </li>
               <li class="el-visdev">
                 <div v-lazy:background-image="`${content.info.portals.visdev.imagename}.jpg`" class="thumbnail">
@@ -60,7 +59,7 @@
         <!-- other projects -->
         <div class="other-projects">
           <div class="other-projects-description">
-            {{content.info.links.introduction}} what
+            {{content.info.links.introduction}}
           </div>
           <div class="projects-container">
             <ul class="elements">
@@ -131,21 +130,22 @@ export default {
   background-image: url(~assets/gridblock.svg);
   background-repeat: repeat;
   background-position: 50% calc(0% + 40px);
-  padding-top: calc(40px * 1);
+  padding-top: calc(39px * 3);
   min-height: 100vh;
   z-index: 1000;
   padding-right: 0!important;
   position: relative;
+  padding-bottom: 80px;
 }
 
 .close {
   position: fixed;
-  height: calc(80px * 2);
+  height: calc(80px * 1);
   display: flex;
   justify-content: center;
   flex-direction: column;
   transform: translateX(-80px);
-  overflow: hidden;
+  overflow-x: hidden;
   cursor: pointer;
 
   @media (max-width: 576px) {
@@ -160,19 +160,19 @@ export default {
 }
 
 .bio, .other-projects-description {
-    height: calc(80px * 2);
+    height: calc(80px * 1);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: justify;
-    text-justify: inter-word;
+    justify-content: flex-start;
     font-size: 29px;
     margin-left: calc(79px * 2);
-    line-height: 1.2em;
+    line-height: 38px;
+    transform: translateY(-27px);
+    max-width: 510px;
   }
 
 .intro {
-  height: calc(79px * 3);
+  height: calc(80px * 3);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -225,7 +225,6 @@ export default {
 }
 
 .projects, .other-projects {
-  overflow: hidden;
 
   .projects-container>ul>li {
     margin: 79px 0;
@@ -236,7 +235,7 @@ export default {
     flex-direction: column;
     justify-content: flex-start;
     font-size: 24px;
-    padding-top: calc(79px - 1em);
+    padding-top: calc(82px - 1em);
     cursor: pointer;
   }
 
@@ -291,7 +290,7 @@ export default {
     margin-left: calc(79px * 2 - 1px);
     .title {
       font-size: 24px;
-      margin-bottom: 27px;
+      margin-bottom: 24px;
 
       &:after {
         content: "→";
