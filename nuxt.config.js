@@ -25,7 +25,7 @@ module.exports = {
   },
 
   transition: {
-    css: false,
+    name: 'page',
 
     beforeLeave (el) {
       this.$store.commit('changePageSwipeStatus', 'beforeLeave')

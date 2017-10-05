@@ -102,4 +102,12 @@ export default {
     text-decoration: none!important;
   }
 
+  .page-enter-active, .page-leave-active {
+    transition: all .8s
+  }
+  .page-enter, .page-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    transform: translateX(-10%);
+    opacity: 1;
+  }
+
 </style>
