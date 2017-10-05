@@ -86,6 +86,9 @@ export default {
   #main-content {
     position: relative;
     z-index: 1;
+    perspective: 0px;
+    transform: translate3D(0, 0, 0);
+    will-change: transform;
   }
 
   .font--stylized {
@@ -102,12 +105,13 @@ export default {
     text-decoration: none!important;
   }
 
-  .page-enter-active, .page-leave-active {
-    transition: all .8s
+  .page-leave-active {
+    transition: transform .8s, opacity 0s .8s;
   }
-  .page-enter, .page-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    transform: translateX(-10%);
-    opacity: 1;
+
+  .page-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    transform: translate3D(-20%, 0, 0);
+    opacity: 0;
   }
 
 </style>

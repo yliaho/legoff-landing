@@ -39,6 +39,9 @@ module.exports = {
     enter (el, done) {
       this.$store.commit('changePageSwipeStatus', 'enter')
       done()
+    },
+    afterEnter (el) {
+      this.$store.commit('changePageSwipeStatus', 'afterEnter')
     }
   },
 

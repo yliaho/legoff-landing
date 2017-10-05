@@ -145,6 +145,8 @@ export default {
   padding-right: 0!important;
   position: relative;
   padding-bottom: 80px;
+  backface-visibility: hidden;
+  perspective: 0px;
 }
 
 .close {

@@ -26,7 +26,7 @@ import Anime from 'animejs'
 export default {
   data () {
     return {
-      loading: false
+      swiping: false
     }
   },
   computed: {
@@ -41,35 +41,40 @@ export default {
     pageSwipeStatus: function (val) {
       if (val === 'leave') {
         this.startSwipe()
+      } else if (val === 'afterEnter') {
+        this.endSwipe()
       }
     }
   },
   methods: {
-    initSwipe () {
-      return Anime.timeline()
-        .add({
-          targets: this.$el.querySelector('.curtain_content'),
-          translateX: ['190%', '0%'],
-          easing: 'easeOutQuint',
-          duration: 1200
-        })
-        .add({
-          targets: this.$el.querySelector('.curtain_content'),
-          translateX: '-190%',
-          easing: 'easeOutQuint',
-          duration: 1200
-        })
-    },
     startSwipe () {
-      this.initSwipe()
-    },
-    endSwipe () {
-      console.log('finish')
       Anime({
         targets: this.$el.querySelector('.curtain_content'),
-        translateX: '-150%',
-        easing: [0.7, 0, 0.3, 1],
-        duration: 600
+        translateX: ['150vw', '0vw'],
+        easing: 'easeOutQuint',
+        duration: 800,
+        begin: () => {
+          this.swiping = true
+          this.$el.querySelector('.curtain_content').style.display = 'flex'
+        },
+        complete: () => {
+          this.swiping = false
+        }
+      })
+    },
+    endSwipe () {
+      Anime({
+        targets: this.$el.querySelector('.curtain_content'),
+        translateX: ['0vw', '-150vw'],
+        easing: 'easeOutCubic',
+        duration: 800,
+        delay: 80,
+        begin: () => {
+          this.swiping = true
+        },
+        complete: () => {
+          this.$el.querySelector('.curtain_content').style.display = 'none'
+        }
       })
     },
 
@@ -86,14 +91,13 @@ export default {
 <style lang="scss">
 .curtain__root {
   z-index: 1000;
-  overflow: hidden;
   width: 200px;
   z-index: 900;
   pointer-events: none;
 }
 
 .curtain_content {
-  $curtain-bgcolor: #232323;
+  $curtain-bgcolor: darken(#232323, 0.3%);
 
   position: fixed;
   top: 0;
@@ -109,6 +113,7 @@ export default {
   transform: translateX(150%);
   // animation: page-out .5s ease-in forwards, page-in .5s ease-out 1.5s forwards;
   will-change: transform;
+  backface-visibility: hidden;
 
   @keyframes page-out {
     from {
@@ -150,6 +155,7 @@ export default {
     .page-transition-curtain {
       position: absolute;
       height: 100vh;
+      max-width: 50vw;
       .curtain__polygon,
       .curtain__center {
         fill: $curtain-bgcolor;

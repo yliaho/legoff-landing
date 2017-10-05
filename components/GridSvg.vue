@@ -150,6 +150,8 @@ export default {
     z-index: 2;
     transition: background-color .15s ease-out .2s;
     overflow: hidden;
+    perspective: 0px;
+    transform: rotate3d(0)
   }
 
   svg.grid-element .lines {
