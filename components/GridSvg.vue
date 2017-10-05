@@ -148,7 +148,7 @@ export default {
     right: 0;
     left: 0;
     z-index: 2;
-    transition: background-color .15s ease-out .2s;
+    transition: background-color .15s ease-out .6s;
     overflow: hidden;
     perspective: 0px;
     transform: rotate3d(0)
@@ -161,13 +161,13 @@ export default {
   svg.grid-element .lines .v-line,
   svg.grid-element .lines .h-line {
     stroke-dasharray: 78;
-    transition-delay: .05s;
+    transition-delay: .15s;
     transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 
   svg.grid-element .lines .d-line {
     stroke-dasharray: 110;
-    transition-delay: .05s;
+    transition-delay: .15s;
     transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 </style>
