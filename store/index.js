@@ -6,6 +6,7 @@ import getters from './getters'
 const createStore = () => {
   return new Vuex.Store({
     state: {
+      pageSwipeStatus: '',
       loading: true,
       ready: false,
       content: null,

@@ -22,6 +22,9 @@ const mutations = {
   },
   changeTransitionPhase (state, int) {
     state.transitionPhase = int
+  },
+  changePageSwipeStatus (state, value) {
+    state.pageSwipeStatus = value
   }
 }
 

@@ -1,26 +1,35 @@
 <template>
   <div>
-    <nuxt/>
+    <BodyCurtain></BodyCurtain>
+    <nuxt id="main-content" />
   </div>
 </template>
 
 <script>
 import axios from '~/plugins/axios'
 import { mapMutations } from 'vuex'
+import BodyCurtain from '~/components/BodyCurtain'
 
 export default {
+  name: 'legoff',
+
+  components: {
+    BodyCurtain
+  },
+
   data () {
     return {
       windowHeight: null
     }
   },
-  transition: 'page',
+
   methods: {
     ...mapMutations([
       'getWindowWidth',
       'getWindowHeight'
     ])
   },
+
   mounted () {
     this.getWindowWidth(window.innerWidth)
     this.getWindowHeight(window.innerHeight)
@@ -38,7 +47,7 @@ export default {
 
 
 
-<style>
+<style lang="scss">
   @import '~nanoreset';
 
   @font-face {
@@ -72,6 +81,11 @@ export default {
   body {
     overflow-x: hidden;
     height: 100%;
+  }
+
+  #main-content {
+    position: relative;
+    z-index: 1;
   }
 
   .font--stylized {

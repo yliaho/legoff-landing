@@ -111,8 +111,9 @@ export default {
     }
   },
   mounted () {
-    this.changeTransitionPhase(7)
-    console.log(this.getTransitionPhase)
+    if (this.getTransitionPhase >= 6) {
+      this.changeTransitionPhase(7)
+    }
   }
 }
 </script>
@@ -141,7 +142,6 @@ export default {
   background-position: 50% calc(0% + 40px);
   padding-top: calc(39px * 3);
   min-height: 100vh;
-  z-index: 1000;
   padding-right: 0!important;
   position: relative;
   padding-bottom: 80px;
@@ -157,8 +157,8 @@ export default {
   overflow-x: hidden;
   cursor: pointer;
 
-  @media (max-width: 576px) {
-    background-color: green;
+  @media (max-width: 885px) {
+    transform: none!important;
   }
 }
 

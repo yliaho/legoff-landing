@@ -11,6 +11,7 @@ const getters = {
       : (breakpoint !== 'md' ? state.imagesRight.horizontal.length : 0)
     }
   },
+
   windowWidth: (state) => {
     if (state.windowWidth >= 1200) {
       return 'xl'
@@ -22,6 +23,7 @@ const getters = {
       return null
     }
   },
+
   getTransitionPhase: (state) => {
     return state.transitionPhase
   },
@@ -29,12 +31,15 @@ const getters = {
     console.log(state.content)
     return state.content !== null
   },
+
   windowWidthInPx: (state) => {
     return state.windowWidth
   },
   windowHeightInPx: (state) => {
     return state.windowHeight
-  }
+  },
+
+  pageSwipeStatus: state => state.pageSwipeStatus
 }
 
 export default getters

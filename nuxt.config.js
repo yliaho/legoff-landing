@@ -24,7 +24,23 @@ module.exports = {
       : 'http://localhost:3000/')
   },
 
-  transition: 'page',
+  transition: {
+    css: false,
+
+    beforeLeave (el) {
+      this.$store.commit('changePageSwipeStatus', 'beforeLeave')
+    },
+    leave (el, done) {
+      this.$store.commit('changePageSwipeStatus', 'leave')
+      setTimeout(() => {
+        done()
+      }, 800)
+    },
+    enter (el, done) {
+      this.$store.commit('changePageSwipeStatus', 'enter')
+      done()
+    }
+  },
 
   css: [
     'assets/main.css'
@@ -48,8 +64,8 @@ module.exports = {
   /*
    * Customize the progress-bar color
    */
-  loading: { color: '#3B8070' },
-  
+  // loading: '~/components/BodyCurtain.vue',
+
   /*
    * Build configuration
    */
