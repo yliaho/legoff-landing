@@ -147,6 +147,7 @@ export default {
   padding-bottom: 80px;
   backface-visibility: hidden;
   perspective: 0px;
+  overflow: hidden;
 }
 
 .close {
@@ -168,6 +169,7 @@ export default {
   width: calc(79px * 9);
   margin: 0 auto;
   height: auto;
+
 }
 
 .bio, .other-projects-description {
@@ -262,7 +264,6 @@ export default {
     background-size: 100%;
     background-position: center;
     opacity: .75;
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -277,6 +278,7 @@ export default {
   }
   
   .thumbnail[lazy=loading] {
+    clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%);
     opacity: 0;
   }
   .thumbnail[lazy=error] {
@@ -284,8 +286,10 @@ export default {
     opacity: 1;
   }
   .thumbnail[lazy=loaded] {
+    clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%);
     opacity: .75;
-    transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1) .6s;
+    animation: clippy1 0.15s linear .6s, clippy2 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.75s forwards;
 
     .curtain {
       color: black!important;
@@ -324,6 +328,24 @@ export default {
       transform: translateX(.5ex);
       transition: all .6s cubic-bezier(0.19, 1, 0.22, 1);
     }
+  }
+}
+
+@keyframes clippy1 {
+  0% {
+    clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%);
+  }
+  100% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 100%, 0% 100%);
+  }
+}
+
+@keyframes clippy2 {
+  0% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 100%, 0% 100%);
+  }
+  100% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 100% 100%, 0% 100%); 
   }
 }
 </style>

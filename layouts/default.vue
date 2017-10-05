@@ -76,6 +76,7 @@ export default {
     overflow-x: hidden;
     background-color: #232323;
     overflow-y: auto;
+
   }
 
   body {
@@ -88,7 +89,6 @@ export default {
     z-index: 1;
     perspective: 0px;
     transform: translate3D(0, 0, 0);
-    will-change: transform;
   }
 
   .font--stylized {
@@ -105,13 +105,23 @@ export default {
     text-decoration: none!important;
   }
 
-  .page-leave-active {
-    transition: transform .8s, opacity 0s .8s;
+  .page-leave-active, .page-enter-active {
+    transition: transform .8s .2s, opacity 0s .8s;
   }
 
-  .page-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+  .page-leave-to {
+    transform: transform .8s .2s;
     transform: translate3D(-20%, 0, 0);
-    opacity: 0;
+  }
+
+  .page-enter {
+    transform: transform .8s .2s;
+    transform: translate3D(20%, 0, 0);
+  }
+
+  .page-enter-to {
+    transform: transform .8s .2s
   }
 
 </style>

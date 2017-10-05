@@ -23,7 +23,6 @@
 </template>
 
 <script>
-// import anime from 'animejs'
 import { mapState, mapGetters, mapMutations } from 'vuex'
 
 export default {
@@ -82,7 +81,7 @@ export default {
   overflow: hidden;
   white-space: nowrap;
   transition: top, bottom, right, left;
-  transition-duration: .8s;
+  transition-duration: .6s;
   transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
 
   &.line-horizontal {

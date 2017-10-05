@@ -1,6 +1,6 @@
 <template>
   <div class="curtain__root">
-    <div class="curtain_content">
+    <div class="curtain_content" style="display: none">
       <div class="curtain__mainbody">
         <svg class="page-transition-curtain curtain__left" height="100%" viewBox="0 0 640 720" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g fill="none">
@@ -31,7 +31,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      pageSwipeStatus: 'pageSwipeStatus'
+      pageSwipeStatus: 'pageSwipeStatus',
+      windowWidthInPx: 'windowWidthInPx'
     }),
     swipeAnimTimeline () {
       return Anime.timeline
@@ -50,7 +51,10 @@ export default {
     startSwipe () {
       Anime({
         targets: this.$el.querySelector('.curtain_content'),
-        translateX: ['150vw', '0vw'],
+        translateX: [
+          `${this.windowWidthInPx + this.$el.querySelector('.curtain_content .curtain__left').getBoundingClientRect().width}px`,
+          '0vw'
+        ],
         easing: 'easeOutQuint',
         duration: 800,
         begin: () => {
@@ -65,14 +69,18 @@ export default {
     endSwipe () {
       Anime({
         targets: this.$el.querySelector('.curtain_content'),
-        translateX: ['0vw', '-150vw'],
-        easing: 'easeOutCubic',
-        duration: 800,
+        translateX: [
+          '0px',
+          `-${this.windowWidthInPx + this.$el.querySelector('.curtain_content .curtain__right').getBoundingClientRect().width}px`
+        ],
+        easing: 'easeInQuad',
+        duration: 600,
         delay: 80,
         begin: () => {
           this.swiping = true
         },
         complete: () => {
+          console.log(this.windowWidthInPx + this.windowWidthInPx / 2)
           this.$el.querySelector('.curtain_content').style.display = 'none'
         }
       })
@@ -105,8 +113,8 @@ export default {
   left: 0;
   max-width: 300vw;
   pointer-events: none;
-  z-index: 300;
-  display: flex;
+  z-index: 900;
+  // display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: flex-end;
@@ -155,13 +163,12 @@ export default {
     .page-transition-curtain {
       position: absolute;
       height: 100vh;
-      max-width: 50vw;
       .curtain__polygon,
       .curtain__center {
         fill: $curtain-bgcolor;
 
         &.bottom {
-          fill: #313131;
+          fill: lighten($curtain-bgcolor, 10%);
         }
       }
     }
