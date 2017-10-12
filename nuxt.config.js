@@ -7,7 +7,7 @@ module.exports = {
   ],
 
   /*
-   * router config 
+   * router config
    */
   router: {
     base: '/legoff-landing/'
@@ -26,6 +26,7 @@ module.exports = {
 
   transition: {
     name: 'page',
+    css: false,
 
     beforeLeave (el) {
       this.$store.commit('changePageSwipeStatus', 'beforeLeave')

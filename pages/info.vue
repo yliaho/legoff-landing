@@ -2,14 +2,7 @@
   <!-- <v-bar wrapper="wrapper" vBar="scroller" vBarInternal="scrollerInternal"> -->
     <div wrapper="info-page" class="info-page">
       <div v-if="isContentReady" class="container">
-        <div class="close" @click="goBack">
-          <svg v-if="windowWidthInPx > 576"xmlns="http://www.w3.org/2000/svg" width="80" height="81" viewBox="0 0 80 81">
-              <g fill="none" stroke="#fff" stroke-width="2">
-                  <path d="M2.016 81.123l78.557-79.395"/>
-                  <path d="M2.051 2l78.557 79.395"/>
-              </g>
-          </svg>
-        </div>
+        <CloseButton></CloseButton>
         <div class="intro">
           <div class="bio">
             {{content.info.introduction}}
@@ -85,10 +78,12 @@
 <script>
 // import VBar from 'v-bar'
 import { mapState, mapGetters, mapMutations } from 'vuex'
+import CloseButton from '@/components/CloseButton'
 
 export default {
   components: {
     // VBar
+    CloseButton
   },
   computed: {
     ...mapState([
@@ -145,24 +140,7 @@ export default {
   padding-right: 0!important;
   position: relative;
   padding-bottom: 80px;
-  backface-visibility: hidden;
-  perspective: 0px;
   overflow: hidden;
-}
-
-.close {
-  position: fixed;
-  height: calc(80px * 1);
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  transform: translateX(-80px);
-  overflow-x: hidden;
-  cursor: pointer;
-
-  @media (max-width: 885px) {
-    transform: none!important;
-  }
 }
 
 .container {
@@ -170,6 +148,10 @@ export default {
   margin: 0 auto;
   height: auto;
 
+  @media (max-width: 885px) {
+    width: 100%;
+    margin: 0 80px;
+  }
 }
 
 .bio, .other-projects-description {
@@ -182,6 +164,10 @@ export default {
     line-height: 38px;
     transform: translateY(-27px);
     max-width: 510px;
+
+    @media (max-width: 576px) {
+      margin-left: 0;
+    }
   }
 
 .intro {
@@ -238,6 +224,10 @@ export default {
 }
 
 .projects, .other-projects {
+
+  @media (max-width: 885px) {
+    margin: 0 80px;
+  }
 
   .projects-container>ul>li {
     margin: 79px 0;
