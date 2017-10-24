@@ -10,13 +10,19 @@
           <div class="social-icons">
             <ul>
               <li class="social facebook">
-                <a :href="content.info.social[0]" />
+                <a :href="content.info.social[0]">
+                  <social-icon icon="facebook" :size="Number(25)"></social-icon>
+                </a>
               </li>
               <li class="social twitter">
-                <a :href="content.info.social[1]" />
+                <a :href="content.info.social[1]">
+                  <social-icon icon="twitter" :size="Number(25)"></social-icon>
+                </a>
               </li>
               <li class="social instagram">
-                <a :href="content.info.social[2]" />
+                <a :href="content.info.social[2]">
+                  <social-icon icon="instagram" :size="Number(25)"></social-icon>
+                </a>
               </li>
             </ul>
           </div>
@@ -25,7 +31,9 @@
           <div class="projects-container">
             <ul class="elements">
               <li class="el-ui">
-                <div v-lazy:background-image="`${content.info.portals.ui.imagename}.jpg`" class="thumbnail">
+                <div v-if="pageSwipeStatus === 'finished' || pageSwipeStatus === ''"
+                  v-lazy:background-image="`${content.info.portals.ui.imagename}.jpg`" 
+                  class="thumbnail">
                   <div class="curtain" />
                 </div>
                 <div class="text">
@@ -36,7 +44,9 @@
                 </div>
               </li>
               <li class="el-visdev">
-                <div v-lazy:background-image="`${content.info.portals.visdev.imagename}.jpg`" class="thumbnail">
+                <div v-if="pageSwipeStatus === 'finished' || pageSwipeStatus === ''"
+                  v-lazy:background-image="`${content.info.portals.visdev.imagename}.jpg`" 
+                  class="thumbnail">
                   <div class="curtain" />
                 </div>
                 <div class="text">
@@ -57,7 +67,9 @@
           <div class="projects-container">
             <ul class="elements">
               <li v-for="element in content.info.links.elements" :key="element.imagename" class="el-ui">
-                <div v-lazy:background-image="`${element.imagename}.jpg`" class="thumbnail">
+                <div v-if="pageSwipeStatus === 'finished' || pageSwipeStatus === ''"
+                  v-lazy:background-image="`${element.imagename}.jpg`" 
+                  class="thumbnail">
                   <div class="curtain" />
                 </div>
                 <div class="text">
@@ -79,11 +91,13 @@
 // import VBar from 'v-bar'
 import { mapState, mapGetters, mapMutations } from 'vuex'
 import CloseButton from '@/components/CloseButton'
+import SocialIcon from '@/components/SocialIcon'
 
 export default {
   components: {
     // VBar
-    CloseButton
+    CloseButton,
+    SocialIcon
   },
   computed: {
     ...mapState([
@@ -93,7 +107,8 @@ export default {
       'isContentReady',
       'windowWidth',
       'windowWidthInPx',
-      'getTransitionPhase'
+      'getTransitionPhase',
+      'pageSwipeStatus'
     ])
   },
   methods: {
@@ -141,16 +156,18 @@ export default {
   position: relative;
   padding-bottom: 80px;
   overflow: hidden;
+  @media (max-width: 576px) {
+    padding: 0 10px;
+  }
 }
 
 .container {
   width: calc(79px * 9);
+  max-width: 100%;
   margin: 0 auto;
   height: auto;
-
-  @media (max-width: 885px) {
+  @media (max-width: 576px) {
     width: 100%;
-    margin: 0 80px;
   }
 }
 
@@ -164,14 +181,14 @@ export default {
     line-height: 38px;
     transform: translateY(-27px);
     max-width: 510px;
-
     @media (max-width: 576px) {
       margin-left: 0;
+      height: auto;
     }
   }
 
 .intro {
-  height: calc(80px * 3);
+  height: calc(79px * 3);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -182,6 +199,9 @@ export default {
     justify-content: flex-end;
     height: 79px;
     margin-left: calc(79px * 2);
+    @media (max-width: 576px) {
+      margin: 0;
+    }
 
     ul {
       height: auto;
@@ -193,21 +213,12 @@ export default {
         background-position: center;
         background-size: 100%;
         position: relative;
+        transform: translateX(-1px) translateY(1px);
 
         &:not(:first-of-type) {
           margin-left: 54px
         }
-        ;
-        &.facebook {
-          background-image: url(~assets/social-icons/facebook.svg)
-        }
-        &.twitter {
-          background-image: url(~assets/social-icons/twitter.svg);
-          height: 22px;
-        }
-        &.instagram {
-          background-image: url(~assets/social-icons/instagram.svg)
-        }
+
 
         a {
           position: absolute;
@@ -225,12 +236,15 @@ export default {
 
 .projects, .other-projects {
 
-  @media (max-width: 885px) {
-    margin: 0 80px;
-  }
 
+  .elements {
+    @media (max-width: 576px) {
+      margin: 0;
+      padding: 0;
+    }
+  }
   .projects-container>ul>li {
-    margin: 79px 0;
+    margin: 80px 0;
     position: relative;
     height: calc(79px * 3 - 1px);
     z-index: 1;
@@ -240,6 +254,10 @@ export default {
     font-size: 24px;
     padding-top: calc(82px - 1em);
     cursor: pointer;
+    @media (max-width: 576px) {
+      padding-top: 0;
+      height: auto;
+    }
   }
 
   .thumbnail {
@@ -257,6 +275,12 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 576px) {
+      margin-left: 0;
+      width: calc(79px * 2 - 1px)!important;
+      height: calc(79px * 2 - 1px)!important;
+    }
   }
 
   .el-ui .thumbnail {
@@ -278,8 +302,8 @@ export default {
   .thumbnail[lazy=loaded] {
     clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%);
     opacity: .75;
-    transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1) .6s;
-    animation: clippy1 0.15s linear .6s, clippy2 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.75s forwards;
+    transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+    animation: clippy1 0.15s linear, clippy2 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s forwards;
 
     .curtain {
       color: black!important;
@@ -294,9 +318,14 @@ export default {
 
   .text {
     margin-left: calc(79px * 2 - 1px);
+    @media (max-width: 576px) {
+      width: 100%;
+      margin: 0px;
+      padding-top: calc(79px * 2 - 1px);
+    }
     .title {
       font-size: 24px;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
 
       &:after {
         content: "→";
@@ -309,7 +338,13 @@ export default {
     .description {
       font-size: initial;
       margin-right: calc(79px * 2 - 1px);
-      line-height: 1.5em;
+      line-height: calc(79px / 3);
+      vertical-align: bottom;
+      display: inline-block;
+
+      @media (max-width: 576px) {
+        margin: 0;
+      }
     }
   }
 
@@ -338,4 +373,9 @@ export default {
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 100% 100%, 0% 100%); 
   }
 }
+    .twitter {
+      transform: translateX(-1px) translateY(3px)!important;
+    }
+
+
 </style>

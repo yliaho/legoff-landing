@@ -1,13 +1,17 @@
 <template>
-  <div id="CloseButton">
+  <div id="CloseButton" @click="goToIndex">
     <svg v-if="windowWidthInPx > 885" xmlns="http://www.w3.org/2000/svg" width="80" height="81" viewBox="0 0 80 81">
       <g class="close__cross" stroke="#fff" stroke-width="2">
-        <path class="close__cross--right"d="M2.016 81.123l78.557-79.395" />
-        <path class="close__cross--left"d="M2.051 2l78.557 79.395" />
+        <path class="close__cross--right"
+          :style="animationFinished ? `stroke-dashoffset: 0` : `stroke-dashoffset: 120`"
+          d="M2.016 81.123l78.557-79.395" />
+        <path class="close__cross--left"
+          :style="animationFinished ? `stroke-dashoffset: 0` : `stroke-dashoffset: 120`"
+          d="M2.051 2l78.557 79.395" />
       </g>
     </svg>
     <div v-else class="close__arrow">
-      <span>←</span>
+      <span class="close">←</span>
     </div>
   </div>
 </template>
@@ -19,19 +23,26 @@ import Anime from 'animejs'
 export default {
   data () {
     return {
-      animationDuration: 300
+      animationDuration: 280,
+      animationFinished: false
     }
   },
 
   computed: {
     ...mapGetters({
-      windowWidthInPx: 'windowWidthInPx'
+      windowWidthInPx: 'windowWidthInPx',
+      pageSwipeStatus: 'pageSwipeStatus'
     })
   },
 
   watch: {
     windowWidthInPx: function (val) {
       console.log(val)
+    },
+    pageSwipeStatus: function (val) {
+      if (val === 'finished' || val === '') {
+        this.initAnimateCross()
+      }
     }
   },
 
@@ -48,8 +59,8 @@ export default {
         },
         delay: () => {
           return side === 'left'
-            ? 0
-            : this.animationDuration
+            ? 300
+            : this.animationDuration + 300
         },
         easing: () => {
           return side === 'left'
@@ -66,14 +77,26 @@ export default {
           delay: (this.animationDuration) * 2 + 400,
           duration: this.animationDuration,
           easing: 'easeOutSine'
+        },
+        complete: () => {
+          console.log('fuck me')
+          this.animationFinished = true
         }
       })
+    },
+    initAnimateCross () {
+      this.AnimateCross('left')
+      this.AnimateCross('right')
+    },
+    goToIndex () {
+      this.$router.push({path: '/'})
     }
   },
 
   mounted () {
-    this.AnimateCross('left')
-    this.AnimateCross('right')
+    if (this.pageSwipeStatus === '') {
+      this.initAnimateCross()
+    }
   }
 }
 </script>
@@ -96,14 +119,34 @@ export default {
     line-height: 30px;
   }
 
+  @media (max-width: 576px) {
+    position: relative!important;
+  }
+
   .close__cross--left,
   .close__cross--right {
     position: fixed!important;
     stroke-dasharray: 120;
+    stroke-dashoffset: 120;
   }
 }
 
 .close__arrow {
   font-size: 20px;
+}
+
+#CloseButton:hover {
+  .close__cross {
+    path {
+      stroke: #F8E71C;
+      color: #F8E71C;
+    }
+  }
+
+  .close__arrow {
+    span {
+      color: #F8E71C;
+    }
+  }
 }
 </style>

@@ -12,10 +12,10 @@
     <div class="modal-links">
       <ul class="links-default">
         <li>
-          <a href="#">contact</a>
+          <a class="link--stylized" href="#">contact</a>
         </li>
         <li>
-          <a @click.prevent="gotoInfo" href="/info">info &amp; other projects</a>
+          <a class="link--stylized" @click.prevent="gotoInfo" href="/info">info &amp; other projects</a>
         </li>
       </ul>
     </div>
@@ -56,8 +56,8 @@ export default {
         this.$store.commit('incrementTransitionPhase')
         setTimeout(() => {
           this.$router.push('/info')
-        }, 600)
-      }, 800)
+        }, 0)
+      }, 0)
     }
   }
 }
@@ -107,7 +107,7 @@ export default {
     bottom: calc(50% - 80px * 2 + 4px);
     left: calc(50% - 80px * 2 + 2px);
     right: calc(50% - 79px * 2 + 1px);
-    box-shadow: 0 0 0 1px #404040;
+    box-shadow: 0 0 0 1px rgba(white, .08);
   }
 
   &.expand-vertical {
@@ -115,7 +115,7 @@ export default {
     bottom: calc(50% - 40px * 3 + 4px);
     left: calc(50% - 40px * 3 + 2px);
     right: calc(50% - 39px * 3 + 1px);
-    box-shadow: 0 0 0 1px #404040;
+    box-shadow: 0 0 0 1px rgba(white, .08);
   }  
   &.hidden {
     top: calc(50%);

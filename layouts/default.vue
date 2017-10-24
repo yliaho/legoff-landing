@@ -82,6 +82,7 @@ export default {
   body {
     overflow-x: hidden;
     height: 100%;
+    margin: 0;
   }
 
   #main-content {
@@ -105,6 +106,12 @@ export default {
 
   .page-leave-active, .page-enter-active {
     transition: transform .8s .2s, opacity 0s .8s;
+  }
+
+  .link--stylized {
+    &:hover {
+      color: #F8E71C!important;
+    }
   }
 
 </style>

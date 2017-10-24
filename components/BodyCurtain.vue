@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import Anime from 'animejs'
 
 export default {
@@ -80,8 +80,8 @@ export default {
           this.swiping = true
         },
         complete: () => {
-          console.log(this.windowWidthInPx + this.windowWidthInPx / 2)
           this.$el.querySelector('.curtain_content').style.display = 'none'
+          this.changePageSwipeStatus('finished')
         }
       })
     },
@@ -91,7 +91,11 @@ export default {
     },
     finish () {
       this.endSwipe()
-    }
+    },
+
+    ...mapMutations({
+      changePageSwipeStatus: 'changePageSwipeStatus'
+    })
   }
 }
 </script>
