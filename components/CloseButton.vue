@@ -79,7 +79,6 @@ export default {
           easing: 'easeOutSine'
         },
         complete: () => {
-          console.log('fuck me')
           this.animationFinished = true
         }
       })
@@ -94,7 +93,7 @@ export default {
   },
 
   mounted () {
-    if (this.pageSwipeStatus === '') {
+    if (this.pageSwipeStatus === '' && this.windowWidthInPx > 768) {
       this.initAnimateCross()
     }
   }
@@ -117,10 +116,12 @@ export default {
     justify-content: flex-start;
     transform: translateY(-27px)!important;
     line-height: 30px;
+    position: absolute!important;
   }
 
-  @media (max-width: 576px) {
+  @media (max-width: 711px) {
     position: relative!important;
+    margin-top: 50px;
   }
 
   .close__cross--left,

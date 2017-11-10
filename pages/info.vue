@@ -156,7 +156,7 @@ export default {
   position: relative;
   padding-bottom: 80px;
   overflow: hidden;
-  @media (max-width: 576px) {
+  @media (max-width: 711px) {
     padding: 0 10px;
   }
 }
@@ -166,7 +166,7 @@ export default {
   max-width: 100%;
   margin: 0 auto;
   height: auto;
-  @media (max-width: 576px) {
+  @media (max-width: 711px) {
     width: 100%;
   }
 }
@@ -181,7 +181,7 @@ export default {
     line-height: 38px;
     transform: translateY(-27px);
     max-width: 510px;
-    @media (max-width: 576px) {
+    @media (max-width: 711px) {
       margin-left: 0;
       height: auto;
     }
@@ -199,7 +199,7 @@ export default {
     justify-content: flex-end;
     height: 79px;
     margin-left: calc(79px * 2);
-    @media (max-width: 576px) {
+    @media (max-width: 711px) {
       margin: 0;
     }
 
@@ -238,7 +238,7 @@ export default {
 
 
   .elements {
-    @media (max-width: 576px) {
+    @media (max-width: 711px) {
       margin: 0;
       padding: 0;
     }
@@ -254,7 +254,7 @@ export default {
     font-size: 24px;
     padding-top: calc(82px - 1em);
     cursor: pointer;
-    @media (max-width: 576px) {
+    @media (max-width: 711px) {
       padding-top: 0;
       height: auto;
     }
@@ -276,7 +276,7 @@ export default {
     justify-content: center;
     align-items: center;
 
-    @media (max-width: 576px) {
+    @media (max-width: 711px) {
       margin-left: 0;
       width: calc(79px * 2 - 1px)!important;
       height: calc(79px * 2 - 1px)!important;
@@ -318,7 +318,7 @@ export default {
 
   .text {
     margin-left: calc(79px * 2 - 1px);
-    @media (max-width: 576px) {
+    @media (max-width: 711px) {
       width: 100%;
       margin: 0px;
       padding-top: calc(79px * 2 - 1px);
@@ -342,7 +342,7 @@ export default {
       vertical-align: bottom;
       display: inline-block;
 
-      @media (max-width: 576px) {
+      @media (max-width: 711px) {
         margin: 0;
       }
     }
