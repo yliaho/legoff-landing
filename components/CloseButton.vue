@@ -1,6 +1,6 @@
 <template>
   <div id="CloseButton" @click="goToIndex">
-    <svg v-if="windowWidthInPx > 885" xmlns="http://www.w3.org/2000/svg" width="80" height="81" viewBox="0 0 80 81">
+    <svg v-if="windowWidthInPx > 880" xmlns="http://www.w3.org/2000/svg" width="80" height="81" viewBox="0 0 80 81">
       <g class="close__cross" stroke="#fff" stroke-width="2">
         <path class="close__cross--right"
           :style="animationFinished ? `stroke-dashoffset: 0` : `stroke-dashoffset: 120`"
@@ -41,7 +41,9 @@ export default {
     },
     pageSwipeStatus: function (val) {
       if (val === 'finished' || val === '') {
-        this.initAnimateCross()
+        this.windowWidthInPx > 880
+          ? this.initAnimateCross()
+          : null
       }
     }
   },
@@ -93,7 +95,7 @@ export default {
   },
 
   mounted () {
-    if (this.pageSwipeStatus === '' && this.windowWidthInPx > 768) {
+    if (this.pageSwipeStatus === '' && this.windowWidthInPx > 880) {
       this.initAnimateCross()
     }
   }
@@ -102,16 +104,16 @@ export default {
 
 <style lang="scss">
 #CloseButton {
-  position: fixed!important;
-  height: calc(80px * 1);
+  position: fixed;
+  height: calc(79px * 1);
   display: flex;
   justify-content: center;
   flex-direction: column;
-  transform: translateX(-80px);
+  transform: translateX(-81px) translateY(-1px);
   overflow: visible;
   cursor: pointer;
 
-  @media (max-width: 885px) {
+  @media (max-width: 880px) {
     transform: none!important;
     justify-content: flex-start;
     transform: translateY(-27px)!important;
@@ -119,14 +121,14 @@ export default {
     position: absolute!important;
   }
 
-  @media (max-width: 711px) {
-    position: relative!important;
+  @media (max-width: 720px) {
+    position: absolute!important;
+    transform: translateY(-146px)!important;
     margin-top: 50px;
   }
 
   .close__cross--left,
   .close__cross--right {
-    position: fixed!important;
     stroke-dasharray: 120;
     stroke-dashoffset: 120;
   }
