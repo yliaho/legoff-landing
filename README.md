@@ -8,6 +8,8 @@
 
 ## [Demo here](https://yliaho.github.io/legoff-landing/)
 
+### Images used in this repo are made by [Thomas Le Goff](http://thomaslegoff.com/)
+
 ## Build Setup
 
 ``` bash
