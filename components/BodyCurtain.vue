@@ -2,17 +2,11 @@
   <div class="curtain__root">
     <div class="curtain_content" style="display: none">
       <div class="curtain__mainbody">
-        <svg class="page-transition-curtain curtain__left" height="100%" viewBox="0 0 640 720" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <g fill="none">
-              <path class="curtain__polygon bottom" d="M640 0h1l-1 720h-640z"/>
-              <path class="curtain__polygon" d="M641 0v720h-640z"/>
-          </g>
+        <svg class="page-transition-curtain curtain__left" height="100%" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+            <path class="curtain__polygon" d="M1000 999.48l-.52.52h-.64L0 1.16V0h1000v999.48z" fill="#9A9A9A" fill-rule="evenodd"/>
         </svg>
-        <svg class="page-transition-curtain curtain__right" height="100%" viewBox="0 0 640 720" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <g fill="none">
-              <path class="curtain__polygon bottom" fill="#f00" d="M1 720l640-720h-640l-1 720z"/>
-              <path class="curtain__polygon" fill="#9A9A9A" d="M0 720l640-720h-640z"/>
-          </g>
+        <svg class="page-transition-curtain curtain__right" height="100%" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+          <path class="curtain__polygon" d="M0 999.48l.52.52h.64L1000 1.16V0H0v999.48z" fill="#D8D8D8" fill-rule="evenodd"/>
         </svg>
       </div>
     </div>

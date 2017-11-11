@@ -1,10 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="79" height="79" viewBox="0 0 79 79">
-    <g fill="none">
-        <path fill="#fff" fill-opacity=".60" d="M78 78h1v1h-1z"/>
-        <g stroke="#fff" stroke-linecap="square" stroke-opacity=".08">
-            <path d="M77.5 77.5l-77-77"/>
-            <path d="M78.5.5v77"/>
-            <path d="M.5 78.5h77"/>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="79" height="79" viewBox="0 0 79 79"><g fill="none"><path fill="#fff" fill-opacity=".6" d="M78 78h1v1h-1z"/><path d="M77.5 77.5L.5.5m78 0v77m-78 1h77" stroke="#fff" stroke-linecap="square" stroke-opacity=".08"/></g></svg>
