@@ -1,6 +1,8 @@
 # legoff-landing
 
-> A vuejs landing page.
+> Landing page made with Vue and Nuxt.
+
+`static/` has json and necessary images which we AJAX into the page.
 
 ## [Demo here](https://yliaho.github.io/legoff-landing/)
 
