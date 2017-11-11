@@ -62,8 +62,8 @@ export default {
 
     thumbnailImageSize () {
       let size = !this.breakpoint
-        ? `calc(79px * 3)`
-        : `calc(79px * 2)`
+        ? `calc(78.5px * 3)`
+        : `calc(78.5px * 2)`
 
       return {
         width: size,

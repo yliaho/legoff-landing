@@ -1,6 +1,6 @@
 <template>
   <div id="CloseButton" @click="goToIndex">
-    <svg v-if="windowWidthInPx > 880" xmlns="http://www.w3.org/2000/svg" width="80" height="81" viewBox="0 0 80 81">
+    <svg v-show="windowWidthInPx > 880" xmlns="http://www.w3.org/2000/svg" width="80" height="81" viewBox="0 0 80 81">
       <g class="close__cross" stroke="#fff" stroke-width="2">
         <path class="close__cross--right"
           :style="animationFinished ? `stroke-dashoffset: 0` : `stroke-dashoffset: 120`"
@@ -10,7 +10,7 @@
           d="M2.051 2l78.557 79.395" />
       </g>
     </svg>
-    <div v-else class="close__arrow">
+    <div v-show="windowWidthInPx <= 880" class="close__arrow">
       <span class="close">←</span>
     </div>
   </div>
@@ -61,8 +61,8 @@ export default {
         },
         delay: () => {
           return side === 'left'
-            ? 300
-            : this.animationDuration + 300
+            ? 100
+            : this.animationDuration + 100
         },
         easing: () => {
           return side === 'left'
@@ -130,11 +130,16 @@ export default {
   .close__cross--left,
   .close__cross--right {
     stroke-dasharray: 120;
-    stroke-dashoffset: 120;
+    stroke-dashoffset: 0;
   }
 }
 
+.close__cross {
+
+}
+
 .close__arrow {
+  position: absolute;
   font-size: 20px;
 }
 
