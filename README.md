@@ -1,6 +1,8 @@
 # legoff-landing
 
-> Thomas Le Goff's landing page
+> A vuejs landing page.
+
+## [Demo here](https://yliaho.github.io/legoff-landing/)
 
 ## Build Setup
 
