@@ -129,4 +129,19 @@ export default {
       fill: #FFEF25;
     }
   }
+
+  .facebook {
+    margin-left: -3px;
+    margin-bottom: -1px;
+  }
+
+  .twitter {
+    margin-left: -4px;
+    margin-bottom: -3px;
+  }
+
+  .instagram {
+    margin-left: -5px;
+    margin-bottom: -1px;
+  }
 </style>
