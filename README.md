@@ -1,3 +1,5 @@
+![demo](./screenshot.png?raw=true)  
+<br>
 # legoff-landing
 
 > Landing page made with Vue and Nuxt.
