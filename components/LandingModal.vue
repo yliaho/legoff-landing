@@ -38,11 +38,11 @@ export default {
       'getTransitionPhase'
     ]),
     phaseClasses () {
-      if (this.getTransitionPhase === 2 || this.getTransitionPhase >= 6) {
+      if (this.getTransitionPhase === 2) {
         return (this.windowWidth !== 'md') ? 'line-horizontal' : 'line-vertical'
-      } else if (this.getTransitionPhase >= 3 && this.getTransitionPhase <= 4) {
+      } else if (this.getTransitionPhase >= 3 && this.getTransitionPhase <= 6) {
         return (this.windowWidth !== 'md') ? 'expand-horizontal' : 'expand-vertical'
-      } else if (this.getTransitionPhase === 0 || this.getTransitionPhase === 6) {
+      } else if (this.getTransitionPhase === 0) {
         return 'hidden'
       }
     }
