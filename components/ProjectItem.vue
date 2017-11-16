@@ -62,8 +62,8 @@ export default {
 
     thumbnailImageSize () {
       let size = !this.breakpoint
-        ? `calc(78.5px * 3)`
-        : `calc(78.5px * 2)`
+        ? `calc(78px * 3)`
+        : `calc(78px * 2)`
 
       return {
         width: size,
@@ -125,6 +125,7 @@ export default {
   background-position: 0 0;
   z-index: -1;
   opacity: .8;
+  margin: 1px 0px 0 1px;
   transition: opacity .15s ease-out;
 }
 

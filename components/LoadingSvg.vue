@@ -91,8 +91,9 @@ export default {
   stroke-dasharray: 125;
   transform-origin: center;
   display: inline-block;
+  transform-box: fill-box!important;
   transform-origin: 50% 50%;
-  -moz-transform-origin: 100% 100%; // firefox somehow wants the origin to be like this ¯\_(ツ)_/¯
+  // -moz-transform-origin: 100% 100%!important; // firefox somehow wants the origin to be like this ¯\_(ツ)_/¯
 }
 
 @keyframes jumpOut {

@@ -1,5 +1,5 @@
 <template>
-  <div class="landing-modal" :class="phaseClasses">
+  <div v-if="contentReady" class="landing-modal" :class="phaseClasses">
     <div class="heading-container">
       <h1 class="landing-heading font--stylized">Thomas Le Goff</h1>
       <h2 class="landing-subtitle">UI designer
@@ -12,7 +12,7 @@
     <div class="modal-links">
       <ul class="links-default">
         <li>
-          <a class="link--stylized" href="#">contact</a>
+          <a class="link--stylized" :href="`mailto:${content.info.email}`">contact</a>
         </li>
         <li>
           <a class="link--stylized" @click.prevent="gotoInfo" href="/info">info &amp; other projects</a>
@@ -30,14 +30,15 @@ export default {
     ...mapState([
       'loading',
       'ready',
-      'contentReady'
+      'contentReady',
+      'content'
     ]),
     ...mapGetters([
       'windowWidth',
       'getTransitionPhase'
     ]),
     phaseClasses () {
-      if (this.getTransitionPhase === 2 || this.getTransitionPhase === 5) {
+      if (this.getTransitionPhase === 2 || this.getTransitionPhase >= 6) {
         return (this.windowWidth !== 'md') ? 'line-horizontal' : 'line-vertical'
       } else if (this.getTransitionPhase >= 3 && this.getTransitionPhase <= 4) {
         return (this.windowWidth !== 'md') ? 'expand-horizontal' : 'expand-vertical'
@@ -59,6 +60,10 @@ export default {
         }, 0)
       }, 0)
     }
+  },
+
+  mounted () {
+    console.log(this.content)
   }
 }
 </script>
